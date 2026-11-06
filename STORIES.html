@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html >
+<head>
+<meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="style.css">
+<title>soufyane el haddaoui</title>
+<meta name="auther" content="soufyane">
+</head>
+
+<nav class="bottom-row">
+    <a href="index.html" class="nav-item ">🏠<br><small>NENU</small></a>
+    <a href="INFO.html" class="nav-item ">👤<br><small>INFO PERSONAL</small></a>
+    <a href="CALCULATOR.html" class="nav-item">🧮<br><small>CALCULATOR</small></a>
+    <a href="CALLS.html" class="nav-item ">📞<br><small>CALLS</small></a>
+    <a href="GAME.html" class="nav-item ">🎮<br><small>GAME</small></a>
+    <a href="STORIES.html" class="nav-item active">📚<br><small>STORIES</small></a>
+</nav>
+<br><br>
+<style>
+body{  font-family:sans-serif; padding:20px; max-width:999px; margin:auto; }
+
+.story-item{ background:white; border-radius:18px; margin-bottom:18px; box-shadow:0 6px 18px rgba(0,0,0,0.07); overflow:hidden; position:relative; border:1px solid #eee; }
+.story-item::before{ content:""; position:absolute; left:0; top:0; bottom:0; width:6px; background:rgb(255, 0, 255); }
+.story-title{ padding:16px 20px 16px 25px; font-weight:bold; font-size:17px; cursor:pointer; display:flex; justify-content:space-between; align-items:center; }
+.story-title b{ color:#793502; }
+.story-icon{ background:#f0f0f0; width:30px; height:30px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:bold; }
+.story-content{ display:none; padding:0 20px 18px 25px; color:#333; font-size:14.8px; }
+.story-content.show{ display:block; }
+.story-text{ line-height:1.6; text-indent: 30px; } 
+.moral{ background:#fff8e1; border-left:4px solid #FFD700; padding:8px 10px; border-radius:8px; margin-top:12px; font-weight:bold; white-space:normal; }
+.translate-btn{ margin-top:12px; background:#00c853; color:white; border:none; padding:7px 14px; border-radius:20px; cursor:pointer; font-size:13px; font-weight:bold; }
+</style>
+  <!-- white-space:pre-line -->
+
+<body>
+    <br>
+    
+<input type="text" id="searchBox" placeholder="🔍 Search stories (e.g. lion, honest, phone...)" 
+onkeyup="searchStory()" style="width:100%; padding:12px 18px; 
+border-radius:25px; border:2px solid #ddd; outline:none; 
+font-size:15px; margin-bottom:20px; box-sizing:border-box;">
+<h1>📚 10 Stories - 20 Lines Each</h1>
+
+<!-- 1 -->
+<div class="story-item">
+<div class="story-title" onclick="toggleStory(1)"><b>📘 1. The Boy Who Never Gave Up</b> <div class="story-icon" id="icon1">+</div></div>
+<div class="story-content" id="story1">
+<div id="text1-en" class="story-text">Once there was a young boy named Adam who dreamed of becoming a programmer.
+He had no computer, only an old phone with a small screen
+He started learning HTML from YouTube videos every night.
+His first website was very ugly and broken.
+His friends laughed at him and said he will never succeed.
+He felt sad but he did not stop.
+He fixed one mistake every single day.
+He learned CSS after one week of hard work.
+He learned JavaScript after one month of trying.
+His second website was better but still had problems.
+His third website failed to load on the internet.
+He wanted to quit but he remembered his dream.
+He watched more tutorials and wrote codes in a notebook.
+He woke up early every morning to practice.
+On the 10th try, his website finally worked.
+He showed it to his teacher and his teacher was shocked.
+His teacher shared it with the whole class.
+Hundreds of students visited his website that day.
+That day he understood that failure is just a lesson.
+Now he has his own company and helps other beginners.
+<div class="moral">Moral: Never give up. Every expert was once a beginner.</div></div>
+<div id="text1-ar" class="story-text" style="display:none; direction:rtl; text-align:right;">
+كان هناك ولد صغير اسمه آدم يحلم أن يصبح مبرمجاً.
+لم يكن يملك حاسوباً، فقط هاتف قديم بشاشة صغيرة.
+بدأ يتعلم HTML من فيديوهات يوتيوب كل ليلة.
+موقعه الأول كان قبيحاً ومليئاً بالأخطاء.
+أصدقاؤه ضحكوا عليه وقالوا له لن تنجح أبداً.
+شعر بالحزن لكنه لم يتوقف.
+كان يصلح خطأ واحداً كل يوم.
+تعلم CSS بعد أسبوع من العمل الشاق.
+وتعلم JavaScript بعد شهر من المحاولة.
+موقعه الثاني كان أفضل لكنه ما زال به مشاكل.
+موقعه الثالث فشل في التحميل على الإنترنت.
+أراد أن يستسلم لكنه تذكر حلمه.
+شاهد المزيد من الدروس وكتب الأكواد في دفتر.
+كان يستيقظ باكراً كل صباح ليتدرب.
+في المحاولة العاشرة، اشتغل موقعه أخيراً.
+أراه لأستاذه واندهش أستاذه كثيراً.
+شاركه أستاذه مع القسم كله.
+مئات الطلاب زاروا موقعه في ذلك اليوم.
+في ذلك اليوم فهم أن الفشل مجرد درس.
+الآن لديه شركته الخاصة ويساعد المبتدئين.
+<div class="moral">العبرة: لا تستسلم أبداً. كل خبير كان مبتدئاً.</div></div>
+<button class="translate-btn" id="btn1" onclick="translateStory(1)">🌐 ترجم للعربية</button>
+</div></div>
+
+<!-- 2 -->
+<div class="story-item">
+<div class="story-title" onclick="toggleStory(2)"><b>🚀 2. Power of a Small Start</b> <div class="story-icon" id="icon2">+</div></div>
+<div class="story-content" id="story2">
+<div id="text2-en" class="story-text">Many people think they need a lot of money to start.
+They think they need a big office and powerful computers.
+But the truth is completely different.
+Google started in a small and dirty garage.
+Facebook started in a small room at Harvard university.
+Amazon started by selling only books from home.
+Apple started with two friends in a garage too.
+All these huge companies started very small.
+They did not wait for the perfect time.
+They started with what they had.
+They had only a small idea and a big passion.
+They worked every day without stopping.
+People said their ideas were stupid and useless.
+But they believed in themselves and continued.
+Slowly their small ideas became big projects.
+Their projects became companies worth billions.
+This is the power of starting small.
+You don't need to be perfect to start.
+You just need to start to become perfect.
+Your small website today can be big tomorrow.
+<div class="moral">Moral: Start small, dream big, work hard.</div></div>
+<div id="text2-ar" class="story-text" style="display:none; direction:rtl; text-align:right;">يعتقد الكثير أنهم يحتاجون مالاً كثيراً للبدء.
+يظنون أنهم يحتاجون مكتباً كبيراً وحواسيب قوية.
+لكن الحقيقة مختلفة تماماً.
+جوجل بدأت في كراج صغير وقذر.
+فيسبوك بدأ في غرفة صغيرة في هارفارد.
+أمازون بدأ ببيع الكتب فقط من المنزل.
+آبل بدأت أيضاً بصديقين في كراج.
+كل هذه الشركات بدأت صغيرة جداً.
+لم ينتظروا الوقت المثالي.
+بدأوا بما لديهم.
+كان لديهم فكرة صغيرة وشغف كبير.
+عملوا كل يوم دون توقف.
+قال الناس إن أفكارهم غبية.
+لكنهم آمنوا بأنفسهم واستمروا.
+ببطء تحولت أفكارهم لمشاريع كبيرة.
+أصبحت مشاريعهم شركات بمليارات.
+هذه هي قوة البداية الصغيرة.
+لا تحتاج أن تكون مثالياً لتبدأ.
+أنت فقط تحتاج أن تبدأ لتصبح مثالياً.
+موقعك الصغير اليوم يمكن أن يكبر غداً.
+<div class="moral">العبرة: ابدأ صغيراً، احلم كبيراً.</div></div>
+<button class="translate-btn" id="btn2" onclick="translateStory(2)">🌐 ترجم للعربية</button>
+</div></div>
+
+<!-- 3 -->
+<div class="story-item">
+<div class="story-title" onclick="toggleStory(3)"><b>⭐ 3. Dream From a Phone</b> <div class="story-icon" id="icon3">+</div></div>
+<div class="story-content" id="story3">
+<div id="text3-en" class="story-text">In a small village lived a boy named Youssef.
+He loved technology but his family was very poor.
+He had no computer and no money to buy one.
+He had only a cheap Android phone with broken screen.
+He decided to learn programming using only his phone.
+He downloaded free coding apps from Play Store.
+He learned to write HTML on his phone.
+It was very hard to type on a small keyboard.
+His eyes hurt from looking at the small screen.
+Sometimes his phone battery died while coding.
+He saved his codes on paper when battery was dead.
+He went to cyber cafe to test his website weekly.
+He spent all his pocket money on one hour internet.
+After 6 months he built his first real website.
+It was a simple website about his village.
+People in his village loved it and shared it.
+A man from the city saw it and offered him a job.
+Now he works as web developer in Casablanca.
+He bought a new laptop and phone with salary.
+He proved you can learn from anywhere with anything.
+<div class="moral">Moral: Your phone is enough. No excuses.</div></div>
+<div id="text3-ar" class="story-text" style="display:none; direction:rtl; text-align:right;">في قرية صغيرة عاش ولد اسمه يوسف.
+كان يحب التكنولوجيا لكن عائلته فقيرة جداً.
+لم يكن لديه حاسوب ولا مال لشرائه.
+كان لديه فقط هاتف رخيص بشاشة مكسورة.
+قرر أن يتعلم البرمجة بهاتفه فقط.
+حمل تطبيقات برمجة مجانية من المتجر.
+تعلم كتابة HTML على هاتفه.
+كان صعباً جداً الكتابة على لوحة صغيرة.
+عيناه تؤلمانه من النظر للشاشة.
+أحياناً تنفد بطارية هاتفه وهو يبرمج.
+كان يحفظ أكواده على الورق.
+يذهب لمقهى الإنترنت ليجرب موقعه أسبوعياً.
+يصرف كل مصروفه على ساعة إنترنت.
+بعد 6 أشهر بنى أول موقع حقيقي له.
+كان موقعاً بسيطاً عن قريته.
+أهل قريته أحبوه وشاركوه.
+رجل من المدينة رآه وعرض عليه عملاً.
+الآن يعمل مطور ويب في الدار البيضاء.
+اشترى حاسوباً وهاتفاً جديداً براتبه.
+أثبت أنه يمكنك التعلم من أي مكان.
+<div class="moral">العبرة: هاتفك يكفي. بلا أعذار.</div></div>
+<button class="translate-btn" id="btn3" onclick="translateStory(3)">🌐 ترجم للعربية</button>
+</div></div>
+
+<!-- 4 -->
+<div class="story-item">
+<div class="story-title" onclick="toggleStory(4)"><b>⏳ 4. Patience is Key</b> <div class="story-icon" id="icon4">+</div></div>
+<div class="story-content" id="story4">
+<div id="text4-en" class="story-text">A programmer had zero visitors for 3 months.
+He wrote articles every day with no result.
+His friends told him to stop wasting time.
+He felt tired and almost wanted to quit.
+But he decided to continue for one more month.
+He learned about SEO and improved his titles.
+He shared his stories on social media daily.
+Suddenly in fourth month his site exploded.
+He got 100 visitors on first day.
+Then 500 visitors on second day.
+Then 2000 visitors on third day.
+Then 10000 visitors after one week.
+Google started ranking his articles first.
+People started commenting and thanking him.
+He started earning money from ads.
+He realized patience was the real secret.
+Most people quit just before success comes.
+He almost quit but he continued.
+If you are working hard, keep going.
+Success needs time, patience, and consistency.
+<div class="moral">Moral: Be patient. Success takes time.</div></div>
+<div id="text4-ar" class="story-text" style="display:none; direction:rtl; text-align:right;">مبرمج لم يزره أحد لمدة 3 أشهر.
+كان يكتب مقالات يومياً بلا نتيجة.
+أصدقاؤه قالوا له توقف عن تضييع الوقت.
+شعر بالتعب وكاد يستسلم.
+لكنه قرر الاستمرار شهراً إضافياً.
+تعلم عن السيو وحسن عناوينه.
+شارك قصصه على مواقع التواصل يومياً.
+فجأة في الشهر الرابع انفجر موقعه.
+حصل على 100 زائر في اليوم الأول.
+ثم 500 زائر في اليوم الثاني.
+ثم 2000 زائر في اليوم الثالث.
+ثم 10000 زائر بعد أسبوع.
+جوجل بدأ يصنف مقالاته أولاً.
+الناس بدأت تعلق وتشكره.
+بدأ يكسب المال من الإعلانات.
+أدرك أن الصبر هو السر الحقيقي.
+معظم الناس يستسلمون قبل النجاح مباشرة.
+هو كاد يستسلم لكنه استمر.
+إذا كنت تعمل بجد، استمر.
+النجاح يحتاج وقت وصبر واستمرارية.
+<div class="moral">العبرة: اصبر، النجاح يحتاج وقت.</div></div>
+<button class="translate-btn" id="btn4" onclick="translateStory(4)">🌐 ترجم للعربية</button>
+</div></div>
+
+<!-- 5 -->
+<div class="story-item">
+<div class="story-title" onclick="toggleStory(5)"><b>🎯 5. Don't Compare Yourself</b> <div class="story-icon" id="icon5">+</div></div>
+<div class="story-content" id="story5">
+<div id="text5-en" class="story-text">Two friends started learning programming together.
+One friend was very fast and learned quickly.
+The other was slow and made many mistakes.
+The fast friend built 3 websites in one month.
+The slow friend built only half a website.
+The slow friend felt jealous and sad.
+He compared himself every day and felt bad.
+He thought he will never be like his friend.
+So he stopped learning and quit.
+But the fast friend continued and became expert.
+After one year, fast friend had a good job.
+If slow friend had continued, he would have job too.
+Everyone has different speed and path.
+Some people learn fast, some learn slow.
+Slow does not mean you will fail.
+It only means you need more time.
+Focus on your own progress, not others.
+Compare yourself only to yesterday's you.
+If you are better than yesterday, you win.
+Your time will come if you keep working.
+<div class="moral">Moral: Focus on your own journey.</div></div>
+<div id="text5-ar" class="story-text" style="display:none; direction:rtl; text-align:right;">صديقان بدآ تعلم البرمجة معاً.
+أحدهما كان سريعاً وتعلم بسرعة.
+الآخر كان بطيئاً ويرتكب أخطاء كثيرة.
+الصديق السريع بنى 3 مواقع في شهر واحد.
+الصديق البطيء بنى نصف موقع فقط.
+شعر البطيء بالغيرة والحزن.
+كان يقارن نفسه يومياً ويشعر بالسوء.
+ظن أنه لن يصبح مثل صديقه أبداً.
+فتوقف عن التعلم واستسلم.
+لكن السريع استمر وأصبح خبيراً.
+بعد سنة، السريع حصل على وظيفة جيدة.
+لو استمر البطيء لحصل على وظيفة أيضاً.
+كل شخص له سرعته وطريقه المختلفة.
+البعض يتعلم بسرعة والبعض ببطء.
+البطء لا يعني أنك ستفشل.
+يعني فقط أنك تحتاج وقتاً أكثر.
+ركز على تقدمك أنت، ليس الآخرين.
+قارن نفسك بنفسك أمس فقط.
+إذا كنت أفضل من أمس فأنت فائز.
+سيأتي وقتك إذا استمريت في العمل.
+<div class="moral">العبرة: ركز على طريقك أنت.</div></div>
+<button class="translate-btn" id="btn5" onclick="translateStory(5)">🌐 ترجم للعربية</button>
+</div></div>
+
+<!-- 6 -->
+<div class="story-item">
+<div class="story-title" onclick="toggleStory(6)"><b>💰 6. The Honest Boy</b> <div class="story-icon" id="icon6">+</div></div>
+<div class="story-content" id="story6">
+<div id="text6-en" class="story-text">A poor boy found a wallet in the street.
+Inside the wallet there was 5000 dirhams.
+There was also an ID card and phone number.
+The boy was very poor and needed money.
+He thought about keeping the money for himself.
+But his mother taught him to be honest.
+He called the number in the wallet.
+An old man answered and was crying.
+He said that money was for his wife's surgery.
+The boy met the old man and gave wallet back.
+The old man was very happy and thanked him.
+He wanted to give the boy 500 dirhams reward.
+The boy refused and said honesty is free.
+The old man was owner of a big company.
+He was impressed by boy's honesty and character.
+He offered the boy a job in his company.
+The boy accepted and worked very hard.
+After years he became manager of company.
+His honesty changed his life completely.
+One honest act can open big doors.
+<div class="moral">Moral: Honesty is the best policy.</div></div>
+<div id="text6-ar" class="story-text" style="display:none; direction:rtl; text-align:right;">ولد فقير وجد محفظة في الشارع.
+داخل المحفظة كان هناك 5000 درهم.
+وكان هناك بطاقة هوية ورقم هاتف.
+الولد كان فقيراً جداً ويحتاج المال.
+فكر في الاحتفاظ بالمال لنفسه.
+لكن أمه علمته أن يكون أميناً.
+اتصل بالرقم الموجود في المحفظة.
+أجاب رجل عجوز وكان يبكي.
+قال إن المال لعملية زوجته.
+قابل الولد الرجل العجوز وأعاد المحفظة.
+الرجل العجوز كان سعيداً جداً وشكره.
+أراد أن يعطي الولد 500 درهم مكافأة.
+الولد رفض وقال الأمانة مجانية.
+الرجل العجوز كان صاحب شركة كبيرة.
+أعجب بأمانة الولد وشخصيته.
+عرض على الولد وظيفة في شركته.
+قبل الولد وعمل بجد كبير.
+بعد سنوات أصبح مدير الشركة.
+أمانته غيرت حياته تماماً.
+عمل أمين واحد يمكن أن يفتح أبواباً كبيرة.
+<div class="moral">العبرة: الصدق والأمانة يغيران الحياة.</div></div>
+<button class="translate-btn" id="btn6" onclick="translateStory(6)">🌐 ترجم للعربية</button>
+</div></div>
+
+<!-- 7 -->
+<div class="story-item">
+<div class="story-title" onclick="toggleStory(7)"><b>🐻 7. Two Friends and Bear</b> <div class="story-icon" id="icon7">+</div></div>
+<div class="story-content" id="story7">
+<div id="text7-en" class="story-text">Two friends were walking in a forest.
+Suddenly they saw a big bear coming.
+One friend quickly climbed a tree.
+He did not help his friend at all.
+The other friend did not know how to climb.
+He fell on ground and pretended to be dead.
+Bear came and sniffed him and thought dead.
+Bear left because bears don't eat dead people.
+After bear left, friend came down from tree.
+He asked: what did bear tell you in ear?
+Second friend said: bear told me to never trust fake friend.
+First friend felt ashamed and sorry.
+He learned true friend helps in danger.
+A friend in need is a friend indeed.
+We should always help our friends.
+Selfish friendship is not real friendship.
+Real friend stays with you in hard time.
+This story teaches us value of friendship.
+Always be a good and helpful friend.
+And choose your friends carefully.
+<div class="moral">Moral: A friend in need is a friend indeed.</div></div>
+<div id="text7-ar" class="story-text" style="display:none; direction:rtl; text-align:right;">صديقان كانا يمشيان في غابة.
+فجأة رأيا دباً كبيراً قادماً.
+أحدهما تسلق شجرة بسرعة.
+ولم يساعد صديقه أبداً.
+الصديق الآخر لم يكن يعرف التسلق.
+سقط على الأرض وتظاهر أنه ميت.
+جاء الدب وشمه وظن أنه ميت.
+غادر الدب لأن الدببة لا تأكل الموتى.
+بعدما ذهب الدب، نزل الصديق من الشجرة.
+سأله: ماذا قال لك الدب في أذنك؟
+قال الثاني: قال لي لا تثق أبداً في صديق مزيف.
+شعر الأول بالخجل والأسف.
+تعلم أن الصديق الحقيقي يساعد في الخطر.
+الصديق وقت الضيق صديق حقيقي.
+يجب أن نساعد أصدقاءنا دائماً.
+الصداقة الأنانية ليست صداقة حقيقية.
+الصديق الحقيقي يبقى معك في وقت الشدة.
+هذه القصة تعلمنا قيمة الصداقة.
+كن دائماً صديقاً جيداً ومساعداً.
+واختر أصدقاءك بعناية.
+<div class="moral">العبرة: الصديق وقت الضيق.</div></div>
+<button class="translate-btn" id="btn7" onclick="translateStory(7)">🌐 ترجم للعربية</button>
+</div></div>
+
+<!-- 8 -->
+<div class="story-item">
+<div class="story-title" onclick="toggleStory(8)"><b>🦁 8. The Lion and The Mouse</b> <div class="story-icon" id="icon8">+</div></div>
+<div class="story-content" id="story8">
+<div id="text8-en" class="story-text">A lion was sleeping in the jungle.
+A small mouse started running on his body.
+The lion woke up and caught the mouse.
+He wanted to kill and eat the mouse.
+Mouse begged: please let me go, I will help you one day.
+Lion laughed: how can small mouse help big lion?
+But he let the mouse go anyway.
+After some days hunters caught the lion in a net.
+Lion roared loudly and all animals were scared.
+Mouse heard the roar and came to help.
+Mouse saw lion trapped in net and started biting net.
+He cut the net with his sharp teeth.
+Lion became free and thanked the small mouse.
+They became best friends forever.
+Even small friends can be big help.
+Never underestimate anyone because of size.
+Kindness always comes back to you.
+Help others and others will help you.
+No act of kindness is ever wasted.
+Small mouse saved big lion's life.
+<div class="moral">Moral: No act of kindness is wasted.</div></div>
+<div id="text8-ar" class="story-text" style="display:none; direction:rtl; text-align:right;">أسد كان نائماً في الغابة.
+فأر صغير بدأ يجري على جسده.
+استيقظ الأسد وأمسك بالفأر.
+أراد أن يقتله ويأكله.
+توسل الفأر: أرجوك اتركني وسأساعدك يوماً ما.
+ضحك الأسد: كيف يمكن لفأر صغير مساعدة أسد كبير؟
+لكنه تركه يذهب على أي حال.
+بعد أيام أمسك الصيادون الأسد في شبكة.
+زأر الأسد بصوت عال وكل الحيوانات خافت.
+سمع الفأر الزئير وجاء للمساعدة.
+رأى الفأر الأسد عالقاً في الشبكة وبدأ يعضها.
+قطع الشبكة بأسنانه الحادة.
+تحرر الأسد وشكر الفأر الصغير.
+أصبحا أفضل صديقين للأبد.
+حتى الأصدقاء الصغار يمكن أن يكونوا مساعدة كبيرة.
+لا تستهين بأحد بسبب حجمه.
+اللطف يعود إليك دائماً.
+ساعد الآخرين وسيساعدك الآخرون.
+لا عمل لطيف يضيع أبداً.
+الفأر الصغير أنقذ حياة الأسد الكبير.
+<div class="moral">العبرة: لا يضيع عمل طيب أبداً.</div></div>
+<button class="translate-btn" id="btn8" onclick="translateStory(8)">🌐 ترجم للعربية</button>
+</div></div>
+
+<!-- 9 -->
+<div class="story-item">
+<div class="story-title" onclick="toggleStory(9)"><b>🐜 9. Ant and Grasshopper</b> <div class="story-icon" id="icon9">+</div></div>
+<div class="story-content" id="story9">
+<div id="text9-en" class="story-text">In summer an ant was working very hard.
+He was collecting food for winter every day.
+A grasshopper was singing and dancing all summer.
+Grasshopper laughed at ant: why work so hard?
+Ant said: I am saving food for winter, you should too.
+Grasshopper said: I have plenty of time, I will enjoy now.
+Ant continued working without listening to him.
+Summer finished and winter came with snow.
+Grasshopper had no food and was very hungry.
+He went to ant's house and asked for food.
+Ant said: you sang all summer, now dance in winter.
+But ant was kind and gave him some food.
+Grasshopper learned a big lesson that day.
+He learned you must work hard today for tomorrow.
+Next summer grasshopper also worked with ant.
+They both collected food together for winter.
+When winter came they both had enough food.
+They were warm and happy in their homes.
+Hard work always pays off in the end.
+Laziness brings hunger and regret.
+<div class="moral">Moral: Work hard today for tomorrow.</div></div>
+<div id="text9-ar" class="story-text" style="display:none; direction:rtl; text-align:right;">في الصيف كانت نملة تعمل بجد كبير.
+كانت تجمع الطعام للشتاء كل يوم.
+جندب كان يغني ويرقص طوال الصيف.
+ضحك الجندب على النملة: لماذا تعملين بجد؟
+قالت النملة: أنا أدخر طعاماً للشتاء، يجب أن تفعل أنت أيضاً.
+قال الجندب: لدي وقت كثير، سأستمتع الآن.
+استمرت النملة في العمل دون الاستماع له.
+انتهى الصيف وجاء الشتاء بالثلج.
+الجندب لم يكن لديه طعام وكان جائعاً جداً.
+ذهب لبيت النملة وطلب طعاماً.
+قالت النملة: غنيت طوال الصيف، الآن ارقص في الشتاء.
+لكن النملة كانت طيبة وأعطته بعض الطعام.
+تعلم الجندب درساً كبيراً ذلك اليوم.
+تعلم أنه يجب أن تعمل بجد اليوم من أجل الغد.
+الصيف القادم عمل الجندب أيضاً مع النملة.
+جمعا الطعام معاً للشتاء.
+عندما جاء الشتاء كان لديهما طعام كاف.
+كانا دافئين وسعيدين في منزليهما.
+العمل الجاد يؤتي ثماره في النهاية.
+الكسل يجلب الجوع والندم.
+<div class="moral">العبرة: اعمل اليوم لترتاح غداً.</div></div>
+<button class="translate-btn" id="btn9" onclick="translateStory(9)">🌐 ترجم للعربية</button>
+</div></div>
+
+<!-- 10 -->
+<div class="story-item">
+<div class="story-title" onclick="toggleStory(10)"><b>🌟 10. The Rich Man and The Poor Man</b> <div class="story-icon" id="icon10">+</div></div>
+<div class="story-content" id="story10">
+<div id="text10-en" class="story-text">A rich man lived in a big beautiful house.
+A poor man lived in a small hut near his house.
+Rich man always complained and was never happy.
+He had cars, money, but no peace of mind.
+Poor man was always happy and smiling.
+He had little food but thanked God every day.
+Rich man asked him: why are you always happy?
+Poor man said: because I am thankful for what I have.
+Rich man said: but you have nothing, I have everything.
+Poor man said: you have everything but you want more.
+I have little but I am thankful for it.
+Happiness does not come from money or houses.
+It comes from heart and thankfulness.
+Rich man thought about his words all night.
+Next morning he started being thankful too.
+He shared his food and money with poor people.
+He found happiness by helping others.
+He and poor man became best friends.
+Rich man learned money can't buy happiness.
+True happiness is in contentment and sharing.
+<div class="moral">Moral: Happiness is not in money, it's in contentment.</div></div>
+<div id="text10-ar" class="story-text" style="display:none; direction:rtl; text-align:right;">رجل غني عاش في بيت كبير وجميل.
+رجل فقير عاش في كوخ صغير قرب بيته.
+الغني كان دائماً يشتكي ولم يكن سعيداً أبداً.
+كان لديه سيارات ومال لكن بلا راحة بال.
+الفقير كان دائماً سعيداً ومبتسماً.
+كان لديه طعام قليل لكنه يشكر الله كل يوم.
+سأله الغني: لماذا أنت سعيد دائماً؟
+قال الفقير: لأني شاكر لما لدي.
+قال الغني: لكنك لا تملك شيئاً، أنا أملك كل شيء.
+قال الفقير: أنت تملك كل شيء لكنك تريد المزيد.
+أنا أملك القليل لكني شاكر له.
+السعادة لا تأتي من المال أو البيوت.
+تأتي من القلب والشكر.
+فكر الغني في كلامه طوال الليل.
+في الصباح بدأ يكون شاكراً أيضاً.
+شارك طعامه وماله مع الفقراء.
+وجد السعادة بمساعدة الآخرين.
+أصبح هو والفقير أفضل صديقين.
+تعلم الغني أن المال لا يشتري السعادة.
+السعادة الحقيقية في القناعة والمشاركة.
+<div class="moral">العبرة: السعادة ليست في المال بل في القناعة.</div></div>
+<button class="translate-btn" id="btn10" onclick="translateStory(10)">🌐 ترجم للعربية</button>
+</div></div>
+
+<script>
+
+function searchStory(){
+  let input = document.getElementById('searchBox').value.toLowerCase();
+  let items = document.querySelectorAll('.story-item');
+ 
+  items.forEach(item => {
+    let title = item.querySelector('.story-title b').textContent.toLowerCase();
+    let text = item.querySelector('.story-text').textContent.toLowerCase();
+   
+    if(title.includes(input) || text.includes(input)){
+      item.style.display = "block";
+    } else {
+      item.style.display = "none";
+    }
+  });
+}
+function toggleStory(n){
+  let c=document.getElementById('story'+n);
+  let ic=document.getElementById('icon'+n);
+  let isOpen=c.classList.contains('show');
+  document.querySelectorAll('.story-content').forEach(x=>x.classList.remove('show'));
+  document.querySelectorAll('.story-icon').forEach(x=>{x.textContent='+'; x.style.background='#f0f0f0';});
+  if(!isOpen){ c.classList.add('show'); ic.textContent='−'; ic.style.background='#FFD700'; ic.style.color='white'; }
+}
+function translateStory(n){
+  let en=document.getElementById('text'+n+'-en');
+  let ar=document.getElementById('text'+n+'-ar');
+  let btn=document.getElementById('btn'+n);
+  if(en.style.display!=='none'){ en.style.display='none'; ar.style.display='block'; btn.textContent='🌐 Translate to English'; }
+  else{ en.style.display='block'; ar.style.display='none'; btn.textContent='🌐 ترجم للعربية'; }
+}
+</script>
+
+<script src="javascript"></script>
+</body>
+</html>

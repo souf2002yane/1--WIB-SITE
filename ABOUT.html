@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>soufyane el haddaoui</title>
+<link rel="icon" href="IMAGES/1793704644158.jpg">
+<style>
+* {
+    margin: 0;padding: 0;box-sizing: border-box;font-family: Arial, sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {background: grey;color: white; 
+}
+
+/* SIDEBAR */
+.sidebar { position: fixed; left: 0;top: 0;width: 230px;
+    height: 100vh; background: #07140d; border-right: 2px solid #00ff66; padding: 30px 15px;z-index: 1000;transition: 0.4s;
+}
+
+.logo {
+    text-align: center;color: #00ff66;font-size: 42px;
+    font-weight: bold;text-shadow: 0 0 30px #00ff66;margin-bottom: 55px;
+}
+
+.sidebar nav {
+    display: flex;flex-direction: column;gap: 20px;
+}
+
+.sidebar nav a {
+    color: white;
+    text-decoration: none;
+    padding: 15px;
+    border-radius: 10px;
+    transition: 0.3s;
+    font-size: 15px;
+}
+
+.sidebar nav a:hover {
+    background: #00ff66;
+    color: black;
+    box-shadow: 0 0 20px #00ff66;
+    transform: translateX(5px);
+}
+
+/* MENU BUTTON */
+
+.menu-btn {
+    display: none;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 1100;
+    background: #00ff66;
+    color: black;
+    border: none;
+    padding: 15px 15px;
+    border-radius: 8px;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+/* MAIN CONTENT */
+
+main {
+    margin-left: 230px;
+}
+
+/* HERO */
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px 20px;
+
+    background:
+    radial-gradient(circle, #123d22 0%, #030906 70%);
+}
+
+.hero h1 {
+    font-size: clamp(35px, 6vw, 65px);
+    color: #00ff66;
+    text-shadow: 0 0 25px #00ff66;
+    margin-bottom: 25px;
+}
+
+.hero p {
+    color: #ccc;
+    font-size: 20px;
+    line-height: 2;
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 35px;
+    padding: 16px 35px;
+    background: white;
+    color: black;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: white;
+    box-shadow: 0 0 30px #00ff66;
+    transform: scale(1.08);
+}
+
+/* SECTIONS */
+
+section {
+    padding: 90px 35px;
+    text-align: center;
+    min-height: 400px;
+}
+
+h2 {
+    color: black;
+    font-size: 35px;
+    margin-bottom: 40px;
+    text-shadow: 0 0 15px #00ff66;
+}
+
+/* CARDS */
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(200px, 1fr)
+    );
+    gap: 25px;
+}
+
+.card {
+    background: #0c1b12;
+    padding: 35px 20px;
+    border: 1px solid #087d36;
+    border-radius: 15px;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 25px #00ff6655;
+    border-color: #00ff66;
+}
+
+.card h3 {
+    color: #00ff66;
+    margin-bottom: 20px;
+}
+
+.card p {
+    color: #bbb;
+    line-height: 1.7;
+}
+
+/* FOOTER */
+
+footer {
+    text-align: center;
+    padding: 30px;
+    background: #07140d;
+    color: #00ff66;
+    border-top: 1px solid #00ff66;
+}
+
+/* MOBILE */
+
+@media(max-width: 768px) {
+
+    .sidebar {
+        width: 230px;
+        transform: translateX(-100%);
+    }
+
+    .sidebar.active {
+        transform: translateX(0);
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
+    main {
+        margin-left: 0;
+    }
+
+    .hero {
+        padding: 80px 20px;
+    }
+
+    .hero h1 {
+        font-size: 38px;
+    }
+
+    section {
+        padding: 70px 20px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- MENU BUTTON -->
+
+<button class="menu-btn" onclick="toggleMenu2()">
+☰
+</button>
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+    <div class="logo">SEH</div>
+    <nav>
+        <a href="index.html" onclick="closeMenu()">🏠 MENU</a>
+        <a href="#about" onclick="closeMenu()">👤 INFO</a>
+        <a href="#skills" onclick="closeMenu()">💻 SKILLS</a>
+        <a href="#projects" onclick="closeMenu()">🚀 PROJECTS</a>
+        <a href="#contact" onclick="closeMenu()">📞 CONTACT</a>
+    </nav>
+</aside>
+<!-- MAIN -->
+<main>
+    <!-- HOME -->
+    <div class="hero" id="home">
+        <h1>SOUFYANE EL HADDAOUI</h1>
+        <p>
+            Welcome To My Digital World
+            <br>
+            Developer | Technology | Creativity
+        </p>
+        <a href="#about" class="btn">
+            EXPLORE MORE
+        </a>
+    </div>
+    <!-- ABOUT -->
+    <section id="about">
+        <h2>ABOUT ME</h2>
+        <div class="card">
+            <h3>WHO AM I?</h3>
+            <p>
+                Welcome to my personal website.
+                This is my digital space where
+                I share my projects, skills
+                and creativity.
+            </p>
+        </div>
+    </section>
+    <!-- SKILLS -->
+    <section id="skills">
+        <h2>MY SKILLS</h2>
+        <div class="cards">
+            <div class="card">
+                <h3>HTML</h3>
+                <p>Modern Web Structure</p>
+            </div>
+            <div class="card">
+                <h3>CSS</h3>
+                <p>Creative Web Design</p>
+            </div>
+            <div class="card">
+                <h3>JAVASCRIPT</h3>
+                <p>Interactive Experiences</p>
+            </div>
+        </div>
+    </section>
+    <!-- PROJECTS -->
+    <section id="projects">
+        <h2>MY PROJECTS</h2>
+        <div class="cards">
+            <div class="card">
+                <h3>MY WEBSITE</h3>
+                <p>Personal Portfolio</p>
+            </div>
+            <div class="card">
+                <h3>CALCULATOR</h3>
+                <p>Smart Calculator</p>
+            </div>
+            <div class="card">
+                <h3>GAMES</h3>
+                <p>Fun Interactive Games</p>
+            </div>
+        </div>
+    </section>
+    <!-- CONTACT -->
+    <section id="contact">
+        <h2>CONTACT ME</h2>
+        <p>Thank you for visiting my website!</p>
+        <a href="mailto:your@email.com" class="btn">
+            CONTACT ME
+        </a>
+    </section>
+    <footer>
+        © 2026 SOUFYANE EL HADDAOUI | SEH
+    </footer>
+</main>
+<script>
+function toggleMenu2() {
+    document.getElementById("sidebar")
+    .classList.toggle("active");
+}
+function closeMenu() {
+    if (window.innerWidth <= 768) {
+        document.getElementById("sidebar")
+        .classList.remove("active");
+    }
+}
+</script>
+</body>
+</html>

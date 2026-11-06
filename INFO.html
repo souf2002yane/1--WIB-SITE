@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="style.css">
+<title>soufyane el haddaoui</title>
+<link rel="icon" href="IMAGES/1793704644158.jpg">
+<meta name="auther" content="soufyane">
+</head>
+
+<body>
+
+<nav class="bottom-row">
+    <a href="index.html" class="nav-item ">🏠<br><small>NENU</small></a>
+    <a href="INFO.html" class="nav-item active">👤<br><small>INFO PERSONAL</small></a>
+    <a href="CALCULATOR.html" class="nav-item">🧮<br><small>CALCULATOR</small></a>
+    <a href="CALLS.html" class="nav-item ">📞<br><small>CALLS</small></a>
+    <a href="GAME.html" class="nav-item ">🎮<br><small>GAME</small></a>
+    <a href="STORIES.html" class="nav-item ">📚<br><small>STORIES</small></a>
+
+</nav>
+<hr>
+
+<div class="content">
+<B>IN THIS PAGE</B>
+          <ul>
+         <li><a href="#INFORMATION PERSONELE">INFORMATION PERSONELE</a></li>
+        <li><a href="#GENDER">GENDER</a></li>
+         <li><a href="#LANGUAGE AND HOBBIES">LANGUAGE AND HOBBIES</a></li>
+        </ul>
+<hr>
+    <h1 align="center" >Sign in</h1>
+<fieldset>
+      <legend >INFORMATION PERSONELE</legend>
+      <div id="INFORMATION PERSONELE" ></div>
+      <label>  Name:</label> <br>
+      <input type="text" name="name"  placeholder="your name" reduired><br>
+      <label> Familly name:</label><br>
+      <input type="text" name="name" placeholder="familly name" reduired><br>
+       <label> Number phone:</label><br>
+      <input type="tel" name="tel" placeholder="0600000000" minlength="10" maxlength="10" reduired><br>
+      <label> The age:</label><br>
+      <input type="number" name="number" placeholder="write your age"  reduired><br>
+      <label> Email:</label><br>
+      <input type="email" name="email" placeholder="write email" reduired><br><label>Password:</label><br>
+      <input type="password" name="password" placeholder="write password" reduired><br> 
+
+      <div class="content">
+
+  <!-- الواجهة 1: تسجيل الدخول العادية -->
+  <div id="loginBox">
+    <button onclick="showReset()" style="width:100%; padding:12px; border:1px solid blue; 
+    background:whitesmoke; color:#0866ff; border-radius:8px; margin:15px 0; cursor:pointer;">
+      forget the paasword
+  </button>
+     </div>
+
+  <!-- الواجهة 2: إعادة كلمة السر - مخبية فالأول -->
+  <div id="resetBox" style="display:none;">
+    <h1 style="margin-bottom:15px;">New password</h1>
+   
+    <label>Email:</label>
+    <input type="email" id="resetEmail" placeholder="enter your email" style="width:100%; padding:10px; margin:8px 0;">
+
+    <label> New password :</label>
+    <input type="password" id="newPass" placeholder="enter New password" style="width:100%; padding:10px; margin:8px 0;">
+
+    <label>  confirm password:</label>
+    <input type="password" id="confirmPass" placeholder="confirm" style="width:100%; padding:10px; margin:8px 0;">
+
+    <button onclick="saveNewPass()" style="width:100%; padding:12px; background:#0866ff; color:white; border:none; border-radius:8px; margin-top:15px;">
+      save
+    </button>
+
+    <button onclick="showLogin()" style="width:100%; padding:10px; background:transparent; border:none; color:#65676b; margin-top:10px; cursor:pointer;">
+      back
+    </button>
+  </div>
+
+</div>
+
+<script>
+function showReset(){
+  document.getElementById("loginBox").style.display = "none";
+  document.getElementById("resetBox").style.display = "block";
+}
+function showLogin(){
+  document.getElementById("resetBox").style.display = "none";
+  document.getElementById("loginBox").style.display = "block";
+}
+function saveNewPass(){
+  let p1 = document.getElementById("newPass").value;
+  let p2 = document.getElementById("confirmPass").value;
+  if(p1 === "" || p1 !== p2){
+    alert(" Password do not match");
+    return;
+  }
+  alert("✅ seved successfully");
+  showLogin();
+}
+</script><br><br> 
+     
+
+     
+<button   onclick="confirmDialog.showModal()">NEXET</button>
+<dialog id="confirmDialog">
+     <p><b>
+      Are you sure about the information?</b></p>
+     <button onclick="confirmDialog.close()" style="color: red;"> no. retry</button>
+     <button onclick="goStep2()" style="color: green;"> yes. nexet</button>
+</dialog>
+
+<div id="step2" hidden>
+     <p><b>More information:</b> </p>
+     <input placeholder=" more informtion about you"><br>
+     <label >Marital status:</label><br>
+  <select>
+        <option>Single</option>
+        <option>Married</option>
+        <option>Divorced</option> 
+        <option>Widowed</option>
+   </select>
+<br>
+     <label> Address:</label><br>
+     <input type="text" placeholder="Your address" reduired><br>
+     <button> I agree </button><br>
+
+</div>
+
+
+
+</fieldset>
+
+    </form>
+
+    <form>
+        <fieldset>
+          <legend>Gender</legend>
+           <div id="GENDER"></div>
+<h1 align="center"> النوع</h1><br>
+      <label>🤵 Man &nbsp;&nbsp;&nbsp;&nbsp; </label>
+      <input type="radio" value="male" name="gender" reduired><br>
+      <label>🧕 Women</label>
+      <input type="radio" value="male" name="gender" reduired><br>
+      </fieldset>
+      <fieldset>
+<h1 align="center">the time</h1><br>
+<label >Enter the time </label>
+<input type="datetime-local" ><br>
+<button> OK </button><br>
+</fieldset>
+    </form>
+
+      <form>
+        <fieldset>
+          <legend> LANGUAGE AND HOBBIES</legend>
+          <div id="LANGUAGE AND HOBBIES"></div>
+      <h1 align="center">اللغات</h1><br>
+      <label>Arabic</label>
+      <input type="radio"> <br>
+      <input type="range" ><br>
+
+      <label>English</label>
+      <input type="radio"><br>
+      <input type="range"><br>
+
+      <label>French</label>
+      <input type="radio"><br>
+      <input type="range"><br>
+
+      <label>Spanich</label>
+      <input type="radio"><br>
+      <input type="range"><br>
+<h1 align="center">الهوايات</h1><br>
+     - Chosse the best hobbie: <br>
+      <select>
+        <option>Playing football</option>
+        <option>Reading books</option>
+        <option>Watching movies</option> 
+        <option>Writing stories</option>
+        <option>Others</option>
+      </select>
+
+      <h2>In this wibe site you can search aboot:</h2><br>
+      <li>Books</li>
+      <li>Hobbies</li>
+      <li>New language</li>
+      <li>A lot of information</li><br>
+
+      - What's your best animal?
+      <ul>
+      <il>🦁 Lion</il><br>
+      <il>🐈 Cat</il><br>
+      <il>🐕 Dog</il><br>
+      <il>🐘 Elephent</il><br>
+    </ul>
+      <input type="text" placeholder="your animal">
+
+      <button> submit </button><br>
+      </fieldset>
+      </form>
+
+
+
+
+</div>
+ <script src="javascript"></script>
+</body>
+</html>

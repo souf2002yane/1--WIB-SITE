@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="style.css">
+<title>soufyane el haddaoui</title>
+<link rel="icon" href="IMAGES/1793704644158.jpg">
+<meta name="auther" content="soufyane">
+</head>
+
+<body>
+ <nav class="bottom-row">
+    <a href="index.html" class="nav-item ">🏠<br><small>NENU</small></a>
+    <a href="INFO.html" class="nav-item ">👤<br><small>INFO PERSONAL</small></a>
+    <a href="CALCULATOR.html" class="nav-item">🧮<br><small>CALCULATOR</small></a>
+    <a href="CALLS.html" class="nav-item ">📞<br><small>CALLS</small></a>
+    <a href="GAME.html" class="nav-item active">🎮<br><small>GAME</small></a>
+    <a href="STORIES.html" class="nav-item ">📚<br><small>STORIES</small></a>
+</nav> 
+<hr><br><br>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;font-family:'Fredoka',sans-serif}
+body{
+  min-height:100vh;
+  display:block;align-items:center;justify-content:center;
+    padding:20px;
+}
+  .container{
+    background:white;
+    width:100%;max-width:500px;
+    border-radius:24px;
+    padding:28px;
+    box-shadow:0 20px 60px rgba(0,0,0,0.3);
+  }
+  h1{text-align:center;font-size:30px;margin-bottom:6px}
+  .subtitle{text-align:center;color:#888;margin-bottom:22px}
+  .players{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}
+  .players input{
+    padding:12px 14px;border:2px solid #e8e2f8;border-radius:12px;
+    outline:none;transition:.2s;font-size:15px
+  }
+  .players input:focus{border-color:#764ba2}
+  .btn{
+    width:100%;padding:14px;background:#764ba2;color:white;
+    border:none;border-radius:14px;font-size:18px;font-weight:600;
+    cursor:pointer;transition:.2s;margin-top:10px
+  }
+  .btn:hover{background:#5a3ea8;transform:translateY(-1px)}
+  .btn:disabled{background:#ccc;cursor:not-allowed;transform:none}
+  .card{
+    background:#f8f5ff;border:2px dashed #d6c9ff;
+    border-radius:16px;padding:20px;margin-top:20px;
+    text-align:center;display:none;animation:pop .4s ease
+  }
+  .card.show{display:block}
+  @keyframes pop{0%{transform:scale(.9);opacity:0}100%{transform:scale(1);opacity:1}}
+  .player-name{font-size:22px;color:#764ba2;font-weight:600}
+  .challenge{font-size:18px;background:green;display:inline-block;padding:6px 14px;border-radius:20px;margin:12px 0;font-weight:600}
+  .actions{display:flex;gap:10px;margin-top:14px}
+  .actions button{flex:1}
+  .btn-yes{background:#00c896}.btn-no{background:#ff5a6a}
+  .points{font-size:20px;font-weight:600;margin:10px 0}
+  .luck{color:#764ba2}
+  input[type=number]{
+    width:100%;padding:12px;border:2px solid #e8e2f8;border-radius:12px;margin:12px 0
+  }
+  .total{
+    background:linear-gradient(135deg,#667eea,#764ba2);
+    color:white;border-radius:16px;padding:16px;margin-top:20px;text-align:center;font-size:20px;display:none
+  }
+  .total.show{display:block}
+</style>
+
+
+<div class="container">
+  <h1>🎮 Challenge Party</h1>
+  <p class="subtitle">4 players, random challenges, test your luck!</p>
+
+  <div id="setup">
+    <div class="players">
+      <input id="p1" placeholder="Player 1">
+      <input id="p2" placeholder="Player 2">
+      <input id="p3" placeholder="Player 3">
+      <input id="p4" placeholder="Player 4">
+    </div>
+    <button class="btn" onclick="startFirstGame()">Start The First Game →</button>
+  </div>
+
+  <div id="firstCard" class="card">
+    <div>The player is: </div>
+    <div id="chosenPlayer" class="player-name"></div>
+    <div>The challenge is: </div>
+    <div id="chosenChallenge" class="challenge"></div>
+    <div class="actions">
+      <button class="btn btn-yes" onclick="didChallenge(true)">Done ✅</button>
+      <button class="btn btn-no" onclick="didChallenge(false)">Skip ❌</button>
+    </div>
+  </div>
+
+  <div id="secondCard" class="card">
+    <h3 id="secondTitle">SECOND GAME</h3>
+    <p id="secondDesc"></p>
+    <input type="number" id="guess" placeholder="Your guess...">
+    <button class="btn" onclick="checkGuess()">Guess!</button>
+    <p id="secondResult" style="margin-top:10px;font-weight:600"></p>
+  </div>
+
+  <div id="totalBox" class="total"></div>
+</div>
+
+<script>
+const challenges = ["tell a joke 😂", "smile without reason 😊", "take a chance 🎲", "running 🏃‍♂️"];
+let players = [];
+let totalPoints = 0;
+let secret = 0;
+let maxRange = 10;
+
+function startFirstGame(){
+  players = [p1.value, p2.value, p3.value, p4.value].map((v,i)=> v.trim() || `Player ${i+1}`);
+  if(players.length < 4) return;
+  const player = players[Math.floor(Math.random()*players.length)];
+  const challenge = challenges[Math.floor(Math.random()*challenges.length)];
+  chosenPlayer.textContent = player;
+  chosenChallenge.textContent = challenge;
+  firstCard.classList.add('show');
+  document.getElementById('setup').style.display='none';
+}
+
+function didChallenge(done){
+  firstCard.style.display='none';
+  if(done){
+    const points = Math.floor(Math.random()*10)+1;
+    const luck = Math.floor(Math.random()*5)+1;
+    totalPoints = luck > 3 ? points + luck*2 : points + luck;
+    maxRange = 10;
+    secondDesc.innerHTML = `You got <b>${points} pts</b> + luck <b>${luck}</b> = <b>${totalPoints} pts</b> in first game.<br>Now guess 1-10 to get +2 pts`;
+    secondTitle.textContent = "SECOND GAME - You did it!";
+ } else {
+    totalPoints = 0;
+    maxRange = 20;
+    secondTitle.textContent = "SECOND GAME - Hard Mode";
+    secondDesc.textContent = `You lost first game. Guess 1-20 to save yourself!`;
+  }
+  secret = Math.floor(Math.random()*maxRange)+1;
+  secondCard.classList.add('show');
+  guess.placeholder = `Guess 1-${maxRange}`;
+}
+
+function checkGuess(){
+  const g = parseInt(guess.value);
+  if(!g){ secondResult.textContent = "Enter a number!"; return; }
+  if(g === secret){
+    totalPoints += 2;
+    secondResult.textContent = `🎉 You WIN! The number was ${secret}. +2 points!`;
+  } else {
+    secondResult.textContent = `😢 You lose. The number was ${secret}.`;
+  }
+  totalBox.innerHTML = `🏆 TOTAL POINTS: ${totalPoints} <br><button class="btn" style="background:white;color:#764ba2;margin-top:12px" onclick="location.reload()">Play Again 🔄</button>`;
+  totalBox.classList.add('show');
+}
+</script>
+
+    
+<div>
+<button class="btn-secondary" onclick="showMoreGames()" id= "moreGamesBtn" style="width:100%; padding:13px; border:1px solid #382201; 
+  background:white; color:black; border-radius:8px; margin:20px 0; cursor:pointer;">
+     <b>click here for more games →</b>
+</button> 
+</div>
+ <!-- الواجهة 2: more games   -   -->
+<div id="moreGames" style="display:none;">
+<h1 style="margin-bottom:30px; ">More Games  </h1>
+
+<!-- GAME 2 : X O -->
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;font-family:'Fredoka',sans-serif}
+  body{display:flex;flex-direction:column;align-items:center;gap:25px}
+  .container{background:white;width:100%;max-width:450px;border-radius:24px;padding:24px;box-shadow:0 15px 40px rgba(0,0,0,.3)}
+  h2{text-align:center;color:#5a3ea8;margin-bottom:15px}
+  .btn{width:100%;padding:12px;background:#764ba2;color:white;border:none;border-radius:12px;font-weight:600;cursor:pointer;margin-top:12px}
+ 
+  /* XO */
+  .xo-board{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .xo-cell{height:80px;background:#f3f0ff;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:36px;font-weight:700;cursor:pointer}
+  .xo-cell.x{color:#764ba2} .xo-cell.o{color:#ff5a6a}
+  .status{text-align:center;font-weight:600;margin:10px 0;font-size:18px}
+
+  /* RPS */
+  .rps-choices{display:flex;justify-content:center;gap:12px}
+  .rps-btn{width:85px;height:85px;border-radius:50%;border:none;font-size:38px;background:#f3f0ff;cursor:pointer}
+  .rps-btn:hover{transform:scale(1.1)}
+  .rps-result{text-align:center;font-weight:600;margin-top:12px;min-height:50px}
+</style>
+
+<div class="container" >
+  <h1>❌⭕ X O</h1>
+  <div class="status" id="xoStatus">  turn : X</div>
+  <div class="xo-board">
+    <div class="xo-cell" onclick="playXO(0)" id="c0"></div>
+    <div class="xo-cell" onclick="playXO(1)" id="c1"></div>
+    <div class="xo-cell" onclick="playXO(2)" id="c2"></div>
+    <div class="xo-cell" onclick="playXO(3)" id="c3"></div>
+    <div class="xo-cell" onclick="playXO(4)" id="c4"></div>
+    <div class="xo-cell" onclick="playXO(5)" id="c5"></div>
+    <div class="xo-cell" onclick="playXO(6)" id="c6"></div>
+    <div class="xo-cell" onclick="playXO(7)" id="c7"></div>
+    <div class="xo-cell" onclick="playXO(8)" id="c8"></div>
+  </div>
+  <button class="btn" onclick="resetXO()">Play Again </button>
+</div>
+
+<!-- GAME 3 : حجر ورقة مقص -->
+<div class="container" style="margin-top: 20px;">
+  <h1>✊✋✌️ حجر ورقة مقص </h1>
+  <div class="rps-choices">
+    <button class="rps-btn" onclick="playRPS('حجر')">✊</button>
+    <button class="rps-btn" onclick="playRPS('ورقة')">✋</button>
+    <button class="rps-btn" onclick="playRPS('مقص')">✌️</button>
+  </div>
+  <div class="rps-result" id="rpsResult">  choose one to play: </div>
+  <div style="display:flex;justify-content:space-around;font-weight:600;margin-top:10px">
+    <span>you: <b id="pScore">0</b></span>
+    <span>computer: <b id="cScore">0</b></span>
+  </div>
+  <button class="btn"  onclick="resetRPS()">Play Again</button>
+</div>
+</div>
+
+
+
+
+
+<script>
+// XO LOGIC
+let board = Array(9).fill(''), current='X', over=false;
+function playXO(i){
+  if(board[i] || over) return;
+  board[i]=current;
+  document.getElementById('c'+i).textContent=current;
+  document.getElementById('c'+i).classList.add(current.toLowerCase());
+  if([[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]].some(w=>w.every(j=>board[j]==current))){
+    document.getElementById('xoStatus').textContent=`🏆 ${current} win!`; over=true; return;
+  }
+  if(!board.includes('')){document.getElementById('xoStatus').textContent='تعادل 🤝'; over=true; return;}
+  current=current=='X'?'O':'X';
+  document.getElementById('xoStatus').textContent=' turn: '+current;
+}
+function resetXO(){
+  board=Array(9).fill(''); current='X'; over=false;
+  for(let i=0;i<9;i++){document.getElementById('c'+i).textContent='';document.getElementById('c'+i).className='xo-cell';}
+  document.getElementById('xoStatus').textContent=' turn: X';
+}
+
+// RPS LOGIC
+let ps=0, cs=0;
+function playRPS(my){
+  let opts=['حجر','ورقة ','مقص'];
+  let comp=opts[Math.floor(Math.random()*3)];
+  let txt='';
+  if(my==comp) txt=`تعادل!  ${my}`;
+  else if((my=='حجر'&&comp=='مقص')||(my=='ورقة'&&comp=='حجر')||(my=='مقص'&&comp=='ورقة')){txt=`ربحت! ${my}  تفوز على ${comp} 🎉`; ps++;}
+  else{txt=`خسرت ${comp} تفوز على ${my} 😢`; cs++;}
+  document.getElementById('rpsResult').innerHTML=`انت: ${my} | الكمبيوتر: ${comp}<br>${txt}`;
+  document.getElementById('pScore').textContent=ps;
+  document.getElementById('cScore').textContent=cs;
+}
+function resetRPS(){ps=0;cs=0;pScore.textContent=0;cScore.textContent=0;rpsResult.textContent=' choose one to play';}
+
+// for more games
+function showMoreGames(){
+  document.getElementById("moreGames").style.display="block";
+  window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'});
+   document.getElementById("moreGamesBtn").style.display="none";
+}
+</script>
+
+
+
+
+
+<script src="javascript"></script>
+</body>
+</html>
