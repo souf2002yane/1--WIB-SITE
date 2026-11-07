@@ -684,18 +684,24 @@ function shareStory(n,type){
   else{ window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(url),'_blank'); }
 }
 function downloadStory(n){
-  let item=document.querySelectorAll('.story-item')[n-1];
-  let content=document.getElementById('story'+n);
-  let wasOpen=content.classList.contains('show');
+  let item = document.querySelectorAll('.story-item')[n-1];
+  let content = document.getElementById('story'+n);
+  let wasOpen = content.classList.contains('show');
   if(!wasOpen) content.classList.add('show');
-  let btns=item.querySelector('.share-row');
-  if(btns) btns.style.display='none';
-  html2canvas(item,{backgroundColor:'#ffffff',scale:2,useCORS:true}).then(canvas=>{
-    if(btns) btns.style.display='flex';
+
+  // كانخبيو الأزرار باش ما يبانوش فالتصويرة
+  let btns = item.querySelectorAll('.translate-btn, .share-row, .story-icon');
+  btns.forEach(b => b.style.display = 'none');
+
+  html2canvas(item, {backgroundColor:'#ffffff', scale:2, useCORS:true}).then(canvas=>{
+    // كانرجعو الأزرار من بعد ما سالينا
+    btns.forEach(b => b.style.display = '');
+    if(item.querySelector('.share-row')) item.querySelector('.share-row').style.display = 'flex';
     if(!wasOpen) content.classList.remove('show');
-    let a=document.createElement('a');
-    a.download='story-'+n+'.png';
-    a.href=canvas.toDataURL('image/png');
+
+    let a = document.createElement('a');
+    a.download = 'story-'+n+'.png';
+    a.href = canvas.toDataURL('image/png');
     a.click();
   });
 }
