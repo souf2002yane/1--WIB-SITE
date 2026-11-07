@@ -5,6 +5,7 @@
 <link rel="stylesheet" href="style.css">
 <title>soufyane el haddaoui</title>
 <meta name="auther" content="soufyane">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
 
 <nav class="bottom-row">
@@ -16,6 +17,7 @@
     <a href="STORIES.html" class="nav-item active">📚<br><small>STORIES</small></a>
 </nav>
 <br><br>
+
 <style>
 body{  font-family:sans-serif; padding:20px; max-width:999px; margin:auto; }
 
@@ -29,8 +31,27 @@ body{  font-family:sans-serif; padding:20px; max-width:999px; margin:auto; }
 .story-text{ line-height:1.6; text-indent: 30px; } 
 .moral{ background:#fff8e1; border-left:4px solid #FFD700; padding:8px 10px; border-radius:8px; margin-top:12px; font-weight:bold; white-space:normal; }
 .translate-btn{ margin-top:12px; background:#00c853; color:white; border:none; padding:7px 14px; border-radius:20px; cursor:pointer; font-size:13px; font-weight:bold; }
+/* ===== التصاور فقط ===== */
+.title-left{ display:flex; align-items:center; gap:12px; }
+.title-left img{ width:70px; height:70px; object-fit:cover; border-radius:12px; flex-shrink:0; transition:0.3s; }
+.story-title:hover .title-left img{ transform:scale(1.08); }
+/* ===== COMING SOON - الخانة الجديدة ===== */
+.coming-box{ background:white; border-radius:18px; margin-top:25px; margin-bottom:20px; padding:20px; border:1px solid #eee; box-shadow:0 6px 18px rgba(0,0,0,0.07); position:relative; overflow:hidden; }
+.coming-box::before{ content:""; position:absolute; left:0; top:0; bottom:0; width:6px; background:rgb(255, 0, 255); }
+.coming-title{ font-size:19px; font-weight:bold; color:#793502; margin-bottom:5px; }
+.coming-sub{ font-size:13.5px; color:#777; margin-bottom:15px; line-height:1.6; }
+.coming-item{ display:flex; align-items:center; gap:12px; padding:12px 10px; border-radius:12px; background:#fdfdfd; border:1px dashed #e0c2ff; margin-bottom:10px; }
+.coming-item img{ width:50px; height:50px; object-fit:cover; border-radius:10px; filter:grayscale(30%); }
+.coming-item b{ color:#333; font-size:15px; }
+.coming-item span{ margin-left:auto; font-size:20px; }
+.coming-footer{ text-align:center; font-size:13px; color:#793502; font-weight:bold; margin-top:12px; }
+/* ===== جديد: مشاركة + تحميل - ما كيبدل والو في الأساس ===== */
+.share-row{ display:flex; gap:8px; flex-wrap:wrap; margin-top:12px; }
+.share-btn{ border:none; padding:9px 14px; border-radius:20px; cursor:pointer; font-size:13px; font-weight:bold; color:white; }
+.share-wa{ background:#25D366; }
+.share-fb{ background:#1877F2; }
+.share-dl{ background:#111; }
 </style>
-  <!-- white-space:pre-line -->
 
 <body>
     <br>
@@ -43,7 +64,7 @@ font-size:15px; margin-bottom:20px; box-sizing:border-box;">
 
 <!-- 1 -->
 <div class="story-item">
-<div class="story-title" onclick="toggleStory(1)"><b>📘 1. The Boy Who Never Gave Up</b> <div class="story-icon" id="icon1">+</div></div>
+<div class="story-title" onclick="toggleStory(1)"><div class="title-left"><img src="images/story1.jpeg"><b>📘 1. The Boy Who Never Gave Up</b></div> <div class="story-icon" id="icon1">+</div></div>
 <div class="story-content" id="story1">
 <div id="text1-en" class="story-text">Once there was a young boy named Adam who dreamed of becoming a programmer.
 He had no computer, only an old phone with a small screen
@@ -89,11 +110,16 @@ Now he has his own company and helps other beginners.
 الآن لديه شركته الخاصة ويساعد المبتدئين.
 <div class="moral">العبرة: لا تستسلم أبداً. كل خبير كان مبتدئاً.</div></div>
 <button class="translate-btn" id="btn1" onclick="translateStory(1)">🌐 ترجم للعربية</button>
+<div class="share-row">
+  <button class="share-btn share-wa" onclick="shareStory(1,'wa')">📤 واتساب</button>
+  <button class="share-btn share-fb" onclick="shareStory(1,'fb')">📘 فيسبوك</button>
+  <button class="share-btn share-dl" onclick="downloadStory(1)">📥 تحميل كصورة</button>
+</div>
 </div></div>
 
 <!-- 2 -->
 <div class="story-item">
-<div class="story-title" onclick="toggleStory(2)"><b>🚀 2. Power of a Small Start</b> <div class="story-icon" id="icon2">+</div></div>
+<div class="story-title" onclick="toggleStory(2)"><div class="title-left"><img src="images/story2.jpeg"><b>🚀 2. Power of a Small Start</b></div> <div class="story-icon" id="icon2">+</div></div>
 <div class="story-content" id="story2">
 <div id="text2-en" class="story-text">Many people think they need a lot of money to start.
 They think they need a big office and powerful computers.
@@ -138,11 +164,16 @@ Your small website today can be big tomorrow.
 موقعك الصغير اليوم يمكن أن يكبر غداً.
 <div class="moral">العبرة: ابدأ صغيراً، احلم كبيراً.</div></div>
 <button class="translate-btn" id="btn2" onclick="translateStory(2)">🌐 ترجم للعربية</button>
+<div class="share-row">
+  <button class="share-btn share-wa" onclick="shareStory(2,'wa')">📤 واتساب</button>
+  <button class="share-btn share-fb" onclick="shareStory(2,'fb')">📘 فيسبوك</button>
+  <button class="share-btn share-dl" onclick="downloadStory(2)">📥 تحميل كصورة</button>
+</div>
 </div></div>
 
 <!-- 3 -->
 <div class="story-item">
-<div class="story-title" onclick="toggleStory(3)"><b>⭐ 3. Dream From a Phone</b> <div class="story-icon" id="icon3">+</div></div>
+<div class="story-title" onclick="toggleStory(3)"><div class="title-left"><img src="images/story3.jpeg"><b>⭐ 3. Dream From a Phone</b></div> <div class="story-icon" id="icon3">+</div></div>
 <div class="story-content" id="story3">
 <div id="text3-en" class="story-text">In a small village lived a boy named Youssef.
 He loved technology but his family was very poor.
@@ -187,11 +218,16 @@ He proved you can learn from anywhere with anything.
 أثبت أنه يمكنك التعلم من أي مكان.
 <div class="moral">العبرة: هاتفك يكفي. بلا أعذار.</div></div>
 <button class="translate-btn" id="btn3" onclick="translateStory(3)">🌐 ترجم للعربية</button>
+<div class="share-row">
+  <button class="share-btn share-wa" onclick="shareStory(3,'wa')">📤 واتساب</button>
+  <button class="share-btn share-fb" onclick="shareStory(3,'fb')">📘 فيسبوك</button>
+  <button class="share-btn share-dl" onclick="downloadStory(3)">📥 تحميل كصورة</button>
+</div>
 </div></div>
 
 <!-- 4 -->
 <div class="story-item">
-<div class="story-title" onclick="toggleStory(4)"><b>⏳ 4. Patience is Key</b> <div class="story-icon" id="icon4">+</div></div>
+<div class="story-title" onclick="toggleStory(4)"><div class="title-left"><img src="images/story4.jpeg"><b>⏳ 4. Patience is Key</b></div> <div class="story-icon" id="icon4">+</div></div>
 <div class="story-content" id="story4">
 <div id="text4-en" class="story-text">A programmer had zero visitors for 3 months.
 He wrote articles every day with no result.
@@ -236,11 +272,16 @@ Success needs time, patience, and consistency.
 النجاح يحتاج وقت وصبر واستمرارية.
 <div class="moral">العبرة: اصبر، النجاح يحتاج وقت.</div></div>
 <button class="translate-btn" id="btn4" onclick="translateStory(4)">🌐 ترجم للعربية</button>
+<div class="share-row">
+  <button class="share-btn share-wa" onclick="shareStory(4,'wa')">📤 واتساب</button>
+  <button class="share-btn share-fb" onclick="shareStory(4,'fb')">📘 فيسبوك</button>
+  <button class="share-btn share-dl" onclick="downloadStory(4)">📥 تحميل كصورة</button>
+</div>
 </div></div>
 
 <!-- 5 -->
 <div class="story-item">
-<div class="story-title" onclick="toggleStory(5)"><b>🎯 5. Don't Compare Yourself</b> <div class="story-icon" id="icon5">+</div></div>
+<div class="story-title" onclick="toggleStory(5)"><div class="title-left"><img src="images/story5.jpeg"><b>🎯 5. Don't Compare Yourself</b></div> <div class="story-icon" id="icon5">+</div></div>
 <div class="story-content" id="story5">
 <div id="text5-en" class="story-text">Two friends started learning programming together.
 One friend was very fast and learned quickly.
@@ -285,11 +326,16 @@ Your time will come if you keep working.
 سيأتي وقتك إذا استمريت في العمل.
 <div class="moral">العبرة: ركز على طريقك أنت.</div></div>
 <button class="translate-btn" id="btn5" onclick="translateStory(5)">🌐 ترجم للعربية</button>
+<div class="share-row">
+  <button class="share-btn share-wa" onclick="shareStory(5,'wa')">📤 واتساب</button>
+  <button class="share-btn share-fb" onclick="shareStory(5,'fb')">📘 فيسبوك</button>
+  <button class="share-btn share-dl" onclick="downloadStory(5)">📥 تحميل كصورة</button>
+</div>
 </div></div>
 
 <!-- 6 -->
 <div class="story-item">
-<div class="story-title" onclick="toggleStory(6)"><b>💰 6. The Honest Boy</b> <div class="story-icon" id="icon6">+</div></div>
+<div class="story-title" onclick="toggleStory(6)"><div class="title-left"><img src="images/story6.jpeg"><b>💰 6. The Honest Boy</b></div> <div class="story-icon" id="icon6">+</div></div>
 <div class="story-content" id="story6">
 <div id="text6-en" class="story-text">A poor boy found a wallet in the street.
 Inside the wallet there was 5000 dirhams.
@@ -334,11 +380,16 @@ One honest act can open big doors.
 عمل أمين واحد يمكن أن يفتح أبواباً كبيرة.
 <div class="moral">العبرة: الصدق والأمانة يغيران الحياة.</div></div>
 <button class="translate-btn" id="btn6" onclick="translateStory(6)">🌐 ترجم للعربية</button>
+<div class="share-row">
+  <button class="share-btn share-wa" onclick="shareStory(6,'wa')">📤 واتساب</button>
+  <button class="share-btn share-fb" onclick="shareStory(6,'fb')">📘 فيسبوك</button>
+  <button class="share-btn share-dl" onclick="downloadStory(6)">📥 تحميل كصورة</button>
+</div>
 </div></div>
 
 <!-- 7 -->
 <div class="story-item">
-<div class="story-title" onclick="toggleStory(7)"><b>🐻 7. Two Friends and Bear</b> <div class="story-icon" id="icon7">+</div></div>
+<div class="story-title" onclick="toggleStory(7)"><div class="title-left"><img src="images/story7.jpeg"><b>🐻 7. Two Friends and Bear</b></div> <div class="story-icon" id="icon7">+</div></div>
 <div class="story-content" id="story7">
 <div id="text7-en" class="story-text">Two friends were walking in a forest.
 Suddenly they saw a big bear coming.
@@ -383,11 +434,16 @@ And choose your friends carefully.
 واختر أصدقاءك بعناية.
 <div class="moral">العبرة: الصديق وقت الضيق.</div></div>
 <button class="translate-btn" id="btn7" onclick="translateStory(7)">🌐 ترجم للعربية</button>
+<div class="share-row">
+  <button class="share-btn share-wa" onclick="shareStory(7,'wa')">📤 واتساب</button>
+  <button class="share-btn share-fb" onclick="shareStory(7,'fb')">📘 فيسبوك</button>
+  <button class="share-btn share-dl" onclick="downloadStory(7)">📥 تحميل كصورة</button>
+</div>
 </div></div>
 
 <!-- 8 -->
 <div class="story-item">
-<div class="story-title" onclick="toggleStory(8)"><b>🦁 8. The Lion and The Mouse</b> <div class="story-icon" id="icon8">+</div></div>
+<div class="story-title" onclick="toggleStory(8)"><div class="title-left"><img src="images/story8.jpeg"><b>🦁 8. The Lion and The Mouse</b></div> <div class="story-icon" id="icon8">+</div></div>
 <div class="story-content" id="story8">
 <div id="text8-en" class="story-text">A lion was sleeping in the jungle.
 A small mouse started running on his body.
@@ -432,11 +488,16 @@ Small mouse saved big lion's life.
 الفأر الصغير أنقذ حياة الأسد الكبير.
 <div class="moral">العبرة: لا يضيع عمل طيب أبداً.</div></div>
 <button class="translate-btn" id="btn8" onclick="translateStory(8)">🌐 ترجم للعربية</button>
+<div class="share-row">
+  <button class="share-btn share-wa" onclick="shareStory(8,'wa')">📤 واتساب</button>
+  <button class="share-btn share-fb" onclick="shareStory(8,'fb')">📘 فيسبوك</button>
+  <button class="share-btn share-dl" onclick="downloadStory(8)">📥 تحميل كصورة</button>
+</div>
 </div></div>
 
 <!-- 9 -->
 <div class="story-item">
-<div class="story-title" onclick="toggleStory(9)"><b>🐜 9. Ant and Grasshopper</b> <div class="story-icon" id="icon9">+</div></div>
+<div class="story-title" onclick="toggleStory(9)"><div class="title-left"><img src="images/story9.jpeg"><b>🐜 9. Ant and Grasshopper</b></div> <div class="story-icon" id="icon9">+</div></div>
 <div class="story-content" id="story9">
 <div id="text9-en" class="story-text">In summer an ant was working very hard.
 He was collecting food for winter every day.
@@ -481,11 +542,16 @@ Laziness brings hunger and regret.
 الكسل يجلب الجوع والندم.
 <div class="moral">العبرة: اعمل اليوم لترتاح غداً.</div></div>
 <button class="translate-btn" id="btn9" onclick="translateStory(9)">🌐 ترجم للعربية</button>
+<div class="share-row">
+  <button class="share-btn share-wa" onclick="shareStory(9,'wa')">📤 واتساب</button>
+  <button class="share-btn share-fb" onclick="shareStory(9,'fb')">📘 فيسبوك</button>
+  <button class="share-btn share-dl" onclick="downloadStory(9)">📥 تحميل كصورة</button>
+</div>
 </div></div>
 
 <!-- 10 -->
 <div class="story-item">
-<div class="story-title" onclick="toggleStory(10)"><b>🌟 10. The Rich Man and The Poor Man</b> <div class="story-icon" id="icon10">+</div></div>
+<div class="story-title" onclick="toggleStory(10)"><div class="title-left"><img src="images/story10.jpeg"><b>🌟 10. The Rich Man and The Poor Man</b></div> <div class="story-icon" id="icon10">+</div></div>
 <div class="story-content" id="story10">
 <div id="text10-en" class="story-text">A rich man lived in a big beautiful house.
 A poor man lived in a small hut near his house.
@@ -530,7 +596,53 @@ True happiness is in contentment and sharing.
 السعادة الحقيقية في القناعة والمشاركة.
 <div class="moral">العبرة: السعادة ليست في المال بل في القناعة.</div></div>
 <button class="translate-btn" id="btn10" onclick="translateStory(10)">🌐 ترجم للعربية</button>
+<div class="share-row">
+  <button class="share-btn share-wa" onclick="shareStory(10,'wa')">📤 واتساب</button>
+  <button class="share-btn share-fb" onclick="shareStory(10,'fb')">📘 فيسبوك</button>
+  <button class="share-btn share-dl" onclick="downloadStory(10)">📥 تحميل كصورة</button>
+</div>
 </div></div>
+
+<!-- ===== COMING SOON - 5 قصص جايين ===== -->
+<div class="coming-box">
+  <div class="coming-title">🔥 COMING SOON - قصص قادمة قريباً</div>
+  <div class="coming-sub">
+    5 new stories are coming soon! Stay tuned, you will love them.<br>
+    5 قصص جديدة قادمة قريباً! ابق معنا، ستعجبك كثيرا.
+  </div>
+
+  <div class="coming-item">
+    <img src="story11.jpg">
+    <b>11. The Boy Who Built His Dream With Zero Money</b>
+    <span>🔒</span>
+  </div>
+
+  <div class="coming-item">
+    <img src="story12.jpg">
+    <b>12. The Secret of The Rich Student</b>
+    <span>🔒</span>
+  </div>
+
+  <div class="coming-item">
+    <img src="story13.jpg">
+    <b>13. I Failed 100 Times Before I Succeeded</b>
+    <span>🔒</span>
+  </div>
+
+  <div class="coming-item">
+    <img src="story14.jpg">
+    <b>14. The Phone That Changed My Life</b>
+    <span>🔒</span>
+  </div>
+
+  <div class="coming-item">
+    <img src="story15.jpg">
+    <b>15. Don't Give Up - Your Time Is Coming</b>
+    <span>🔒</span>
+  </div>
+
+  <div class="coming-footer">⏳ New stories every week - قصص جديدة كل أسبوع ⏳</div>
+</div>
 
 <script>
 
@@ -563,6 +675,29 @@ function translateStory(n){
   let btn=document.getElementById('btn'+n);
   if(en.style.display!=='none'){ en.style.display='none'; ar.style.display='block'; btn.textContent='🌐 Translate to English'; }
   else{ en.style.display='block'; ar.style.display='none'; btn.textContent='🌐 ترجم للعربية'; }
+}
+function shareStory(n,type){
+  let title=document.querySelectorAll('.story-item')[n-1].querySelector('.story-title b').innerText;
+  let url=window.location.href.split('#')[0]+'#story'+n;
+  let text='📚 '+title+' - قراها هنا 👇\n'+url;
+  if(type==='wa'){ window.open('https://wa.me/?text='+encodeURIComponent(text),'_blank'); }
+  else{ window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(url),'_blank'); }
+}
+function downloadStory(n){
+  let item=document.querySelectorAll('.story-item')[n-1];
+  let content=document.getElementById('story'+n);
+  let wasOpen=content.classList.contains('show');
+  if(!wasOpen) content.classList.add('show');
+  let btns=item.querySelector('.share-row');
+  if(btns) btns.style.display='none';
+  html2canvas(item,{backgroundColor:'#ffffff',scale:2,useCORS:true}).then(canvas=>{
+    if(btns) btns.style.display='flex';
+    if(!wasOpen) content.classList.remove('show');
+    let a=document.createElement('a');
+    a.download='story-'+n+'.png';
+    a.href=canvas.toDataURL('image/png');
+    a.click();
+  });
 }
 </script>
 
