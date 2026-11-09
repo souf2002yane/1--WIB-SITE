@@ -36,7 +36,14 @@ if (toggleBtn) {
     }
   });
 }
-
+ // التاريخ كيتبدل كل نهار بوحدو
+function updateDate(){
+  let now = new Date();
+  let options = { weekday: 'long', day: '2-digit', month: 'long', year: 'numeric' };
+  let dateStr = now.toLocaleDateString('ar-MA', options);
+  document.getElementById('todayDate').innerText = "📅 اليوم: " + dateStr;
+}
+updateDate();
 
 // --- 2. خاص بـ first page.html : البحث ---
 const searchInput = document.querySelector('input[type="search"]');
@@ -109,56 +116,6 @@ document.addEventListener("DOMContentLoaded", ()=>{
           if(range) range.value = 10;
         });
       });
-    }
-  });
-});
-
-// supereme--- 4. خاص بـ HTML B.html : زليج الإشراق ---
-let mydialog = document.getElementById("mydialog");
-if(mydialog){
-  // زر yes delete
-  let yesBtn = mydialog.querySelectorAll("button")[1];
-  if(yesBtn){
-    yesBtn.addEventListener("click", ()=>{
-      alert("Deleted ");
-      mydialog.close();
-      document.querySelectorAll('.product').forEach(p=> p.style.display="none");
-    });
-  }
-}
-// إلا ورك على المنتجات
-document.querySelectorAll('.product').forEach(prod=>{
-  prod.style.cursor = "pointer";
-  prod.addEventListener("click", ()=>{
-    alert("you choose: " + prod.innerText + " ==> prix: 60 DH  ");
-  });
-});
-
-// --- 5. خاص بـ HTML C.html : المكالمات والحاسبة ---
-let display = document.getElementById('display');
-let current = '';
-function append(val){
-  if(!display) return;
-  if(display.innerText==='0' && val!=='.') current='';
-  current+=val; display.innerText=current;
-}
-function clearAll(){ current=''; if(display) display.innerText='0'; }
-function del(){ current=current.slice(0,-1); if(display) display.innerText=current||'0'; }
-function calculate(){
-  if(!display) return;
-  try{
-    let exp = current.replace(/%/g,'/100');
-    let result = eval(exp);
-    display.innerText=result; current=result.toString();
-  }catch{ display.innerText='error'; current=''; }
-}
-// إلا ورك على مكالمة
-document.querySelectorAll('.call-item').forEach(item=>{
-  item.style.cursor="pointer";
-  item.addEventListener("click", ()=>{
-    let name = item.querySelector('.name')?.innerText;
-    if(confirm("Do you want to call " + name + " ؟")){
-      alert("جاري الاتصال بـ " + name + " 📞");
     }
   });
 });

@@ -12,6 +12,11 @@
   margin:0;
   padding:0;
 }
+
+/* date*/
+.top-bar{background:#deeef9;padding:7px 15px;display:flex;
+  justify-content:space-between;font-size:12px;color:#7a6a3a}
+
 body{
   background: var(--bg); font-family: 'Segoe UI', Tahoma, sans-serif;
   padding-top: 75px; /* باش المحتوى مايطلعش تحت النافبار المفيكسي */
@@ -152,12 +157,3 @@ dialog::backdrop{
   to{ transform: scale(1); opacity:1; }
 }
 
-/* ========== النافبار التحتاني ديال الواتساب ========== */
-.bottom-nav{
-  position: fixed; bottom:0; left:0; width:100%; background: #1f1f1f;
-  display: flex; justify-content: space-around; padding: 10px 0;
-  z-index: 9999; border-top: 1px solid #333;
-}
-.bottom-nav .item{ color:#aaa; text-decoration:none; text-align:center; font-size:13px; display:flex; flex-direction:column; align-items:center; }
-.bottom-nav .item.active{ color:white; }
-.bottom-nav .item.active .icon-box{ background:#2a3d2e; padding:4px 18px; border-radius:20px; position:relative; }

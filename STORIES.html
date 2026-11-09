@@ -11,9 +11,7 @@
 <nav class="bottom-row">
     <a href="index.html" class="nav-item ">🏠<br><small>NENU</small></a>
     <a href="INFO.html" class="nav-item ">👤<br><small>INFO PERSONAL</small></a>
-    <a href="CALCULATOR.html" class="nav-item">🧮<br><small>CALCULATOR</small></a>
-    <a href="CALLS.html" class="nav-item ">📞<br><small>CALLS</small></a>
-    <a href="GAME.html" class="nav-item ">🎮<br><small>GAME</small></a>
+   <a href="GAME.html" class="nav-item ">🎮<br><small>GAME</small></a>
     <a href="STORIES.html" class="nav-item active">📚<br><small>STORIES</small></a>
 </nav>
 <br><br>
@@ -679,7 +677,7 @@ function translateStory(n){
 function shareStory(n,type){
   let title=document.querySelectorAll('.story-item')[n-1].querySelector('.story-title b').innerText;
   let url=window.location.href.split('#')[0]+'#story'+n;
-  let text='📚 '+title+' - قراها هنا 👇\n'+url;
+  let text='📚 '+title+' - Read it here 👇\n'+url;
   if(type==='wa'){ window.open('https://wa.me/?text='+encodeURIComponent(text),'_blank'); }
   else{ window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(url),'_blank'); }
 }

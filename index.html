@@ -11,7 +11,6 @@
 @keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 
 /* ===== جديد: التصميم الذهبي بحال التصويرة - غير زيادة ===== */
-.top-bar{background:#f5f1e6;padding:7px 15px;display:flex;justify-content:space-between;font-size:12px;color:#7a6a3a}
 .gold-header{background:white;text-align:center;padding:18px 10px 10px}
 .gold-header h1{color:#8a6d1a;font-size:23px;margin:0}
 .gold-header p{color:#999;font-size:13px;margin:5px 0 0}
@@ -102,8 +101,6 @@ border-radius:20px;  padding:30px 10px;margin:40px 0;border:1px solid #222}
 <nav class="main-nav-gold">
   <a href="index.html" class="active">🏠 الرئيسية</a>
   <a href="INFO.html">👤 معلوماتي</a>
-  <a href="CALCULATOR.html">🧮 حاسبة</a>
-  <a href="CALLS.html">📞 مكالمات</a>
   <a href="GAME.html">🎮 لعبة</a>
   <a href="STORIES.html">📚 قصص</a>
 </nav>
@@ -112,15 +109,13 @@ border-radius:20px;  padding:30px 10px;margin:40px 0;border:1px solid #222}
 <nav class="bottom-row">
   <a href="index.html" class="nav-item active">🏠<br><small>MENU</small></a>
   <a href="INFO.html" class="nav-item">👤<br><small>INFO PERSONAL</small></a>
-  <a href="CALCULATOR.html" class="nav-item">🧮<br><small>CALCULATOR</small></a>
-  <a href="CALLS.html" class="nav-item">📞<br><small>CALLS</small></a>
   <a href="GAME.html" class="nav-item">🎮<br><small>GAME</small></a>
   <a href="STORIES.html" class="nav-item">📖<br><small>STORIES</small></a>
 </nav>
 
 <div class="content">
   <!-- 1 - HERO - محفوظ + زدنا عليه الجملة الذهبية -->
-  <h2>
+  <h2> 
     <div class="hero-banner">
       <div class="hero-gold-text">
         <h2>نرسم<br>حلمك في<br>شاشة صغيرة</h2>
@@ -147,8 +142,6 @@ border-radius:20px;  padding:30px 10px;margin:40px 0;border:1px solid #222}
     مرحبا بك في عالم <b style="color:#B7791F;">SEH</b>، حيث يلتقي الإبداع بالتقنية.<br>
     أنا <b>سفيان الحداوي</b>، وهذا موقعي الأول، صممته من الصفر بشغف.<br>
     في <b>INFO</b> سنسألك عنك أنت، عن اسمك، عمرك، مدينتك وهواياتك، لكي نصمم لك تجربة تناسبك.<br>
-    في <b>CALCULATOR</b> ستجد أدوات ذكية لحساب كل ما تحتاجه بسرعة.<br>
-    في <b>CALLS</b> ستجد طريقا مباشرا للتواصل معي في أي وقت.<br>
     في <b>GAME</b> ستعيش لحظات من التحدي والمتعة والتركيز.<br>
     في <b>STORIES</b> ستقرأ قصصا حقيقية تلهمك وتدفعك للأمام.<br>
     هذا الموقع ليس مجرد صفحات، بل تجربة كاملة صُممت لك.<br>
@@ -162,9 +155,7 @@ border-radius:20px;  padding:30px 10px;margin:40px 0;border:1px solid #222}
     Welcome to the <b style="color:#B7791F;">SEH</b> world, where creativity meets technology.<br>
     I am <b>Soufyane El Haddaoui</b>, and this is my first website, built from scratch with passion.<br>
     In <b>INFO</b>, we will ask you about YOU, your name, age, city and hobbies, to design an experience made just for you.<br>
-    In <b>CALCULATOR</b>, you will find smart tools to calculate everything you need, fast.<br>
-    In <b>CALLS</b>, you will find a direct way to reach me anytime.<br>
-    In <b>GAME</b>, you will live moments of challenge, fun and focus.<br>
+   In <b>GAME</b>, you will live moments of challenge, fun and focus.<br>
     In <b>STORIES</b>, you will read real stories that inspire you and push you forward.<br>
     This website is not just pages, it is a full experience made for you.<br>
     My vision is to make SEH a platform that gathers creative youth everywhere.<br>
@@ -258,14 +249,7 @@ function toggleMenu(){document.getElementById('myMenu').classList.toggle('open')
 function openPage(id){closeAll();document.getElementById(id+'-page').classList.add('active')}
 function closeAll(){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById('myMenu').classList.remove('open')}
 
- // التاريخ كيتبدل كل نهار بوحدو
-function updateDate(){
-  let now = new Date();
-  let options = { weekday: 'long', day: '2-digit', month: 'long', year: 'numeric' };
-  let dateStr = now.toLocaleDateString('ar-MA', options);
-  document.getElementById('todayDate').innerText = "📅 اليوم: " + dateStr;
-}
-updateDate();
+
 // صور تفاعلية
 function openLightbox(el){
   document.getElementById('lightbox-img').src=el.querySelector('img').src;
@@ -334,5 +318,6 @@ document.getElementById('siteSearch')?.addEventListener('input',function(){
 });
 </script>
 
+<script src="javascript"></script>
 </body>
 </html>
