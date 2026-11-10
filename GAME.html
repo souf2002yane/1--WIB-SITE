@@ -72,47 +72,21 @@
   .mem-card.open{background:#f3f0ff;color:#333}
   .mem-card.matched{background:#00c896;color:white;cursor:default}
   .quiz-q{font-size:19px;font-weight:600;text-align:center;margin:15px 0;min-height:50px}
-  .quiz-opt{width:100%;padding:13px;margin:6px 0;border:2px solid #e8e2f8;background:#f8f5ff;border-radius:12px;cursor:pointer;font-size:16px;font-weight:600}
-  .quiz-opt.correct{background:#00c896;color:white;border-color:#00c896}
+  .quiz-opt{width:100%;padding:13px;margin:6px 0;border:2px solid #e8e2f8;;border-radius:12px;cursor:pointer;font-size:16px;font-weight:600}
   .quiz-opt.wrong{background:#ff5a6a;color:white;border-color:#ff5a6a}
-
-/* FIX - باش الكتابة تبان */
-.quiz-opt{
-  color:#111 !important;
-  background:#f8f5ff !important;
-  -webkit-text-fill-color:#111 !important;
-}
-.quiz-opt:hover, .quiz-opt:active{
-  background:#764ba2 !important;
-  color:white !important;
-  -webkit-text-fill-color:white !important;
-}
-.quiz-opt.correct{
-  background:#00c896 !important;
-  color:white !important;
-  -webkit-text-fill-color:white !important;
-}
-.quiz-opt.wrong{
-  background:#ff5a6a !important;
-  color:white !important;
-  -webkit-text-fill-color:white !important;
-}
-/* حتى الخانات ديال Challenge Party */
-.players input, input[type=number]{
-  color:#111 !important;
-  background:white !important;
-  -webkit-text-fill-color:#111 !important;
-}
-.players input::placeholder, input::placeholder{
-  color:#888 !important;
-  -webkit-text-fill-color:#888 !important;
-}
-.mem-card{
-  color:white !important;
-}
-.mem-card.open{
-  color:#111 !important;
-}
+  .quiz-opt{color:#111 !important; background:#f8f5ff !important;-webkit-text-fill-color:#111 !important;}
+  .quiz-opt:hover, .quiz-opt:active{background:#764ba2 !important;color:white !important;-webkit-text-fill-color:white !important}
+  .quiz-opt.correct{background:#00c896 !important;color:white !important;-webkit-text-fill-color:white !important;}
+  .quiz-opt.wrong{background:#ff5a6a !important;color:white !important;-webkit-text-fill-color:white !important;}
+  .players input, input[type=number]{color:#111 !important;background:white !important;-webkit-text-fill-color:#111 !important;}
+  .players input::placeholder, input::placeholder{color:#888 !important;-webkit-text-fill-color:#888 !important;}
+  .mem-card{color:white !important;}
+  .mem-card.open{color:#111 !important;}
+  /* ===== جديد: أزرار الأوضاع ===== */
+  .mode-btn{padding:10px 16px;border-radius:20px;border:2px solid #111;background:white;font-weight:bold;cursor:pointer;font-size:14px}
+  .mode-btn.active{background:#111;color:white}
+  .party-count-btn{padding:11px 0;width:30%;border-radius:14px;border:2px solid #111;background:white;font-weight:bold;cursor:pointer;font-size:14px}
+  .party-count-btn.active{background:#111;color:white}
 </style>
 
 <h2 class="games-title">🎮 Choose Your Game</h2>
@@ -121,11 +95,11 @@
 <div class="games-grid" id="gamesMenu">
   <div class="game-card" onclick="openGame('challenge',this)">
     <img src="https://psycatgames.com/cdn-cgi/image/f=auto,fit=cover,w=960,h=540,q=60/magazine/party-games/most-likely-to/funny-questions-illustration.jpg">
-    <b>Challenge Party</b><span>4 Players • Challenges</span>
+    <b>Challenge Party</b><span>2-6 Players • Challenges</span>
   </div>
   <div class="game-card" onclick="openGame('xo',this)">
     <img src="https://staticz.novelgames.com/games/tictactoe/icon1024.webp">
-    <b>Tic Tac Toe</b><span>2 Players</span>
+    <b>Tic Tac Toe</b><span>VS Friend / VS Computer</span>
   </div>
   <div class="game-card" onclick="openGame('rps',this)">
     <img src="https://cdn.sp.games/cdn-cgi/image/width=1200,height=675,fit=cover,quality=62,format=auto/rock-paper-scissor/images/game-large.webp">
@@ -133,7 +107,7 @@
   </div>
   <div class="game-card" onclick="openGame('dama',this)">
     <img src="https://luiscastellanos.org/wp-content/uploads/damas.jpg">
-    <b>Checkers</b><span>2 Players • Classic</span>
+    <b>Checkers</b><span>VS Friend / VS Computer</span>
   </div>
   <div class="game-card" onclick="openGame('memory',this)">
     <span class="new-badge">NEW</span>
@@ -143,19 +117,27 @@
   <div class="game-card" onclick="openGame('quiz',this)">
     <span class="new-badge">NEW</span>
     <img src="https://www.weqyoua.net/thumbs/83092.png?r=175826159">
-    <b>Quiz - Questions</b><span>Are you smart?</span>
+    <b>Quiz - Questions</b><span>5 Groups • Are you smart?</span>
   </div>
 </div>
 
 <button class="back-btn" id="backBtn" onclick="backToMenu()" style="display:none">⬅ Back to Games</button>
 
-<!-- Challenge - Your Old Code Kept -->
+<!-- Challenge - مع اختيار عدد اللاعبين -->
 <div id="view-challenge" class="game-view">
 <div class="container">
   <h1>🎮 Challenge Party</h1>
-  <p class="subtitle">4 players, random challenges, test your luck!</p>
+  <p class="subtitle">Choose players, random challenges, test your luck!</p>
   <div id="setup">
-    <div class="players">
+    <p style="text-align:center;font-weight:600;margin-bottom:10px">🎉  How many players?</p>
+    <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:15px">
+      <button class="party-count-btn" onclick="setPartyPlayers(2,this)">2 Players</button>
+      <button class="party-count-btn" onclick="setPartyPlayers(3,this)">3 Players</button>
+      <button class="party-count-btn" onclick="setPartyPlayers(4,this)">4 Players</button>
+      <button class="party-count-btn" onclick="setPartyPlayers(5,this)">5 Players</button>
+      <button class="party-count-btn" onclick="setPartyPlayers(6,this)">6 Players</button>
+    </div>
+    <div class="players" id="partyInputs">
       <input id="p1" placeholder="Player 1"><input id="p2" placeholder="Player 2">
       <input id="p3" placeholder="Player 3"><input id="p4" placeholder="Player 4">
     </div>
@@ -164,7 +146,8 @@
   <div id="firstCard" class="card">
     <div>The player is: </div><div id="chosenPlayer" class="player-name"></div>
     <div>The challenge is: </div><div id="chosenChallenge" class="challenge"></div>
-    <div class="actions"><button class="btn btn-yes" onclick="didChallenge(true)">Done ✅</button><button class="btn btn-no" onclick="didChallenge(false)">Skip ❌</button></div>
+    <div class="actions"><button class="btn btn-yes" onclick="didChallenge(true)">Done ✅</button>
+      <button class="btn btn-no" onclick="didChallenge(false)">Skip ❌</button></div>
   </div>
   <div id="secondCard" class="card">
     <h3 id="secondTitle">SECOND GAME</h3><p id="secondDesc"></p>
@@ -176,10 +159,15 @@
 </div>
 </div>
 
-<!-- XO -->
+<!-- XO - مع اختيار الوضع -->
 <div id="view-xo" class="game-view">
 <div class="container">
-  <h1>❌⭕ Tic Tac Toe</h1><div class="status" id="xoStatus">Turn : X</div>
+  <h1>❌⭕ Tic Tac Toe</h1>
+  <div style="display:flex;gap:10px;justify-content:center;margin-bottom:10px">
+    <button class="mode-btn active" id="xoFriendBtn" onclick="setXoMode('friend')">👤 VS Friend</button>
+    <button class="mode-btn" id="xoCompBtn" onclick="setXoMode('computer')">🤖 VS Computer</button>
+  </div>
+  <div class="status" id="xoStatus">Turn : X</div>
   <div class="xo-board">
     <div class="xo-cell" onclick="playXO(0)" id="c0"></div><div class="xo-cell" onclick="playXO(1)" id="c1"></div><div class="xo-cell" onclick="playXO(2)" id="c2"></div>
     <div class="xo-cell" onclick="playXO(3)" id="c3"></div><div class="xo-cell" onclick="playXO(4)" id="c4"></div><div class="xo-cell" onclick="playXO(5)" id="c5"></div>
@@ -188,7 +176,7 @@
 </div>
 </div>
 
-<!-- RPS - FIXED TO ENGLISH -->
+<!-- RPS -->
 <div id="view-rps" class="game-view">
 <div class="container">
   <h1>✊✋✌️ Rock Paper Scissors</h1>
@@ -199,17 +187,23 @@
 </div>
 </div>
 
-<!-- CHECKERS -->
+<!-- CHECKERS - مع اختيار الوضع -->
 <div id="view-dama" class="game-view">
 <div class="container">
-  <h1>♟️ Checkers</h1><p style="text-align:center;color:#888;font-size:14px">2 players on same phone - Red starts</p>
+  <h1>♟️ Checkers</h1>
+  <div style="display:flex;gap:10px;justify-content:center;margin-bottom:10px">
+    <button class="mode-btn active" id="damaFriendBtn" onclick="setDamaMode('friend')">👤 VS Friend</button>
+    <button class="mode-btn" id="damaCompBtn" onclick="setDamaMode('computer')">🤖 VS Computer</button>
+  </div>
+  <p style="text-align:center;color:#888;font-size:14px" id="damaSub">2 players on same phone - Red starts</p>
   <div id="damaTurn">Turn: 🔴 Red</div><div id="damaBoard"></div>
   <button class="btn" onclick="initDama()">New Game 🔄</button>
-  <p style="text-align:center;font-size:13px;color:#666;margin-top:10px">Click your piece, then click where you want to move<br>If you reach the end you become 👑 King</p>
+  <p style="text-align:center;font-size:13px;color:#666;margin-top:10px">Click your piece, then click where you want to move<br>
+    If you reach the end you become 👑 King</p>
 </div>
 </div>
 
-<!-- MEMORY - NEW GAME 1 -->
+<!-- MEMORY -->
 <div id="view-memory" class="game-view">
 <div class="container">
   <h1>🧠 Memory Game</h1>
@@ -220,11 +214,11 @@
 </div>
 </div>
 
-<!-- QUIZ - NEW GAME 2 -->
+<!-- QUIZ -->
 <div id="view-quiz" class="game-view">
 <div class="container">
   <h1>🧠❓ Quiz</h1>
-  <p style="text-align:center;color:#888">Score: <b id="quizScore">0</b> | Question: <b id="quizNum">1/5</b></p>
+  <p style="text-align:center;color:#888">Score: <b id="quizScore">0</b> | Question: <b id="quizNum">1/5</b> | Group: <b id="quizGroup">-</b></p>
   <div class="quiz-q" id="quizQ"></div>
   <div id="quizOpts"></div>
   <p id="quizMsg" style="text-align:center;font-weight:600;margin-top:10px"></p>
@@ -233,7 +227,8 @@
 </div>
 
 <div style="max-width:500px;margin:20px auto">
-<button class="btn-secondary" onclick="showMoreGames()" id="moreGamesBtn" style="width:100%; padding:13px; border:1px solid #382201; background:white; color:black; border-radius:8px; cursor:pointer;">
+<button class="btn-secondary" onclick="showMoreGames()" id="moreGamesBtn" style="width:100%; padding:13px; 
+border:1px solid #382201; background:white; color:black; border-radius:8px; cursor:pointer;">
   <b>Click here for more games →</b>
 </button>
 </div>
@@ -268,11 +263,31 @@ function backToMenu(){
 }
 function showMoreGames(){ document.getElementById("moreGames").style.display="block"; document.getElementById("moreGamesBtn").style.display="none"; window.scrollTo({top: document.body.scrollHeight, behavior:'smooth'}); }
 
-// Challenge Party - Your Old Logic
+// ===== PARTY - جديد: اختيار عدد اللاعبين =====
+let partyPlayerCount = 4;
+function setPartyPlayers(n, btn){
+  partyPlayerCount = n;
+  document.querySelectorAll('.party-count-btn').forEach(b=>b.classList.remove('active'));
+  if(btn) btn.classList.add('active');
+  let box = document.getElementById('partyInputs');
+  box.innerHTML = '';
+  for(let i=1;i<=n;i++){
+    let inp = document.createElement('input');
+    inp.id = 'p'+i; inp.placeholder = 'Player '+i;
+    box.appendChild(inp);
+  }
+}
+
+// Challenge Party - نفس المنطق القديم، غير كيقرا عدد اللاعبين اللي اختار المستخدم
 const challenges = ["Tell a joke 😂", "Smile without reason 😊", "Take a chance 🎲", "Running 🏃‍♂️"];
 let players = []; let totalPoints = 0; let secret = 0; let maxRange = 10;
 function startFirstGame(){
-  players = [p1.value, p2.value, p3.value, p4.value].map((v,i)=> v.trim() || `Player ${i+1}`);
+  players = [];
+  for(let i=1;i<=partyPlayerCount;i++){
+    let el = document.getElementById('p'+i);
+    let v = el ? el.value.trim() : '';
+    players.push(v || `Player ${i}`);
+  }
   const player = players[Math.floor(Math.random()*players.length)];
   const challenge = challenges[Math.floor(Math.random()*challenges.length)];
   chosenPlayer.textContent = player; chosenChallenge.textContent = challenge;
@@ -291,20 +306,111 @@ function checkGuess(){
   totalBox.innerHTML = `🏆 TOTAL POINTS: ${totalPoints} <br><button class="btn" style="background:white;color:#764ba2;margin-top:12px" onclick="location.reload()">Play Again 🔄</button>`;
   totalBox.classList.add('show');
 }
-// XO
+
+// ===== XO - جديد: VS Friend / VS Computer =====
 let board = Array(9).fill(''), current='X', over=false;
-function playXO(i){ if(board[i] || over) return; board[i]=current; document.getElementById('c'+i).textContent=current; document.getElementById('c'+i).classList.add(current.toLowerCase()); if([[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]].some(w=>w.every(j=>board[j]==current))){ document.getElementById('xoStatus').textContent=`🏆 ${current} wins!`; over=true; return; } if(!board.includes('')){document.getElementById('xoStatus').textContent='Draw 🤝'; over=true; return;} current=current=='X'?'O':'X'; document.getElementById('xoStatus').textContent='Turn: '+current; }
-function resetXO(){ board=Array(9).fill(''); current='X'; over=false; for(let i=0;i<9;i++){document.getElementById('c'+i).textContent='';document.getElementById('c'+i).className='xo-cell';} document.getElementById('xoStatus').textContent='Turn: X'; }
-// RPS - FIXED TO ENGLISH
+let xoMode = 'friend';
+function setXoMode(m){
+  xoMode = m;
+  document.getElementById('xoFriendBtn').classList.toggle('active', m=='friend');
+  document.getElementById('xoCompBtn').classList.toggle('active', m=='computer');
+  resetXO();
+}
+function playXO(i){
+  if(board[i] || over) return;
+  // في وضع الكمبيوتر، المستخدم ديما X
+  if(xoMode=='computer' && current!='X') return;
+  doXoMove(i);
+  // إذا كان كمبيوتر و باقي اللعب و الدور ديال O
+  if(xoMode=='computer' && !over && current=='O'){
+    document.getElementById('xoStatus').textContent='Computer is thinking... 🤖';
+    setTimeout(()=>{ xoComputerMove(); }, 600);
+  }
+}
+function doXoMove(i){
+  board[i]=current; document.getElementById('c'+i).textContent=current; document.getElementById('c'+i).classList.add(current.toLowerCase());
+  if([[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]].some(w=>w.every(j=>board[j]==current))){ document.getElementById('xoStatus').textContent = xoMode=='computer' ? (current=='X' ? '🏆 You win!' : '🤖 Computer wins!') : `🏆 ${current} wins!`; over=true; return; }
+  if(!board.includes('')){document.getElementById('xoStatus').textContent='Draw 🤝'; over=true; return;}
+  current=current=='X'?'O':'X'; document.getElementById('xoStatus').textContent='Turn: '+ (xoMode=='computer' ? (current=='X' ? 'Your turn (X)' : 'Computer (O)') : current);
+}
+function xoComputerMove(){
+  if(over || current!='O') return;
+  let lines=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+  let pick=-1;
+  // 1. يربح إلا قدر
+  for(let line of lines){ let vals=line.map(i=>board[i]); if(vals.filter(v=>v=='O').length==2 && vals.includes('')){ pick=line[vals.indexOf('')]; break; } }
+  // 2. يمنعك تربح
+  if(pick==-1) for(let line of lines){ let vals=line.map(i=>board[i]); if(vals.filter(v=>v=='X').length==2 && vals.includes('')){ pick=line[vals.indexOf('')]; break; } }
+  // 3. الوسط
+  if(pick==-1 && board[4]=='') pick=4;
+  // 4. عشوائي
+  if(pick==-1){ let empty=board.map((v,i)=>v==''?i:-1).filter(i=>i!=-1); pick=empty[Math.floor(Math.random()*empty.length)]; }
+  if(pick!=-1) doXoMove(pick);
+}
+function resetXO(){ board=Array(9).fill(''); current='X'; over=false; for(let i=0;i<9;i++){document.getElementById('c'+i).textContent='';document.getElementById('c'+i).className='xo-cell';} document.getElementById('xoStatus').textContent= xoMode=='computer' ? 'Your turn (X)' : 'Turn: X'; }
+
+// RPS
 let ps=0, cs=0;
 function playRPS(my){ let opts=['Rock','Paper','Scissors']; let comp=opts[Math.floor(Math.random()*3)]; let txt=''; if(my==comp) txt=`Draw! ${my}`; else if((my=='Rock'&&comp=='Scissors')||(my=='Paper'&&comp=='Rock')||(my=='Scissors'&&comp=='Paper')){txt=`You win! ${my} beats ${comp} 🎉`; ps++;} else{txt=`You lose! ${comp} beats ${my} 😢`; cs++;} document.getElementById('rpsResult').innerHTML=`You: ${my} | Computer: ${comp}<br>${txt}`; document.getElementById('pScore').textContent=ps; document.getElementById('cScore').textContent=cs; }
 function resetRPS(){ps=0;cs=0;pScore.textContent=0;cScore.textContent=0;rpsResult.textContent='Choose one to play';}
-// CHECKERS
+
+// ===== CHECKERS - جديد: VS Friend / VS Computer =====
 let damaBoard=[], damaSelected=null, damaTurn='red';
+let damaMode = 'friend';
+function setDamaMode(m){
+  damaMode = m;
+  document.getElementById('damaFriendBtn').classList.toggle('active', m=='friend');
+  document.getElementById('damaCompBtn').classList.toggle('active', m=='computer');
+  document.getElementById('damaSub').textContent = m=='friend' ? '2 players on same phone - Red starts' : 'You are Red 🔴 - Computer is Black ⚫';
+  initDama();
+}
 function initDama(){ damaBoard=[]; damaSelected=null; damaTurn='red'; for(let r=0;r<8;r++){ let row=[]; for(let c=0;c<8;c++){ let piece=null; if((r+c)%2==1){ if(r<3) piece={color:'black',king:false}; if(r>4) piece={color:'red',king:false}; } row.push(piece); } damaBoard.push(row); } drawDama(); }
 function drawDama(){ let el=document.getElementById('damaBoard'); if(!el) return; el.innerHTML=''; document.getElementById('damaTurn').innerHTML = damaTurn=='red' ? 'Turn: 🔴 Red' : 'Turn: ⚫ Black'; for(let r=0;r<8;r++) for(let c=0;c<8;c++){ let div=document.createElement('div'); div.className='dama-cell '+((r+c)%2==0?'dama-light':'dama-dark'); if(damaSelected && damaSelected.r==r && damaSelected.c==c) div.classList.add('dama-selected'); let p=damaBoard[r][c]; if(p){ let pd=document.createElement('div'); pd.className='dama-piece '+(p.color=='red'?'dama-red':'dama-black')+(p.king?' dama-king':''); pd.innerText=p.king?'👑':''; div.appendChild(pd); } div.onclick=()=>clickDama(r,c); el.appendChild(div); } }
-function clickDama(r,c){ let p=damaBoard[r][c]; if(p && p.color==damaTurn){ damaSelected={r,c}; drawDama(); return; } if(damaSelected){ let sr=damaSelected.r, sc=damaSelected.c; let piece=damaBoard[sr][sc]; if(!piece) return; let dr=r-sr, dc=c-sc; if(Math.abs(dr)==1 && Math.abs(dc)==1 && !p){ if(!piece.king){ if(piece.color=='red' && dr!=-1) return; if(piece.color=='black' && dr!=1) return; } moveDama(sr,sc,r,c); return; } if(Math.abs(dr)==2 && Math.abs(dc)==2 && !p){ let mr=(sr+r)/2, mc=(sc+c)/2; let mid=damaBoard[mr][mc]; if(mid && mid.color!=damaTurn){ damaBoard[mr][mc]=null; moveDama(sr,sc,r,c); return; } } } }
-function moveDama(sr,sc,r,c){ let piece=damaBoard[sr][sc]; damaBoard[r][c]=piece; damaBoard[sr][sc]=null; if((piece.color=='red' && r==0)||(piece.color=='black' && r==7)) piece.king=true; damaSelected=null; damaTurn=damaTurn=='red'?'black':'red'; drawDama(); let reds=0, blacks=0; for(let r2=0;r2<8;r2++) for(let c2=0;c2<8;c2++){ if(damaBoard[r2][c2]?.color=='red') reds++; if(damaBoard[r2][c2]?.color=='black') blacks++; } if(reds==0) setTimeout(()=>alert('🏆 Black wins!'),100); if(blacks==0) setTimeout(()=>alert('🏆 Red wins!'),100); }
+function clickDama(r,c){
+  // في وضع الكمبيوتر، ما تخليش المستخدم يلعب بالأسود
+  if(damaMode=='computer' && damaTurn=='black') return;
+  let p=damaBoard[r][c]; if(p && p.color==damaTurn){ damaSelected={r,c}; drawDama(); return; }
+  if(damaSelected){ let sr=damaSelected.r, sc=damaSelected.c; let piece=damaBoard[sr][sc]; if(!piece) return; let dr=r-sr, dc=c-sc; if(Math.abs(dr)==1 && Math.abs(dc)==1 && !p){ if(!piece.king){ if(piece.color=='red' && dr!=-1) return; if(piece.color=='black' && dr!=1) return; } moveDama(sr,sc,r,c); return; } if(Math.abs(dr)==2 && Math.abs(dc)==2 && !p){ let mr=(sr+r)/2, mc=(sc+c)/2; let mid=damaBoard[mr][mc]; if(mid && mid.color!=damaTurn){ damaBoard[mr][mc]=null; moveDama(sr,sc,r,c); return; } } }
+}
+function moveDama(sr,sc,r,c){
+  let piece=damaBoard[sr][sc]; damaBoard[r][c]=piece; damaBoard[sr][sc]=null;
+  if((piece.color=='red' && r==0)||(piece.color=='black' && r==7)) piece.king=true;
+  damaSelected=null; damaTurn=damaTurn=='red'?'black':'red'; drawDama();
+  let reds=0, blacks=0; for(let r2=0;r2<8;r2++) for(let c2=0;c2<8;c2++){ if(damaBoard[r2][c2]?.color=='red') reds++; if(damaBoard[r2][c2]?.color=='black') blacks++; }
+  if(reds==0) setTimeout(()=>alert('🏆 Black wins!'),100);
+  if(blacks==0) setTimeout(()=>alert('🏆 Red wins!'),100);
+  // إذا كان كمبيوتر و جا دور الأسود، يلعب بوحدو
+  if(damaMode=='computer' && damaTurn=='black' && reds>0 && blacks>0){
+    setTimeout(()=>damaComputerMove(), 700);
+  }
+}
+function damaComputerMove(){
+  if(damaTurn!='black') return;
+  // 1. نقلب على أكلة (Capture) أولا - أذكى
+  for(let r=0;r<8;r++) for(let c=0;c<8;c++){
+    let p=damaBoard[r][c]; if(p && p.color=='black'){
+      let dirs=[[2,2],[2,-2]]; if(p.king) dirs=[[2,2],[2,-2],[-2,2],[-2,-2]];
+      for(let [dr,dc] of dirs){
+        let nr=r+dr, nc=c+dc, mr=r+dr/2, mc=c+dc/2;
+        if(nr>=0&&nr<8&&nc>=0&&nc<8 && !damaBoard[nr][nc] && damaBoard[mr][mc] && damaBoard[mr][mc].color=='red'){
+          damaBoard[mr][mc]=null; moveDama(r,c,nr,nc); return;
+        }
+      }
+    }
+  }
+  // 2. حركة عادية عشوائية
+  let moves=[];
+  for(let r=0;r<8;r++) for(let c=0;c<8;c++){
+    let p=damaBoard[r][c]; if(p && p.color=='black'){
+      let dirs=[[1,1],[1,-1]]; if(p.king) dirs=[[1,1],[1,-1],[-1,1],[-1,-1]];
+      for(let [dr,dc] of dirs){
+        let nr=r+dr, nc=c+dc;
+        if(nr>=0&&nr<8&&nc>=0&&nc<8 && !damaBoard[nr][nc]) moves.push([r,c,nr,nc]);
+      }
+    }
+  }
+  if(moves.length>0){ let m=moves[Math.floor(Math.random()*moves.length)]; moveDama(m[0],m[1],m[2],m[3]); }
+}
 
 // MEMORY
 let memCards=[], memFirst=null, memLock=false, memTries=0, memFound=0;
@@ -335,19 +441,86 @@ function flipMem(div,i,emo){
   }
 }
 
-// QUIZ
-let quizData=[
-  {q:"What is the capital of Morocco?", opts:["Casablanca","Rabat","Fes","Marrakech"], a:1},
-  {q:"How much is 5 + 7 ?", opts:["10","11","12","13"], a:2},
-  {q:"What is the biggest planet?", opts:["Earth","Mars","Jupiter","Venus"], a:2},
-  {q:"What color is the sky during the day?", opts:["Green","Blue","Red","Yellow"], a:1},
-  {q:"Where is the Eiffel Tower?", opts:["London","Paris","Madrid","Rome"], a:1},
+// ===== QUIZ - 5 مجموعات =====
+const quizSets = [
+  // 1: الأساس ديالك - محفوظ
+  {
+    name:"Morocco 🇲🇦",
+    list:[
+      {q:"What is the capital of Morocco?", opts:["Casablanca","Rabat","Fes","Marrakech"], a:1},
+      {q:"How much is 5 + 7 ?", opts:["10","11","12","13"], a:2},
+      {q:"What is the biggest planet?", opts:["Earth","Mars","Jupiter","Venus"], a:2},
+      {q:"What color is the sky during the day?", opts:["Green","Blue","Red","Yellow"], a:1},
+      {q:"Where is the Eiffel Tower?", opts:["London","Paris","Madrid","Rome"], a:1},
+    ]
+  },
+  // 2: العالم
+  {
+    name:"World 🌍",
+    list:[
+      {q:"What is the capital of France?", opts:["London","Paris","Madrid","Rome"], a:1},
+      {q:"What is the largest ocean?", opts:["Atlantic","Indian","Arctic","Pacific"], a:3},
+      {q:"How many continents are there?", opts:["5","6","7","8"], a:2},
+      {q:"What is the tallest mountain?", opts:["Kilimanjaro","Everest","Mont Blanc","K2"], a:1},
+      {q:"Which planet is closest to the sun?", opts:["Venus","Mars","Mercury","Earth"], a:2},
+    ]
+  },
+  // 3: رياضة
+  {
+    name:"Sport ⚽",
+    list:[
+      {q:"How many players in a football team?", opts:["9","10","11","12"], a:2},
+      {q:"How many minutes in a football match?", opts:["80","90","100","120"], a:1},
+      {q:"Which country won World Cup 2022?", opts:["France","Brazil","Argentina","Morocco"], a:2},
+      {q:"What is the color of Moroccan flag?", opts:["Green & White","Red & Green","Blue & White","Red & White"], a:1},
+      {q:"How many days in a leap year?", opts:["365","366","364","360"], a:1},
+    ]
+  },
+  // 4: جديدة - علوم
+  {
+    name:"Science 🔬",
+    list:[
+      {q:"How much is 9 x 9 ?", opts:["81","72","99","90"], a:0},
+      {q:"What is H2O?", opts:["Salt","Water","Oxygen","Fire"], a:1},
+      {q:"How many legs does a spider have?", opts:["6","8","4","10"], a:1},
+      {q:"What is 100 / 4 ?", opts:["20","25","30","40"], a:1},
+      {q:"Which animal is fastest?", opts:["Lion","Horse","Cheetah","Tiger"], a:2},
+    ]
+  },
+  // 5: جديدة - تكنولوجيا
+  {
+    name:"Tech 💻",
+    list:[
+      {q:"What does WWW mean?", opts:["World Wide Web","World Web Wide","Web World Wide","Wide World Web"], a:0},
+      {q:"Which company made iPhone?", opts:["Samsung","Google","Apple","Nokia"], a:2},
+      {q:"What is the first social app?", opts:["Instagram","Facebook","TikTok","Snapchat"], a:1},
+      {q:"How many hours in a day?", opts:["12","24","48","36"], a:1},
+      {q:"What color do you get mixing Blue + Yellow?", opts:["Purple","Green","Orange","Pink"], a:1},
+    ]
+  }
 ];
+function shuffleArr(arr){ return arr.sort(()=>Math.random()-0.5); }
+function getRandomQuiz(){
+  let set = quizSets[Math.floor(Math.random()*quizSets.length)];
+  let copy = JSON.parse(JSON.stringify(set.list));
+  copy.forEach(q=>{
+    let correct = q.opts[q.a];
+    q.opts = shuffleArr(q.opts);
+    q.a = q.opts.indexOf(correct);
+  });
+  return { name:set.name, list:shuffleArr(copy) };
+}
+let quizData = [];
+let quizGroupName = "";
 let quizIdx=0, quizScore=0, quizAnswered=false;
 function initQuiz(){
+  let picked = getRandomQuiz();
+  quizData = picked.list;
+  quizGroupName = picked.name;
   quizIdx=0; quizScore=0; showQuiz();
   document.getElementById('quizRestart').style.display='none';
   document.getElementById('quizMsg').textContent='';
+  document.getElementById('quizGroup').textContent = quizGroupName;
 }
 function showQuiz(){
   quizAnswered=false;
@@ -362,7 +535,7 @@ function showQuiz(){
       if(quizAnswered) return; quizAnswered=true;
       if(i==q.a){ b.classList.add('correct'); quizScore++; document.getElementById('quizScore').textContent=quizScore; document.getElementById('quizMsg').textContent='✅ Correct!'; }
       else { b.classList.add('wrong'); document.getElementById('quizMsg').textContent='❌ Wrong! Correct answer: '+q.opts[q.a]; }
-      setTimeout(()=>{ quizIdx++; document.getElementById('quizMsg').textContent=''; if(quizIdx<quizData.length) showQuiz(); else { document.getElementById('quizQ').textContent=`🏆 Finished! You got ${quizScore} / ${quizData.length}`; document.getElementById('quizOpts').innerHTML=''; document.getElementById('quizRestart').style.display='block'; } },1200);
+      setTimeout(()=>{ quizIdx++; document.getElementById('quizMsg').textContent=''; if(quizIdx<quizData.length) showQuiz(); else { document.getElementById('quizQ').textContent=`🏆 Finished! You got ${quizScore} / ${quizData.length} - Group: ${quizGroupName}`; document.getElementById('quizOpts').innerHTML=''; document.getElementById('quizRestart').style.display='block'; } },1200);
     };
     box.appendChild(b);
   });

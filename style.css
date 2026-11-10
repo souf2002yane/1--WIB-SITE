@@ -121,7 +121,7 @@ input:focus, select:focus{
 input::placeholder{ color:#8a8d91; }
 
 button, input[type="submit"]{
-  background: var(--blue); color: white; border: none; padding: 12px 20px;
+  background: var(--blue); color: rgb(193, 192, 192); border: none; padding: 12px 20px;
   border-radius: 8px; font-weight: bold; cursor: pointer;
   transition: 0.2s; width: auto;
 }
