@@ -1,212 +1,392 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
 <link rel="stylesheet" href="style.css">
-<title>soufyane el haddaoui</title>
+<title>SEH - Info Personal</title>
 <link rel="icon" href="IMAGES/1793704644158.jpg">
-<meta name="auther" content="soufyane">
 </head>
-
 <body>
-  <!-- ===== جديد: الشريط الفوقاني بحال التصويرة ===== -->
 <div class="top-bar">
-<span id="todayDate">📅 جاري تحميل التاريخ...</span>
+<span id="todayDate">📅 Loading date...</span>
 <a href="https://facebook.com" target="_blank" style="font-size:20px;text-decoration:none">📘</a>
 </div>
 
 <nav class="bottom-row">
-    <a href="index.html" class="nav-item ">🏠<br><small>NENU</small></a>
+    <a href="index.html" class="nav-item">🏠<br><small>MENU</small></a>
     <a href="INFO.html" class="nav-item active">👤<br><small>INFO PERSONAL</small></a>
-    <a href="GAME.html" class="nav-item ">🎮<br><small>GAME</small></a>
-    <a href="STORIES.html" class="nav-item ">📚<br><small>STORIES</small></a>
-
-</nav>
+    <a href="GAME.html" class="nav-item">🎮<br><small>GAME</small></a>
+    <a href="STORIES.html" class="nav-item">📚<br><small>STORIES</small></a>
+    </nav>
 <hr>
 
-<div class="content">
-<B>IN THIS PAGE</B>
-          <ul>
-         <li><a href="#INFORMATION PERSONELE">INFORMATION PERSONELE</a></li>
-        <li><a href="#GENDER">GENDER</a></li>
-         <li><a href="#LANGUAGE AND HOBBIES">LANGUAGE AND HOBBIES</a></li>
-        </ul>
-<hr>
-    <h1 align="center" >Sign in</h1>
-<fieldset>
-      <legend >INFORMATION PERSONELE</legend>
-      <div id="INFORMATION PERSONELE" ></div>
-      <label>  Name:</label> <br>
-      <input type="text" name="name"  placeholder="your name" reduired><br>
-      <label> Familly name:</label><br>
-      <input type="text" name="name" placeholder="familly name" reduired><br>
-       <label> Number phone:</label><br>
-      <input type="tel" name="tel" placeholder="0600000000" minlength="10" maxlength="10" reduired><br>
-      <label> The age:</label><br>
-      <input type="number" name="number" placeholder="write your age"  reduired><br>
-      <label> Email:</label><br>
-      <input type="email" name="email" placeholder="write email" reduired><br><label>Password:</label><br>
-      <input type="password" name="password" placeholder="write password" reduired><br> 
+<style>
+fieldset{max-width:650px;margin:15px auto}
+.steps{text-align:center;font-weight:800;color:#B7791F;margin:10px 0}
+.steps span{background:#E9C46A;color:#111;padding:5px 12px;border-radius:20px}
+.top-nav{display:flex;justify-content:space-between;max-width:650px;margin:0 auto;align-items:center}
+.back-btn{background:#111;color:white;border:none;padding:10px 18px;border-radius:12px;font-size:16px;cursor:pointer}
+.btn-next{width:100%;padding:14px;border:none;border-radius:13px;background:linear-gradient(135deg,#E9C46A,#B7791F);font-weight:900;font-size:16px;cursor:pointer;margin-top:10px}
+.btn-confirm{width:100%;padding:15px;border:none;border-radius:13px;background:linear-gradient(135deg,#22c55e,#15803d);color:white;font-weight:900;font-size:17px;cursor:pointer;margin-top:10px}
+.btn-login{width:100%;padding:15px;border:none;border-radius:13px;background:#0866ff;color:white;font-weight:900;font-size:17px;cursor:pointer;margin-top:10px}
+input.error{border:2px solid red !important}
+.err-msg{color:red;font-weight:bold;text-align:center;display:none}
+.profile-card{background:linear-gradient(135deg,#111,#3B2A1A);color:white;border-radius:22px;padding:22px;max-width:650px;margin:10px auto;border:1px solid #E9C46A;box-shadow:0 15px 40px rgba(0,0,0,.25)}
+.profile-top{display:flex;align-items:center;gap:15px}
+.profile-avatar{width:75px;height:75px;border-radius:50%;background:linear-gradient(135deg,#E9C46A,#B7791F);color:#111;display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:900;border:3px solid white;overflow:hidden;cursor:pointer;flex-shrink:0}
+.profile-avatar img{width:100%;height:100%;object-fit:cover}
+.level-badge{background:#E9C46A;color:#111;padding:4px 12px;border-radius:20px;font-size:12px;font-weight:800;display:inline-block;margin-top:6px}
+.progress{background:rgba(255,255,255,.2);height:10px;border-radius:20px;margin-top:14px;overflow:hidden}
+.progress div{height:100%;background:#E9C46A}
+.stats-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:15px 0}
+.stat-box{background:rgba(255,255,255,.08);border-radius:14px;padding:12px 5px;text-align:center}
+.stat-box b{font-size:19px;display:block;color:#E9C46A}
+.stat-box span{font-size:12px;color:#ccc}
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.info-item{background:rgba(255,255,255,.08);border-radius:12px;padding:10px}
+.info-item small{color:#bbb;font-size:11px}
+.info-item b{font-size:13px;display:block;margin-top:2px;word-break:break-word}
+.btn-pro{width:100%;padding:13px;border:none;border-radius:13px;font-size:15px;font-weight:800;cursor:pointer;margin-top:10px}
+.btn-gold{background:linear-gradient(135deg,#E9C46A,#B7791F);color:#111}
+.btn-white{background:white;color:#111}
+.btn-red{background:#ff3b30;color:white}
+.btn-dark{background:#333;color:white}
+</style>
 
-      <div class="content">
-
-  <!-- الواجهة 1: تسجيل الدخول العادية -->
-  <div id="loginBox">
-    <button onclick="showReset()" style="width:100%; padding:12px; border:1px solid blue; 
-    background:whitesmoke; color:#0866ff; border-radius:8px; margin:15px 0; cursor:pointer;">
-      forget the paasword
-  </button>
-     </div>
-
-  <!-- الواجهة 2: إعادة كلمة السر - مخبية فالأول -->
-  <div id="resetBox" style="display:none;">
-    <h1 style="margin-bottom:15px;">New password</h1>
-   
-    <label>Email:</label>
-    <input type="email" id="resetEmail" placeholder="enter your email" style="width:100%; padding:10px; margin:8px 0;">
-
-    <label> New password :</label>
-    <input type="password" id="newPass" placeholder="enter New password" style="width:100%; padding:10px; margin:8px 0;">
-
-    <label>  confirm password:</label>
-    <input type="password" id="confirmPass" placeholder="confirm" style="width:100%; padding:10px; margin:8px 0;">
-
-    <button onclick="saveNewPass()" style="width:100%; padding:12px; background:#0866ff; color:white; border:none; border-radius:8px; margin-top:15px;">
-      save
-    </button>
-
-    <button onclick="showLogin()" style="width:100%; padding:10px; background:transparent; border:none; color:#65676b; margin-top:10px; cursor:pointer;">
-      back
-    </button>
+<!-- ===== PROFILE BLACK CARD ===== -->
+<div id="profileBox" class="profile-card" style="display:none">
+  <div class="profile-top">
+    <div class="profile-avatar" id="dashAvatar" onclick="document.getElementById('photoInput').click()">S</div>
+    <div>
+      <h2 id="dashName" style="margin:0">Soufyane</h2>
+      <p id="dashCity" style="margin:3px 0;color:#E9C46A;font-size:13px">Martil • Morocco 🇲🇦</p>
+      <span class="level-badge" id="dashLevel">⭐ LEVEL 1</span>
+    </div>
   </div>
+  <div class="progress"><div id="levelBar" style="width:10%"></div></div>
+  <p id="levelText" style="font-size:12px;text-align:right;color:#E9C46A">10 / 100 points to next level</p>
+  <div class="stats-row">
+    <div class="stat-box"><b id="dashPoints">0</b><span>⭐ Points</span></div>
+    <div class="stat-box"><b id="dashAge">--</b><span>🎂 Age</span></div>
+    <div class="stat-box"><b id="dashDays">1</b><span>📅 Days with us</span></div>
+  </div>
+  <div class="info-grid">
+    <div class="info-item"><small>📞 Phone</small><b id="infoPhone">-</b></div>
+    <div class="info-item"><small>📧 Email</small><b id="infoEmail">-</b></div>
+    <div class="info-item"><small>👤 Gender</small><b id="infoGender">-</b></div>
+    <div class="info-item"><small>❤️ Hobby</small><b id="infoHobby">-</b></div>
+    <div class="info-item"><small>📍 Address</small><b id="infoAddress">-</b></div>
+    <div class="info-item"><small>💍 Marital Status</small><b id="infoMarital">-</b></div>
+    <div class="info-item"><small>🕒 Time</small><b id="infoTime">-</b></div>
+    <div class="info-item"><small>🌍 Language</small><b id="infoLang">-</b></div>
+  </div>
+  <p id="infoAbout" style="background:rgba(255,255,255,.08);padding:12px;border-radius:12px;font-size:13px;line-height:1.6;margin:12px 0 0">-</p>
+  <div id="badgesBox" style="margin-top:12px;display:flex;gap:6px;flex-wrap:wrap"></div>
+  <button class="btn-pro btn-white" onclick="editProfile()">✏️ Edit My Info</button>
+  <button class="btn-pro btn-gold" onclick="location.href='GAME.html'">🎮 Go To Games</button>
+ 
+  <button class="btn-pro btn-dark" onclick="logoutAccount()">🚪 Logout</button>
+  <button class="btn-pro btn-red" onclick="deleteAccount()">🗑️ Delete My Account</button>
+  <p style="text-align:center;color:#aaa;font-size:12px">Click on the photo to change it 📸</p>
+  <input type="file" id="photoInput" accept="image/*" style="display:none" onchange="changePhoto(event)">
+</div>
 
+<div id="allSteps">
+
+<!-- ===== LOGIN - كيبان كل مرة من بعد المرة الأولى ===== -->
+<div id="loginBox" style="display:none">
+  <h1 align="center">Welcome Back 👋</h1>
+  <p style="text-align:center;color:#B7791F;font-weight:bold" id="loginWelcome"></p>
+  <fieldset>
+    <legend>LOGIN</legend>
+    <label>Email:</label><br><input type="email" id="loginEmail" placeholder="Enter your email"><br>
+    <label>Password:</label><br><input type="password" id="loginPass" placeholder="Enter your password"><br>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin:6px 0 12px">
+      <label style="display:flex;align-items:center;gap:6px;font-weight:normal;margin:0"><input type="checkbox" onclick="document.getElementById('loginPass').type=this.checked?'text':'password'" style="width:18px"> Show password</label>
+      <a href="#" onclick="showReset();return false;" style="color:#0866ff;font-size:13px;font-weight:700;text-decoration:none">Forgot password?</a>
+    </div>
+    <p id="loginError" class="err-msg"></p>
+    <button class="btn-login" onclick="doLogin()">LOGIN ➡️</button>
+    <p style="text-align:center;font-size:13px;margin-top:12px">No account yet? <a href="#" onclick="showRegister();return false;" style="color:#0866ff;font-weight:800">Create one</a></p>
+  </fieldset>
+</div>
+
+<!-- ===== STEP 1 - REGISTER FIRST TIME - بلا Forgot password ===== -->
+<div id="step1" style="display:none">
+  <p class="steps"><span>STEP 1 / 3</span> - Personal Info</p>
+  <h1 align="center" id="formTitle">Sign Up - First Time</h1>
+  <p style="text-align:center;color:#B7791F;font-weight:bold">Create your account, only one time</p>
+  <fieldset>
+    <legend>PERSONAL INFORMATION</legend>
+    <label>Name:</label><br><input type="text" id="userName" placeholder="Your name"><br>
+    <label>Family name:</label><br><input type="text" id="userFamily" placeholder="Family name"><br>
+    <label>Phone number:</label><br><input type="tel" id="userPhone" placeholder="0600000000" maxlength="10"><br>
+    <label>Age:</label><br><input type="number" id="userAge" placeholder="Write your age"><br>
+    <label>Email:</label><br><input type="email" id="userEmail" placeholder="Write email"><br>
+    <label>Password:</label><br><input type="password" id="userPass" placeholder="Write password"><br>
+    <label style="display:flex;align-items:center;gap:6px;font-weight:normal"><input type="checkbox" onclick="document.getElementById('userPass').type=this.checked?'text':'password'" style="width:18px"> Show password</label>
+
+    <p><b>More information:</b></p>
+    <input id="userAbout" placeholder="More information about you"><br>
+    <label>Marital status:</label><br>
+    <select id="userMarital"><option>Single</option><option>Married</option><option>Divorced</option><option>Widowed</option></select><br>
+    <label>Address:</label><br><input type="text" id="userAddress" placeholder="Your address"><br>
+
+    <p id="errorMsg" class="err-msg"></p>
+    <button class="btn-next" onclick="goToStep2()">NEXT ➡️</button>
+    <p style="text-align:center;font-size:13px;margin-top:10px" id="alreadyLink">Already have an account? <a href="#" onclick="showLoginBox();return false;" style="color:#0866ff;font-weight:800">Login</a></p>
+  </fieldset>
+</div>
+
+<!-- ===== STEP 2 ===== -->
+<div id="step2" style="display:none">
+  <div class="top-nav">
+    <button class="back-btn" onclick="showStep(1)">⬅️ Back</button>
+    <p class="steps"><span>STEP 2 / 3</span></p><span style="width:80px"></span>
+  </div>
+  <fieldset><legend>GENDER</legend>
+    <h1 align="center">Gender</h1>
+    <label>🤵 Man</label><input type="radio" value="Man" name="gender" id="genderMan"><br><br>
+    <label>🧕 Woman</label><input type="radio" value="Woman" name="gender" id="genderWoman"><br>
+  </fieldset>
+  <fieldset>
+    <h1 align="center">The Time</h1>
+    <label>Enter the time</label><input type="datetime-local" id="userTime"><br>
+  </fieldset>
+  <div style="max-width:650px;margin:0 auto"><button class="btn-next" onclick="goToStep3()">NEXT ➡️</button></div>
+</div>
+
+<!-- ===== STEP 3 ===== -->
+<div id="step3" style="display:none">
+  <div class="top-nav">
+    <button class="back-btn" onclick="showStep(2)">⬅️ Back</button>
+    <p class="steps"><span>STEP 3 / 3</span></p><span style="width:80px"></span>
+  </div>
+  <fieldset>
+    <legend>LANGUAGE AND HOBBIES</legend>
+    <h1 align="center">Languages</h1>
+    <label>Arabic</label><input type="radio" name="lang" value="Arabic"><br>
+    <input type="range" id="rangeArabic" min="0" max="100" value="50"><span id="valArabic">50%</span><br>
+    <label>English</label><input type="radio" name="lang" value="English"><br>
+    <input type="range" id="rangeEnglish" min="0" max="100" value="50"><span id="valEnglish">50%</span><br>
+    <label>French</label><input type="radio" name="lang" value="French"><br>
+    <input type="range" id="rangeFrench" min="0" max="100" value="50"><span id="valFrench">50%</span><br>
+    <label>Spanish</label><input type="radio" name="lang" value="Spanish"><br>
+    <input type="range" id="rangeSpanish" min="0" max="100" value="50"><span id="valSpanish">50%</span><br>
+    <h1 align="center">Hobbies</h1>
+    - Choose the best hobby: <b style="color:#B7791F">(You will need it to recover your password!)</b><br>
+    <select id="userHobby">
+      <option>Playing football</option><option>Reading books</option><option>Watching movies</option><option>Writing stories</option><option>Others</option>
+    </select>
+    <h2>In this website you can search about:</h2>
+    <li>Books</li><li>Hobbies</li><li>New language</li><li>A lot of information</li><br>
+    <button class="btn-confirm" onclick="confirmAll()">✅ CONFIRM & SAVE</button>
+  </fieldset>
+</div>
+
+</div>
+
+<!-- ===== POPUP FORGOT PASSWORD - غير فـ LOGIN ===== -->
+<div id="resetBox" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:999;align-items:center;justify-content:center">
+  <div style="background:white;border-radius:18px;padding:22px;width:90%;max-width:400px">
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <h3 style="margin:0">🔒 Forgot Password?</h3>
+      <button onclick="closeReset()" style="border:none;background:#eee;width:32px;height:32px;border-radius:50%;cursor:pointer">✖️</button>
+    </div>
+    <p style="color:#666;font-size:13px">To prove it's you, enter your email + your favourite hobby</p>
+    <label>Your Email:</label><input type="email" id="resetEmail" placeholder="Enter your email" style="width:100%;padding:11px;margin:6px 0 10px;border:1px solid #ddd;border-radius:10px;box-sizing:border-box">
+    <label>Your Favourite Hobby (you chose it first time):</label>
+    <select id="resetHobby" style="width:100%;padding:11px;margin:6px 0 10px;border:1px solid #ddd;border-radius:10px;box-sizing:border-box">
+      <option>Playing football</option><option>Reading books</option><option>Watching movies</option><option>Writing stories</option><option>Others</option>
+    </select>
+    <label>New Password:</label><input type="password" id="newPass" placeholder="Enter new password" style="width:100%;padding:11px;margin:6px 0 10px;border:1px solid #ddd;border-radius:10px;box-sizing:border-box">
+    <label>Confirm New Password:</label><input type="password" id="confirmPass" placeholder="Confirm" style="width:100%;padding:11px;margin:6px 0 10px;border:1px solid #ddd;border-radius:10px;box-sizing:border-box">
+    <button onclick="saveNewPass()" style="width:100%;padding:13px;background:#0866ff;color:white;border:none;border-radius:10px;font-weight:800;cursor:pointer">Save New Password</button>
+    <button onclick="closeReset()" style="width:100%;padding:10px;background:transparent;border:none;color:#65676b;cursor:pointer;margin-top:5px">Cancel</button>
+  </div>
 </div>
 
 <script>
-function showReset(){
-  document.getElementById("loginBox").style.display = "none";
-  document.getElementById("resetBox").style.display = "block";
+document.getElementById('todayDate').innerText = "📅 " + new Date().toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+
+function hideAll(){ ['loginBox','step1','step2','step3'].forEach(id=>document.getElementById(id).style.display='none'); }
+function showStep(n){
+  hideAll();
+  document.getElementById('step'+n).style.display='block';
+  window.scrollTo({top:0,behavior:'smooth'});
 }
-function showLogin(){
-  document.getElementById("resetBox").style.display = "none";
-  document.getElementById("loginBox").style.display = "block";
+function showLoginBox(){
+  let acc=JSON.parse(localStorage.getItem('seh_account')||'{}');
+  hideAll();
+  document.getElementById('loginBox').style.display='block';
+  document.getElementById('loginWelcome').textContent = acc.name ? 'Welcome back '+acc.name+' 👋' : '';
+  if(acc.email) document.getElementById('loginEmail').value=acc.email;
+  window.scrollTo({top:0,behavior:'smooth'});
 }
+function showRegister(){
+  hideAll(); document.getElementById('step1').style.display='block';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// ===== LOGIN - كل مرة يدخل =====
+function doLogin(){
+  let email=document.getElementById('loginEmail').value.trim();
+  let pass=document.getElementById('loginPass').value.trim();
+  let err=document.getElementById('loginError');
+  let acc=JSON.parse(localStorage.getItem('seh_account')||'{}');
+  if(!acc.email){ err.style.display='block'; err.textContent='No account yet, please create one first ❌'; return; }
+  if(email.toLowerCase()!==acc.email.toLowerCase()){ err.style.display='block'; err.textContent='Wrong email ❌'; return; }
+  if(pass!==acc.pass){ err.style.display='block'; err.textContent='Wrong password ❌ Try Forgot password?'; return; }
+  err.style.display='none';
+  localStorage.setItem('seh_logged','1');
+  showProfile();
+}
+
+// ===== FORGOT - بالإيميل + الهواية =====
+function showReset(){ document.getElementById('resetBox').style.display='flex'; }
+function closeReset(){ document.getElementById('resetBox').style.display='none'; }
 function saveNewPass(){
-  let p1 = document.getElementById("newPass").value;
-  let p2 = document.getElementById("confirmPass").value;
-  if(p1 === "" || p1 !== p2){
-    alert(" Password do not match");
-    return;
-  }
-  alert("✅ seved successfully");
-  showLogin();
+  let email=document.getElementById('resetEmail').value.trim();
+  let hobby=document.getElementById('resetHobby').value;
+  let p1=document.getElementById('newPass').value;
+  let p2=document.getElementById('confirmPass').value;
+  let acc=JSON.parse(localStorage.getItem('seh_account')||'{}');
+  if(!acc.email){ alert('No account yet'); return; }
+  if(email.toLowerCase()!==acc.email.toLowerCase()){ alert('Wrong email ❌'); return; }
+  if(hobby!==acc.hobby){ alert('Wrong hobby ❌ This is not your favourite hobby you chose first time'); return; }
+  if(!p1 || p1!==p2){ alert('Passwords do not match'); return; }
+  if(p1.length<4){ alert('Password must be at least 4 characters'); return; }
+  acc.pass=p1;
+  localStorage.setItem('seh_account',JSON.stringify(acc));
+  alert('✅ New password saved! Now login with your new password');
+  closeReset();
+  document.getElementById('loginPass').value='';
+  document.getElementById('newPass').value=''; document.getElementById('confirmPass').value='';
 }
-</script><br><br> 
-     
 
-     
-<button   onclick="confirmDialog.showModal()">NEXET</button>
-<dialog id="confirmDialog">
-     <p><b>
-      Are you sure about the information?</b></p>
-     <button onclick="confirmDialog.close()" style="color: red;"> no. retry</button>
-     <button onclick="goStep2()" style="color: green;"> yes. nexet</button>
-</dialog>
+// ===== REGISTER STEPS =====
+function goToStep2(){
+  let name=document.getElementById('userName').value.trim(), phone=document.getElementById('userPhone').value.trim(), age=document.getElementById('userAge').value.trim(), email=document.getElementById('userEmail').value.trim(), pass=document.getElementById('userPass').value.trim();
+  let err=document.getElementById('errorMsg');
+  if(!name||!phone||!age||!email||!pass){ err.style.display='block'; err.textContent='Please fill all fields ❌'; return; }
+  if(phone.length<10){ err.style.display='block'; err.textContent='Phone must be 10 numbers 📞'; return; }
+  err.style.display='none';
+  let temp=JSON.parse(localStorage.getItem('seh_temp')||'{}');
+  temp.name=name; temp.family=document.getElementById('userFamily').value.trim(); temp.phone=phone; temp.age=age; temp.email=email; temp.pass=pass;
+  temp.about=document.getElementById('userAbout').value.trim(); temp.marital=document.getElementById('userMarital').value; temp.address=document.getElementById('userAddress').value.trim();
+  localStorage.setItem('seh_temp', JSON.stringify(temp));
+  showStep(2);
+}
+function goToStep3(){
+  let gender=document.querySelector('input[name="gender"]:checked') ? document.querySelector('input[name="gender"]:checked').value : 'Man';
+  let temp=JSON.parse(localStorage.getItem('seh_temp')||'{}');
+  temp.gender=gender; temp.time=document.getElementById('userTime').value;
+  localStorage.setItem('seh_temp', JSON.stringify(temp));
+  showStep(3);
+}
+function confirmAll(){
+  let temp=JSON.parse(localStorage.getItem('seh_temp')||'{}');
+  let lang=document.querySelector('input[name="lang"]:checked') ? document.querySelector('input[name="lang"]:checked').value : 'Arabic';
+  temp.lang=lang;
+  temp.arabic=document.getElementById('rangeArabic').value;
+  temp.english=document.getElementById('rangeEnglish').value;
+  temp.french=document.getElementById('rangeFrench').value;
+  temp.spanish=document.getElementById('rangeSpanish').value;
+  temp.hobby=document.getElementById('userHobby').value;
+  let old=JSON.parse(localStorage.getItem('seh_account')||'{}');
+  temp.createdAt=old.createdAt||Date.now();
+  temp.photo=old.photo||'';
+  if(!temp.about) temp.about='Member of SEH community, I want to improve myself and learn every day.';
+  if(!temp.address) temp.address='Martil';
+  localStorage.setItem('seh_account', JSON.stringify(temp));
+  localStorage.setItem('seh_name', temp.name);
+  localStorage.setItem('seh_logged','1');
+  localStorage.removeItem('seh_temp');
+  alert('Congratulations '+temp.name+' ✅ Your profile is saved! Next time just login with your Email + Password');
+  showProfile();
+}
 
-<div id="step2" hidden>
-     <p><b>More information:</b> </p>
-     <input placeholder=" more informtion about you"><br>
-     <label >Marital status:</label><br>
-  <select>
-        <option>Single</option>
-        <option>Married</option>
-        <option>Divorced</option> 
-        <option>Widowed</option>
-   </select>
-<br>
-     <label> Address:</label><br>
-     <input type="text" placeholder="Your address" reduired><br>
-     <button> I agree </button><br>
+// ===== PROFILE =====
+function showProfile(){
+  let acc=JSON.parse(localStorage.getItem('seh_account')||'{}');
+  if(!acc.name) return;
+  document.getElementById('profileBox').style.display='block';
+  document.getElementById('allSteps').style.display='none';
+  let points=parseInt(localStorage.getItem('seh_points')||'0');
+  let level=Math.floor(points/100)+1, rest=points%100;
+  let days=1; if(acc.createdAt) days=Math.floor((Date.now()-acc.createdAt)/(1000*60*60*24))+1;
+  let av=document.getElementById('dashAvatar');
+  if(acc.photo) av.innerHTML='<img src="'+acc.photo+'">'; else av.textContent=acc.name.charAt(0).toUpperCase();
+  document.getElementById('dashName').textContent=acc.name+' '+(acc.family||'');
+  document.getElementById('dashCity').textContent=acc.address+' • Morocco 🇲🇦';
+  document.getElementById('dashLevel').textContent='⭐ LEVEL '+level;
+  document.getElementById('levelBar').style.width=rest+'%';
+  document.getElementById('levelText').textContent=rest+' / 100 points to Level '+(level+1);
+  document.getElementById('dashPoints').textContent=points;
+  document.getElementById('dashAge').textContent=acc.age;
+  document.getElementById('dashDays').textContent=days;
+  document.getElementById('infoPhone').textContent=acc.phone;
+  document.getElementById('infoEmail').textContent=acc.email;
+  document.getElementById('infoGender').textContent=acc.gender;
+  document.getElementById('infoHobby').textContent=acc.hobby;
+  document.getElementById('infoAddress').textContent=acc.address;
+  document.getElementById('infoMarital').textContent=acc.marital;
+  document.getElementById('infoTime').textContent=acc.time||'-';
+  document.getElementById('infoLang').textContent=acc.lang;
+  document.getElementById('infoAbout').textContent=acc.about+' | Language: '+acc.lang+' | Arabic '+acc.arabic+'% • English '+acc.english+'% • French '+acc.french+'% • Spanish '+acc.spanish+'%';
+  let badges=[];
+  if(days>=1) badges.push('🎉 New Member');
+  if(points>=50) badges.push('⭐ 50 Points');
+  if(points>=100) badges.push('👑 100 Points - Legend');
+  if(points>=500) badges.push('💎 500 Points - King of SEH');
+  document.getElementById('badgesBox').innerHTML=badges.map(b=>'<span style="background:#E9C46A;color:#111;padding:6px 12px;border-radius:20px;font-size:12px;font-weight:800">'+b+'</span>').join('')||'<span style="color:#aaa;font-size:13px">Play to earn badges 🏆</span>';
+}
+function changePhoto(e){
+  let file=e.target.files[0]; if(!file) return;
+  let reader=new FileReader();
+  reader.onload=function(ev){ let acc=JSON.parse(localStorage.getItem('seh_account')); acc.photo=ev.target.result; localStorage.setItem('seh_account',JSON.stringify(acc)); showProfile(); };
+  reader.readAsDataURL(file);
+}
+function editProfile(){
+  let acc=JSON.parse(localStorage.getItem('seh_account'));
+  localStorage.setItem('seh_temp', JSON.stringify(acc));
+  document.getElementById('profileBox').style.display='none';
+  document.getElementById('allSteps').style.display='block';
+  document.getElementById('userName').value=acc.name||'';
+  document.getElementById('userFamily').value=acc.family||'';
+  document.getElementById('userPhone').value=acc.phone||'';
+  document.getElementById('userAge').value=acc.age||'';
+  document.getElementById('userEmail').value=acc.email||'';
+  document.getElementById('userPass').value=acc.pass||'';
+  document.getElementById('userAbout').value=acc.about||'';
+  document.getElementById('userAddress').value=acc.address||'';
+  if(acc.marital) document.getElementById('userMarital').value=acc.marital;
+  if(acc.gender==='Woman') document.getElementById('genderWoman').checked=true; else document.getElementById('genderMan').checked=true;
+  if(acc.time) document.getElementById('userTime').value=acc.time;
+  if(acc.hobby) document.getElementById('userHobby').value=acc.hobby;
+  showStep(1);
+}
+function logoutAccount(){
+  localStorage.setItem('seh_logged','0');
+  document.getElementById('profileBox').style.display='none';
+  document.getElementById('allSteps').style.display='block';
+  showLoginBox();
+}
+function deleteAccount(){ if(confirm('Are you sure you want to delete your account?')){ localStorage.removeItem('seh_account'); localStorage.removeItem('seh_name'); localStorage.removeItem('seh_logged'); alert('Deleted 🗑️'); location.reload(); } }
 
-</div>
+['Arabic','English','French','Spanish'].forEach(function(l){
+  let r=document.getElementById('range'+l);
+  r.addEventListener('input',function(){ document.getElementById('val'+l).textContent=this.value+'%'; });
+});
 
-
-
-</fieldset>
-
-    </form>
-
-    <form>
-        <fieldset>
-          <legend>Gender</legend>
-           <div id="GENDER"></div>
-<h1 align="center"> النوع</h1><br>
-      <label>🤵 Man &nbsp;&nbsp;&nbsp;&nbsp; </label>
-      <input type="radio" value="male" name="gender" reduired><br>
-      <label>🧕 Women</label>
-      <input type="radio" value="male" name="gender" reduired><br>
-      </fieldset>
-      <fieldset>
-<h1 align="center">the time</h1><br>
-<label >Enter the time </label>
-<input type="datetime-local" ><br>
-<button> OK </button><br>
-</fieldset>
-    </form>
-
-      <form>
-        <fieldset>
-          <legend> LANGUAGE AND HOBBIES</legend>
-          <div id="LANGUAGE AND HOBBIES"></div>
-      <h1 align="center">اللغات</h1><br>
-      <label>Arabic</label>
-      <input type="radio"> <br>
-      <input type="range" ><br>
-
-      <label>English</label>
-      <input type="radio"><br>
-      <input type="range"><br>
-
-      <label>French</label>
-      <input type="radio"><br>
-      <input type="range"><br>
-
-      <label>Spanich</label>
-      <input type="radio"><br>
-      <input type="range"><br>
-<h1 align="center">الهوايات</h1><br>
-     - Chosse the best hobbie: <br>
-      <select>
-        <option>Playing football</option>
-        <option>Reading books</option>
-        <option>Watching movies</option> 
-        <option>Writing stories</option>
-        <option>Others</option>
-      </select>
-
-      <h2>In this wibe site you can search aboot:</h2><br>
-      <li>Books</li>
-      <li>Hobbies</li>
-      <li>New language</li>
-      <li>A lot of information</li><br>
-
-      - What's your best animal?
-      <ul>
-      <il>🦁 Lion</il><br>
-      <il>🐈 Cat</il><br>
-      <il>🐕 Dog</il><br>
-      <il>🐘 Elephent</il><br>
-    </ul>
-      <input type="text" placeholder="your animal">
-
-      <button> submit </button><br>
-      </fieldset>
-      </form>
-
-
-
-
-</div>
- <script src="javascript"></script>
+// ===== ON LOAD - شنو كيبان أول مرة؟ =====
+(function(){
+  let acc=JSON.parse(localStorage.getItem('seh_account')||'{}');
+  let logged=localStorage.getItem('seh_logged');
+  if(acc.name && logged=='1'){ showProfile(); }
+  else if(acc.name){ showLoginBox(); }
+  else { hideAll(); document.getElementById('step1').style.display='block'; }
+})();
+</script>
 </body>
 </html>

@@ -95,17 +95,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
       alert("thank you " + (info.name||"") + " Saved successfully  ✅");
     });
   }
-  // زر submit ديال الحيوان
-  document.querySelectorAll("button").forEach(btn=>{
-    if(btn.textContent.trim().toLowerCase() === "submit"){
-      btn.addEventListener("click", (e)=>{
-        e.preventDefault();
-        let animal = document.querySelector('input[placeholder="your animal"]')?.value;
-        if(!animal) alert("   please write the best animal");
-        else alert("nice, you like " + animal);
-      });
-    }
-  });
+  
 
   // اللغات: إلا وافق على لغة يبان المستوى
   document.querySelectorAll('fieldset').forEach(fs=>{
