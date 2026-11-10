@@ -2,110 +2,113 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="style.css">
-<title>soufyane el haddaoui</title>
+<title>Soufyane El Haddaoui - SEH World</title>
 <link rel="icon" href="IMAGES/1793704644158.jpg">
+
 <style>
 /* ===== BASE ديالك محفوظ ===== */
-.content{animation:fadeIn 1s ease}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f6f5f2}
+.content{animation:fadeIn 1s ease;padding-bottom:20px}
 @keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 
-/* ===== جديد: التصميم الذهبي بحال التصويرة - غير زيادة ===== */
+/* ===== HEADER ===== */
 .gold-header{background:white;text-align:center;padding:18px 10px 10px}
-.gold-header h1{color:#8a6d1a;font-size:23px;margin:0}
+.gold-header h2{color:#8a6d1a;font-size:30px;margin:0;font-weight:bold}
 .gold-header p{color:#999;font-size:13px;margin:5px 0 0}
-.main-nav-gold{background:#b99c3f;display:flex;justify-content:center;flex-wrap:wrap;position:sticky;top:0;z-index:100}
-.main-nav-gold a{color:white;text-decoration:none;padding:12px 14px;font-size:13px;font-weight:bold}
-.main-nav-gold a:hover,.main-nav-gold a.active{background:#8a6d1a}
+.top-bar{display:flex;justify-content:space-between;align-items:center;padding:10px 15px;background:#111;color:#fff;font-size:13px}
+
+/* ===== WORLD - الجديد الواعر ===== */
+.world-section{margin:20px 10px;text-align:center}
+.world-section h2{font-size:26px;margin:10px 0 5px}
+.world-section p{color:#777;margin:0 0 15px}
+.level-badge{display:inline-block;background:#111;color:#00ff41;padding:8px 18px;border-radius:20px;font-weight:bold;font-size:14px;margin-bottom:15px;box-shadow:0 5px 15px rgba(0,0,0,.2)}
+.level-badge span{color:#E9C46A}
+.world-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+@media(max-width:600px){.world-grid{grid-template-columns:1fr}}
+.world-card{border-radius:22px;padding:25px 15px;cursor:pointer;color:white;position:relative;overflow:hidden;transition:.3s;text-align:center;border:3px solid transparent}
+.world-card:active{transform:scale(.96)}
+.world-card.games{background:linear-gradient(135deg,#6a11cb,#2575fc);box-shadow:0 10px 25px rgba(37,117,252,.4)}
+.world-card.stories{background:linear-gradient(135deg,#f093fb,#f5576c);box-shadow:0 10px 25px rgba(245,87,108,.4)}
+.world-card .big{font-size:55px;display:block;margin-bottom:5px}
+.world-card h3{margin:5px 0;font-size:22px}
+.world-card p{color:rgba(255,255,255,.9);font-size:14px;line-height:1.5;margin:8px 0}
+.world-card .cta{background:white;color:#111;padding:10px 20px;border-radius:20px;font-weight:bold;display:inline-block;margin-top:10px;font-size:14px}
+.world-card.active{border-color:#E9C46A;transform:scale(1.02)}
+.world-detail{display:none;background:white;border-radius:18px;padding:18px;margin-top:15px;text-align:left;box-shadow:0 5px 20px rgba(0,0,0,.08);animation:fadeIn .4s ease}
+.world-detail.show{display:block}
+.world-detail h4{margin:0 0 12px;color:#111}
+.mini-games{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+@media(max-width:500px){.mini-games{grid-template-columns:repeat(2,1fr)}}
+.mini-game{background:#f6f5f2;border-radius:14px;padding:12px 5px;text-align:center;cursor:pointer;border:1px solid #eee}
+.mini-game span{font-size:28px;display:block}
+.mini-game b{font-size:12px}
+.mini-game small{font-size:11px;color:#888}
+.daily-box{background:linear-gradient(135deg,#FFD700,#FF8C00);border-radius:18px;padding:18px;margin:15px 10px;text-align:center;color:#111}
+.daily-box h3{margin:0 0 5px}
+.daily-box p{margin:5px 0;font-weight:bold}
+.daily-box button{background:#111;color:white;border:none;padding:11px 25px;border-radius:20px;font-weight:bold;cursor:pointer;margin-top:8px}
+.daily-box button:active{transform:scale(.95)}
+
+/* HERO - محفوظ + محسن */
+.hero-banner{position:relative;background-image:url(IMAGES/markus-spiske-iar-afB0QQw-unsplash.jpg);background-size:cover;background-position:center;color:#fff;padding:12px 20px;border-radius:20px;text-align:center;overflow:hidden;border:1px solid #222;box-shadow:0 20px 60px rgba(0,0,0,.6);min-height:260px;display:flex;align-items:center;justify-content:center;margin:0 10px}
+.hero-banner::before{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(45deg,rgba(0,0,0,.7),rgba(0,255,65,.15))}
 .hero-gold-text{position:absolute;right:18px;top:50%;transform:translateY(-50%);text-align:right;z-index:2}
 .hero-gold-text h2{font-size:32px;color:#fff;line-height:1.3;text-shadow:0 2px 10px #000;margin:0}
 .hero-gold-text span{background:#b99c3f;color:white;padding:6px 14px;border-radius:20px;font-size:13px;display:inline-block;margin-top:10px}
-.news-box{background:white;border-radius:10px;padding:15px;margin:18px 10px;box-shadow:0 2px 10px rgba(0,0,0,.05)}
-.news-box h3{color:#8a6d1a;border-bottom:2px solid #f0e6b8;padding-bottom:10px;margin:0 0 12px;font-size:20px}
-
-/* LOGO */
-.logo-container{text-align:center;padding:20px 0}
-.logo-container img{width:90px;height:90px;border-radius:50%;border:2px solid #00ff41;box-shadow:0 0 20px black;transition:.4s}
-.logo-container img:hover{transform:scale(1.2) rotate(5deg)}
-
-/* ورقة تعريفية SEH*/
-section{background:#f6f5f2; color:#3B2A1A;
- border:5px solid #E8C99A;margin:20px 10px;box-shadow:0 10px 30px rgba(210,180,130,0.35)
- }
-
-/* HERO WORLD CLASS - محفوظ + محسن */
-.hero-banner{position:relative;background-image:url(IMAGES/markus-spiske-iar-afB0QQw-unsplash.jpg);background-size:cover;background-position:center;color:#fff;padding:12px 20px;border-radius:20px;text-align:center;overflow:hidden;border:1px solid #222;box-shadow:0 20px 60px rgba(0,0,0,.6);min-height:260px;display:flex;align-items:center;justify-content:center}
-.hero-banner::before{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(45deg,rgba(0,0,0,.7),rgba(0,255,65,.15))}
 .hero-text{position:relative;z-index:2;display:inline-block;animation:slideAndStop 2.5s ease-out forwards;font-size:22px}
 @keyframes slideAndStop{0%{transform:translateX(-120vw);opacity:0}100%{transform:translateX(0);opacity:1}}
 
-/* ===== ميزة 1: صور تفاعلية ===== */
-.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:15px;margin:30px 0}
-.gallery-item{position:relative;border-radius:16px;overflow:hidden;height:180px;cursor:pointer;transform:translateY(20px);opacity:0;transition:.6s}
-.gallery-item.visible{transform:translateY(0);opacity:1}
-.gallery-item img{width:100%;height:100%;object-fit:cover;transition:.6s}
-.gallery-item:hover img{transform:scale(1.2) rotate(2deg);filter:brightness(1.2)}
-.gallery-item::after{content:'🔍 Zoom';position:absolute;bottom:0;left:0;width:100%;background:linear-gradient(transparent,#000);color:#fff;padding:20px 10px 10px;text-align:center;opacity:0;transition:.3s}
-.gallery-item:hover::after{opacity:1}
+.news-box{background:white;border-radius:10px;padding:15px;margin:18px 10px;box-shadow:0 2px 10px rgba(0,0,0,.05)}
+.news-box h3{color:#8a6d1a;border-bottom:2px solid #f0e6b8;padding-bottom:10px;margin:0 0 12px;font-size:20px}
 
-/* Lightbox */
+section{background:#f6f5f2;color:#3B2A1A;border:5px solid #E8C99A;margin:20px 10px;box-shadow:0 10px 30px rgba(210,180,130,0.35);padding:20px;border-radius:10px}
+
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:15px;margin:20px 10px}
+.gallery-item{position:relative;border-radius:16px;overflow:hidden;height:180px;cursor:pointer;transition:.6s}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:.6s}
+.gallery-item:hover img{transform:scale(1.2) rotate(2deg)}
 #lightbox{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.9);display:none;justify-content:center;align-items:center;z-index:999}
 #lightbox.active{display:flex}
-#lightbox img{max-width:90%;max-height:80%;border-radius:20px;box-shadow:0 0 50px rgb(11, 221, 236)}
+#lightbox img{max-width:90%;max-height:80%;border-radius:20px}
 
-/* ===== ميزة 2: كروت ===== */
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;margin:40px 0}
-.card{background:linear-gradient(60deg,rgba(210,180,130,0.35)  0%,rgb(11, 221, 236) 100%);border:1px solid #222;border-radius:20px;padding:25px;text-align:center;transition:.4s;transform-style:preserve-3d}
-.card:hover{transform:translateY(-10px) rotateX(5deg) rotateY(-5deg);border-color:#00ff41;box-shadow:0 20px 40px rgba(0,255,65,.2)}
-.card .icon{font-size:30px;margin-bottom:10px;display:block}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;margin:20px 10px}
+.card{background:linear-gradient(60deg,rgba(210,180,130,0.35) 0%,rgb(11,221,236) 100%);border:1px solid #222;border-radius:20px;padding:25px;text-align:center;transition:.4s}
+.card:hover{transform:translateY(-10px)}
+.card .icon{font-size:30px;display:block}
 .card h4{color:brown;margin:10px 0}
 
-/* ===== ميزة 3: إحصائيات ===== */
-.stats{display:flex;justify-content:space-around;background: black;
-border-radius:20px;  padding:30px 10px;margin:40px 0;border:1px solid #222}
+.stats{display:flex;justify-content:space-around;background:black;border-radius:20px;padding:30px 10px;margin:20px 10px;border:1px solid #222}
 .stat{text-align:center}
 .stat .num{font-size:25px;font-weight:bold;color:#00ff41;display:block}
 .stat small{color:grey}
 
-/* DROPDOWN ديالك محسن */
-.dropdown .menu{max-height:0;overflow:hidden;opacity:0;transition:.4s;background:rgb(221, 219, 216);border-radius:12px;margin-top:10px}
+.dropdown .menu{max-height:0;overflow:hidden;opacity:0;transition:.4s;background:rgb(221,219,216);border-radius:12px;margin-top:10px}
 .dropdown .menu.open{max-height:300px;opacity:1;padding:10px}
-.dropdown .menu div{padding:12px;cursor:pointer;border-radius:8px;transition:.2s}
-.dropdown .menu div:hover{background:#222;color:#00ff41;transform:translateX(5px)}
-
-/* PAGES */
-.page{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:linear-gradient(135deg,#764ba2  0%,rgb(11, 221, 236) 100%);
-  backdrop-filter:blur(12px);z-index:200;padding:50px 20px;text-align:center;animation:pageIn .4s ease}
+.dropdown .menu div{padding:12px;cursor:pointer;border-radius:8px}
+.dropdown .menu div:hover{background:#222;color:#00ff41}
+.page{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:linear-gradient(135deg,#764ba2 0%,rgb(11,221,236) 100%);z-index:200;padding:50px 20px;text-align:center}
 .page.active{display:block}
-@keyframes pageIn{from{transform:scale(.9);opacity:0}to{transform:scale(1);opacity:1}}
 .page button{padding:10px 20px;margin:5px;border-radius:20px;border:1px solid #00ff41;background:transparent;color:#00ff41;cursor:pointer}
-.page button:hover{background:#00ff41;color:#000}
+.bottom-row{position:fixed;bottom:0;left:0;width:100%;background:#111;display:flex;justify-content:space-around;padding:8px 0;z-index:100;border-top:2px solid #00ff41}
+.bottom-row a.active{color:#00ff41}
 @media(max-width:700px){.hero-gold-text h2{font-size:24px}}
 </style>
 </head>
 <body>
 
-<!-- ===== جديد: الشريط الفوقاني بحال التصويرة ===== -->
 <div class="top-bar">
-<span id="todayDate">📅 جاري تحميل التاريخ...</span>
-<a href="https://facebook.com" target="_blank" style="font-size:20px;text-decoration:none">📘</a>
+<span id="todayDate">📅 Loading...</span>
+<span>🔥 SEH WORLD</span>
 </div>
 
-<!-- ===== جديد: الهيدر الذهبي ===== -->
 <div class="gold-header">
-<h2 style="font-size:30px; font-weight:bold;">  Soufyane El Haddaoui</h2>
-<p>موقعي الشخصي - قصص، تعلم، وأدوات مجانية</p>
+<h2>Soufyane El Haddaoui</h2>
+<p>موقعي الشخصي - قصص، تعلم، وألعاب</p>
 </div>
 
-<!-- ===== جديد: القائمة الذهبية الفوق 
-<nav class="main-nav-gold">
-  <a href="index.html" class="active">🏠 الرئيسية</a>
-  <a href="INFO.html">👤 معلوماتي</a>
-  <a href="GAME.html">🎮 لعبة</a>
-  <a href="STORIES.html">📚 قصص</a>
-</nav>
-===== -->
-<!-- القائمة ديالك القديمة لتحت - خليتها كيفما هي -->
 <nav class="bottom-row">
   <a href="index.html" class="nav-item active">🏠<br><small>MENU</small></a>
   <a href="INFO.html" class="nav-item">👤<br><small>INFO PERSONAL</small></a>
@@ -114,210 +117,270 @@ border-radius:20px;  padding:30px 10px;margin:40px 0;border:1px solid #222}
 </nav>
 
 <div class="content">
-  <!-- 1 - HERO - محفوظ + زدنا عليه الجملة الذهبية -->
-  <h2> 
-    <div class="hero-banner">
-      <div class="hero-gold-text">
-        <h2>نرسم<br>حلمك في<br>شاشة صغيرة</h2>
-        <span>اكتشف الموقع الآن ↓</span>
-        <br><br><br><br>
-      </div>
-      <div class="hero-text" style="margin-top:150px"><b><i>"This is the first web site for us that's why we need you to support us"</i></b></div>
-    </div>
-  </h2>
 
-<!-- 3 - أخبار الموقع - جديد: غير ترتيب، المحتوى ديالك -->
-  <div class="news-box">
-    <h3 >📢 أخبار الموقع</h3>
-    <p style="font-size:15px;line-height:1.8"> <b>You are ready to read a story🔥</b> <br> قصص حقيقية تلهمك وتدفعك للأمام &nbsp; <a href="STORIES.html" style="color:#8a6d1a;font-weight:bold"> READ NOW →</a></p>
-    <p style="font-size:15px;line-height:1.8;margin-top:8px"><b>You can play some games</b> <br>الجديد - لحظات تحدي ومتعة وتركيز &nbsp; <a href="GAME.html" style="color:#8a6d1a;font-weight:bold">PLAY NOW  →</a></p>
+  <!-- HERO محفوظ -->
+  <div class="hero-banner">
+    <div class="hero-gold-text">
+      <h2 style="font-size: 25px;">نرسم<br>حلمك في<br>شاشة صغيرة</h2>
+      <span>اكتشف الموقع الآن ↓</span>
+      <br><br><br><br>
+    </div>
+    <div class="hero-text" style="margin-top:150px"><b><i>"This is the first web site for us that's why we need you to support us"</i></b></div>
   </div>
 
-<!-- 2 - ورقة تعريفية SEH - محفوظة كاملة -->
-<section>
-  <div style="font-size:30px; font-weight:bold; color:#B7791F; letter-spacing:2px;">SEH</div>
-  <div style="font-size:13px; letter-spacing:3px; color:#8A6A45; margin-bottom:20px;">SOUFYANE EL HADDAOUI</div>
+  <!-- ===== WORLD - الجديد ===== -->
+  <div class="world-section">
+    <h2>🌍 CHOOSE YOUR WORLD</h2>
+    <p>اختار العالم الخاص بك و ابدأ المغامرة</p>
+    <div class="level-badge">👑 LEVEL <span id="levelNum">1</span> &nbsp;|&nbsp; ⭐ POINTS: <span id="pointsNum">0</span></div>
 
-  <p dir="rtl" style="font-size:16px; line-height:1.9; margin:0;">
-    مرحبا بك في عالم <b style="color:#B7791F;">SEH</b>، حيث يلتقي الإبداع بالتقنية.<br>
-    أنا <b>سفيان الحداوي</b>، وهذا موقعي الأول، صممته من الصفر بشغف.<br>
-    في <b>INFO</b> سنسألك عنك أنت، عن اسمك، عمرك، مدينتك وهواياتك، لكي نصمم لك تجربة تناسبك.<br>
-    في <b>GAME</b> ستعيش لحظات من التحدي والمتعة والتركيز.<br>
-    في <b>STORIES</b> ستقرأ قصصا حقيقية تلهمك وتدفعك للأمام.<br>
-    هذا الموقع ليس مجرد صفحات، بل تجربة كاملة صُممت لك.<br>
-    رؤيتي أن يصبح SEH منصة تجمع الشباب المبدع في كل مكان.<br>
-    انضم إلينا الآن، وكن جزءا من البداية. <b style="color:#B7791F;">لأن القصة لا تكتمل بدونك.</b>
-  </p>
+    <div class="world-grid">
+      <div class="world-card games" id="cardGames" onclick="selectWorld('games')">
+        <span class="big">🎮</span>
+        <h3>GAME WORLD</h3>
+        <p> ألعاب شيقة<br>تحدي - متعة - تركيز</p>
+        <span class="cta">ENTER WORLD →</span>
+      </div>
+      <div class="world-card stories" id="cardStories" onclick="selectWorld('stories')">
+        <span class="big">📚</span>
+        <h3>STORY WORLD</h3>
+        <p>قصص حقيقية<br>تلهمك وتدفعك للأمام</p>
+        <span class="cta">READ STORY →</span>
+      </div>
+    </div>
 
-  <hr style="border:1px solid #E8C99A; margin:20px 0;">
+    <!-- تفاصيل الألعاب -->
+    <div id="gamesDetail" class="world-detail">
+      <h4>🎮 اختر لعبتك و ابدأ اللعب :</h4>
+      <div class="mini-games">
+        <div class="mini-game" onclick="playGame()"><span>🧠</span><b>Memory</b><br><small>ذاكرة</small></div>
+        <div class="mini-game" onclick="playGame()"><span>⚡</span><b>Reaction</b><br><small>سرعة</small></div>
+        <div class="mini-game" onclick="playGame()"><span>🎯</span><b>Target</b><br><small>تركيز</small></div>
+        <div class="mini-game" onclick="playGame()"><span>🔢</span><b>Number</b><br><small>أرقام</small></div>
+        <div class="mini-game" onclick="playGame()"><span>🎨</span><b>Color</b><br><small>ألوان</small></div>
+        <div class="mini-game" onclick="playGame()"><span>🧩</span><b>Puzzle</b><br><small>ذكاء</small></div>
+      </div>
+      <div style="text-align:center;margin-top:15px"><a href="GAME.html" style="background:#2575fc;color:white;padding:12px 30px;border-radius:20px;text-decoration:none;font-weight:bold;display:inline-block">PLAY ALL GAMES 🎮</a></div>
+    </div>
 
-  <p style="font-size:15px; line-height:1.9; margin:0; color:#5A4632;">
-    Welcome to the <b style="color:#B7791F;">SEH</b> world, where creativity meets technology.<br>
-    I am <b>Soufyane El Haddaoui</b>, and this is my first website, built from scratch with passion.<br>
-    In <b>INFO</b>, we will ask you about YOU, your name, age, city and hobbies, to design an experience made just for you.<br>
-   In <b>GAME</b>, you will live moments of challenge, fun and focus.<br>
-    In <b>STORIES</b>, you will read real stories that inspire you and push you forward.<br>
-    This website is not just pages, it is a full experience made for you.<br>
-    My vision is to make SEH a platform that gathers creative youth everywhere.<br>
-    Join us now, and be part of the beginning. <b style="color:#B7791F;">Because the story is not complete without you.</b>
-  </p>
+    <!-- تفاصيل القصص -->
+    <div id="storiesDetail" class="world-detail">
+      <h4>📚 قصة اليوم ليك:</h4>
+      <p id="randomStory" style="font-size:16px;line-height:1.8;background:#fff8e1;padding:15px;border-radius:12px;border-left:4px solid #f5576c">...</p>
+      <div style="text-align:center"><a href="STORIES.html" style="background:#f5576c;color:white;padding:12px 30px;border-radius:20px;text-decoration:none;font-weight:bold;display:inline-block">READ ALL STORIES 📚</a></div>
+    </div>
+  </div>
 
-  <a href="INFO.html" style="display:inline-block; margin-top:22px; background:#E9C46A; color:#3B2A1A; padding:13px 32px; border-radius:25px; font-weight:bold; text-decoration:none; box-shadow:0 4px 12px rgba(233,196,106,0.5);">ابدأ الرحلة - START JOURNEY 🚀</a>
+  <!-- تحدي اليوم -->
+  <div class="daily-box">
+    <h3>🎲 تحدي اليوم</h3>
+    <p id="dailyChallenge">...</p>
+    <button onclick="newChallenge()">🎲 تحدي جديد</button>
+  </div>
 
-</section> 
+  <!-- أخبار الموقع - محفوظ -->
+  <div class="news-box">
+    <h3>📢 أخبار الموقع</h3>
+    <p style="font-size:15px;line-height:1.8"><b>You are ready to read a story🔥</b><br>قصص حقيقية تلهمك وتدفعك للأمام &nbsp;<a href="STORIES.html" style="color:#8a6d1a;font-weight:bold">READ NOW →</a></p>
+    <p style="font-size:15px;line-height:1.8;margin-top:8px"><b>You can play some games</b><br>الجديد - لحظات تحدي ومتعة وتركيز &nbsp;<a href="GAME.html" style="color:#8a6d1a;font-weight:bold">PLAY NOW →</a></p>
+  </div>
 
-  <!-- 4 - إحصائيات - محفوظة -->
+  <!-- ورقة SEH - محفوظة كاملة -->
+  <section>
+    <div style="font-size:30px;font-weight:bold;color:#B7791F;letter-spacing:2px">SEH</div>
+    <div style="font-size:13px;letter-spacing:3px;color:#8A6A45;margin-bottom:20px">SOUFYANE EL HADDAOUI</div>
+    <p dir="rtl" style="font-size:16px;line-height:1.9;margin:0">مرحبا بك في عالم <b style="color:#B7791F">
+      SEH</b>، حيث يلتقي الإبداع بالتقنية.
+      <br>أنا <b>سفيان الحداوي
+    </b>، وهذا موقعي الأول، صممته من الصفر بشغف.
+    <br>في <b>INFO</b> سنسألك عنك أنت، عن اسمك، عمرك، مدينتك وهواياتك، لكي نصمم لك تجربة تناسبك.
+      <br>في <b>GAME</b> ستعيش لحظات من التحدي والمتعة والتركيز.
+      <br>في <b>STORIES</b> ستقرأ قصصا حقيقية تلهمك وتدفعك للأمام.<br>هذا الموقع ليس مجرد صفحات، بل تجربة كاملة صُممت لك.
+      <br>رؤيتي أن يصبح SEH منصة تجمع الشباب المبدع في كل مكان.
+      <br>انضم إلينا الآن، وكن جزءا من البداية. <b style="color:#B7791F">لأن القصة لا تكتمل بدونك.</b></p>
+    <hr style="border:1px solid #E8C99A;margin:20px 0">
+    <p style="font-size:15px;line-height:1.9;margin:0;color:#5A4632">Welcome to the <b style="color:#B7791F">
+      SEH</b> world, where creativity meets technology.
+      <br>I am <b>Soufyane El Haddaoui</b>, and this is my first website, built from scratch with passion.
+      <br>In <b>INFO</b>, we will ask you about YOU, your name, age, city and hobbies, to design an experience made just for you.
+      <br>In <b>GAME</b>, you will live moments of challenge, fun and focus.
+      <br>In <b>STORIES</b>, you will read real stories that inspire you and push you forward.
+      <br>This website is not just pages, it is a full experience made for you.
+      <br>My vision is to make SEH a platform that gathers creative youth everywhere.
+      <br>Join us now, and be part of the beginning. <b style="color:#B7791F">Because the story is not complete without you.</b></p>
+    <a href="INFO.html" style="display:inline-block;margin-top:22px;background:#E9C46A;color:#3B2A1A;padding:13px 32px;border-radius:25px;font-weight:bold;text-decoration:none">ابدأ الرحلة - START JOURNEY 🚀</a>
+  </section>
+
   <div class="stats">
     <div class="stat"><span class="num" data-target="1445">0</span><small>زائر</small></div>
     <div class="stat"><span class="num" data-target="97">0</span><small>% رضا</small></div>
     <div class="stat"><span class="num" data-target="21">0</span><small>ساعة دعم</small></div>
   </div>
 
-  <!-- 5 - كروت - محفوظة -->
-   <div style="background: rgb(187, 185, 185);border-radius:20px;">
-   <h2 style="text-align: center; color:whitesmoke; background:#0f0f0f;border-radius:20px;
-   margin: 40px 0 20px0;letter-spacing: 2px;;">Why we are different</h2>
-
-  <div class="cards">
-    <div class="card"><span class="icon">⚡</span><h4> Fast</h4><p><b>A lightweight website that works fast</b></p></div>
-    <div class="card"><span class="icon">🔒</span><h4>Secure</h4><p><b>Full protection for your data</b></p></div>
-    <div class="card"><span class="icon">🎨</span><h4>Modern</h4><p><b>world class website design </b> </p></div>
-    
+  <div style="background:rgb(187,185,185);border-radius:20px;margin:0 10px">
+    <h2 style="text-align:center;color:whitesmoke;background:#0f0f0f;border-radius:20px;padding:12px;margin:20px 0;letter-spacing:2px">Why we are different</h2>
+    <div class="cards">
+      <div class="card"><span class="icon">⚡</span><h4>Fast</h4><p><b>A lightweight website that works fast</b></p></div>
+      <div class="card"><span class="icon">🔒</span><h4>Secure</h4><p><b>Full protection for your data</b></p></div>
+      <div class="card"><span class="icon">🎨</span><h4>Modern</h4><p><b>world class website design</b></p></div>
+    </div><br>
   </div>
-  <br>
-</div>
-  <!-- 6 - صور - محفوظة -->
-  <h1>📸معرض الصور </h1>
+
+  <h1 style="padding:0 10px">📸 معرض الصور</h1>
   <div class="gallery">
     <div class="gallery-item" onclick="openLightbox(this)"><img src="IMAGES/clayton-malquist-aAubExQ70P8-unsplash.jpg"></div>
-    <div class="gallery-item" onclick="openLightbox(this)"><img src="IMAGES/logan-voss-zgdT2K7-XTg-unsplash.jpg"></div> 
+    <div class="gallery-item" onclick="openLightbox(this)"><img src="IMAGES/logan-voss-zgdT2K7-XTg-unsplash.jpg"></div>
     <div class="gallery-item" onclick="openLightbox(this)"><img src="IMAGES/mohammad-rahmani-oXlXu2qukGE-unsplash.jpg"></div>
     <div class="gallery-item" onclick="openLightbox(this)"><img src="IMAGES/planet-volumes-VvZwspdTsQM-unsplash.jpg"></div>
   </div>
 
-<div style="text-align:center; margin:20px 0;">
-  <button id="loadMoreBtn" onclick="loadMoreImages()" style="padding:12px 30px; background:transparent; color:black; border:2px solid black; 
-  border-radius:40px; font-weight:bold; cursor:pointer; transition:0.3s;">
-    📸 Show more images
-  </button>
+  <div style="text-align:center;margin:20px 0">
+    <button id="loadMoreBtn" onclick="loadMoreImages()" style="padding:12px 30px;background:transparent;
+    color:black;border:2px solid black;border-radius:40px;font-weight:bold;cursor:pointer">📸 Show more images</button>
+  </div>
+
+  
+  <!-- ===== MORE - نسخة جديدة خدامة 100% ===== -->
+<div style="margin:20px 10px;background:white;border-radius:15px;padding:15px;box-shadow:0 2px 10px rgba(0,0,0,.05)">
+  <button onclick="toggleMore()" id="moreBtn" style="background:#007bff;color:white;border:none;padding:12px 25px;border-radius:20px;font-weight:bold;cursor:pointer;font-size:15px">⋮ MORE ▼</button>
+
+  <div id="moreMenu" style="display:none;margin-top:15px;gap:10px">
+    <button onclick="showBox('settingBox')" style="width:100%;padding:13px;border:none;border-radius:12px;background:gray;font-weight:bold;cursor:pointer;text-align:left">⚙️ Setting</button>
+    <button onclick="showBox('aboutBox')" style="width:100%;padding:13px;border:none;border-radius:12px;background:gray;font-weight:bold;cursor:pointer;text-align:left;margin-top:8px">📄 About site</button>
+    <button onclick="showBox('signBox')" style="width:100%;padding:13px;border:none;border-radius:12px;background:gray;font-weight:bold;cursor:pointer;text-align:left;margin-top:8px">🚪 Sign out</button>
+  </div>
+
+  <!-- الصناديق -->
+  <div id="settingBox" style="display:none;background:#f8f9fa;border-radius:12px;padding:20px;margin-top:15px;text-align:center">
+    <h3>⚙️ Setting</h3>
+    <p>Premium settings coming soon</p>
+    <button onclick="hideAllBoxes()" style="padding:10px 25px;border-radius:20px;border:none;background:#111;color:white;cursor:pointer">Back</button>
+  </div>
+
+  <div id="aboutBox" style="display:none;background:#f8f9fa;border-radius:12px;padding:20px;margin-top:15px;text-align:center">
+    <h3>📄 About site</h3>
+    <p>this is a new website - world class version</p>
+    <a href="ABOUT.html" style="display:inline-block;margin:10px 0;color:#007bff;font-weight:bold">click here</a><br>
+    <button onclick="hideAllBoxes()" style="padding:10px 25px;border-radius:20px;border:none;background:#111;color:white;cursor:pointer">Back</button>
+  </div>
+
+  <div id="signBox" style="display:none;background:#f8f9fa;border-radius:12px;padding:20px;margin-top:15px;text-align:center">
+    <h3>🚪 Sign out</h3>
+    <input type="text" placeholder="name" style="width:90%;padding:12px;border-radius:10px;border:1px solid #ddd;margin:5px 0"><br>
+    <input type="password" placeholder="password" style="width:90%;padding:12px;border-radius:10px;border:1px solid #ddd;margin:5px 0"><br><br>
+    <button onclick="hideAllBoxes()" style="padding:10px 25px;border-radius:20px;border:none;background:#00c853;color:white;font-weight:bold;cursor:pointer">Enter</button>
+    <button onclick="hideAllBoxes()" style="padding:10px 25px;border-radius:20px;border:none;background:#111;color:white;cursor:pointer">Back</button>
+  </div>
 </div>
 
-  <!-- 7 - MORE - محفوظ -->
-  <fieldset>
-   
-    <div class="dropdown">
-      <button class="menu-btn" onclick="toggleMenu()">⋮ MORE</button>
-      <div class="menu" id="myMenu" align="center">
-        <div onclick="openPage('setting')"> Setting ⚙️</div>
-        <div onclick="openPage('call')"> Call us 📞</div>
-        <div onclick="openPage('about')"> About site 📄</div>
-        <div onclick="openPage('sign')"> Sign out 🚪</div>
-      </div>
-    </div>
-    <div id="setting-page" class="page"><h2><br>⚙️ Setting</h2><p>Premium settings coming soon</p><button onclick="closeAll()">back</button></div>
-    <div id="call-page" class="page"><h2><br>📞 Call us</h2><p>0600000000</p><button onclick="closeAll()">back</button></div>
-    <div id="about-page" class="page"><h2><br>📄 About site</h2>
-      <p>this is a new website - world class version</p>
-      <br><br><br><br>
-      <nav align="right">
-        <a href="ABOUT.html" class="nav-item active"><br><small>click here</small></a>
-       </nav>
-      <button onclick="closeAll()">back</button></div>
-    <div id="sign-page" class="page"><h2><br>🚪 Sign out</h2><input type="text" placeholder="name"><br><br><input type="password" placeholder="password"><br><br><button onclick="closeAll()">Enter</button><button onclick="closeAll()">back</button></div>
-  </fieldset>
-
-  <form>
+  <form style="padding:20px;text-align:center">
     <input type="search" id="siteSearch" placeholder="search in the site" style="width:80%;padding:12px;border-radius:20px;border:1px solid #333;background:#111;color:#fff">
-    <div align="center" style="margin-top:15px">
-      <a href="https://google.com">Visit google</a><br>
-      <a href="https://facebook.com">Visit facebook</a>
-    </div>
+    <div style="margin-top:15px"><a href="https://google.com">Visit google</a><br><a href="https://facebook.com">Visit facebook</a></div>
   </form>
 
   <hr>
+  <footer><p align="center">© Soufyane El haddaoui تصميم  </p></footer>
   <footer><p align="center">© 2026 جميع الحقوق محفوظة</p></footer>
-  <footer><p align="center">© تصميم Soufyane El haddaoui - النسخة العالمية</p></footer>
   <br><br><br><br><br>
 </div>
 
-<!-- Lightbox -->
 <div id="lightbox" onclick="this.classList.remove('active')"><img id="lightbox-img" src=""></div>
 
 <script>
-// قائمة MORE
+// التاريخ
+document.getElementById('todayDate').innerText = "📅 " + new Date().toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+
+// POINTS + LEVEL - محفوظ في المتصفح
+let points = parseInt(localStorage.getItem('seh_points')||'0');
+function updatePoints(){document.getElementById('pointsNum').innerText=points; document.getElementById('levelNum').innerText=Math.floor(points/10)+1;}
+updatePoints();
+function addPoints(n){points+=n; localStorage.setItem('seh_points',points); updatePoints();}
+
+// WORLD
+// ===== قصص عامة - بالعربية - ماشي عليك =====
+let stories = [
+"كان يا ما كان، في قرية صغيرة، كان هناك طفل صغير يحب أن يرسم. كل أصدقائه كانوا يضحكون عليه ويقولون له الرسم لا ينفع. لكنه لم يتوقف. كان يرسم كل يوم، حتى أصبح من أشهر الرسامين في بلده. العبرة: لا تستمع لمن يحبطك، استمر في حلمك.",
+"في يوم من الأيام، كان هناك فلاح فقير يزرع أرضه كل صباح. كان الناس يقولون له: لماذا تتعب؟ لن تحصد شيئا. لكنه استمر في العمل بصبر. وبعد أشهر، أصبحت أرضه أجمل أرض في القرية كلها. العبرة: الصبر والعمل كل يوم يصنع المعجزات.",
+"كان هناك شاب يخاف أن يتكلم أمام الناس. في المدرسة كان يسكت دائما. في يوم قرر أن يكسر خوفه، وبدأ يتكلم قليلا كل يوم. بعد سنة، أصبح هو من يقدم الحفل كله أمام مئات الناس. العبرة: الخوف يذهب عندما تبدأ، لا عندما تنتظر.",
+"يحكى أن رجلا ضاع في الصحراء، ولم يبق معه إلا قليل من الماء. جلس يفكر: هل أبكي أم أكمل الطريق؟ قرر أن يكمل. وبعد ساعات من المشي، وجد واحة جميلة. العبرة: مهما كان الطريق صعبا، لا تتوقف، فالفرج قريب."
+];
+
+let challenges = [
+"🎯 العب لعبة واحدة اليوم وحاول أن تفوز فيها",
+"📚 اقرأ قصة واحدة وشاركها مع صديقك",
+"⚡ العب 3 ألعاب بدون أن تخسر",
+"🧠 درب ذاكرتك اليوم - العب لعبة الذاكرة",
+"🔥 ادخل للموقع 3 مرات اليوم",
+"💪 اشرب كأس ماء وقل لنفسك: اليوم سأكون أفضل",
+"✍️ اكتب حلمك في ورقة وعلقه أمامك"
+];
+function selectWorld(type){
+  document.getElementById('gamesDetail').classList.remove('show');
+  document.getElementById('storiesDetail').classList.remove('show');
+  document.getElementById('cardGames').classList.remove('active');
+  document.getElementById('cardStories').classList.remove('active');
+  if(type==='games'){
+    document.getElementById('gamesDetail').classList.add('show');
+    document.getElementById('cardGames').classList.add('active');
+    addPoints(5);
+  } else {
+    document.getElementById('storiesDetail').classList.add('show');
+    document.getElementById('cardStories').classList.add('active');
+    document.getElementById('randomStory').innerText = stories[Math.floor(Math.random()*stories.length)];
+    addPoints(5);
+  }
+  document.getElementById('gamesDetail').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+function playGame(){addPoints(10); window.location.href='GAME.html';}
+function newChallenge(){document.getElementById('dailyChallenge').innerText = challenges[Math.floor(Math.random()*challenges.length)];}
+newChallenge();
+document.getElementById('randomStory').innerText = stories[0];
+
 function toggleMenu(){document.getElementById('myMenu').classList.toggle('open')}
 function openPage(id){closeAll();document.getElementById(id+'-page').classList.add('active')}
 function closeAll(){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById('myMenu').classList.remove('open')}
+function openLightbox(el){document.getElementById('lightbox-img').src=el.querySelector('img').src;document.getElementById('lightbox').classList.add('active');}
 
-
-// صور تفاعلية
-function openLightbox(el){
-  document.getElementById('lightbox-img').src=el.querySelector('img').src;
-  document.getElementById('lightbox').classList.add('active');
-}
-
-// إحصائيات كتطلع
 const nums=document.querySelectorAll('.num');
-const observer=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      let el=e.target, target=+el.dataset.target, count=0;
-      let inc=target/60;
-      let timer=setInterval(()=>{count+=inc; if(count>=target){count=target;clearInterval(timer)} el.innerText=Math.floor(count)+(el.dataset.target==99?'%':'+')},20)
-    }
-  })
-},{threshold:.5});
+const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){let el=e.target,target=+el.dataset.target,count=0;let inc=target/60;let timer=setInterval(()=>{count+=inc;if(count>=target){count=target;clearInterval(timer)} 
+  el.innerText=Math.floor(count)+(el.dataset.target==97?'%':'+')},20)}})},{threshold:.5});
 nums.forEach(n=>observer.observe(n));
 
-// سكرول ريفيل للصور
-const items=document.querySelectorAll('.gallery-item');
-const obs2=new IntersectionObserver(ents=>{
-  ents.forEach(en=>{if(en.isIntersecting) en.target.classList.add('visible')})
-},{threshold:.2});
-items.forEach(i=>obs2.observe(i));
+let moreImages=["IMAGES/1793704644128.jpg","IMAGES/1793704644158.jpg",
+"IMAGES/chris-ried-ieic5Tq8YMk-unsplash.jpg","IMAGES/planet-volumes-LTJGCRNEw7g-unsplash.jpg",
+"IMAGES/mohammad-rahmani-8qEB0fTe9Vw-unsplash.jpg","IMAGES/planet-volumes-lLUIyGEhXMw-unsplash.jpg"];
+let loaded=false;
+function loadMoreImages(){
+  const gallery=document.querySelector('.gallery');const btn=document.getElementById('loadMoreBtn');
+  if(!loaded){moreImages.forEach(src=>{const div=document.createElement('div');div.className='gallery-item';div.setAttribute('onclick','openLightbox(this)');div.innerHTML=`<img src="${src}">`;gallery.appendChild(div);});btn.innerText="🔼 Close images";loaded=true;}
+  else{let items=document.querySelectorAll('.gallery-item');for(let i=4;i<items.length;i++){items[i].remove();}btn.innerText="📸 More images";loaded=false;}
+}
+document.getElementById('siteSearch')?.addEventListener('input',function(){let val=this.value.toLowerCase();document.querySelectorAll('.nav-item').forEach(a=>{a.style.display=a.innerText.toLowerCase().includes(val)?'':'none';if(val=='')a.style.display='';});});
 
-// more images
-let moreImages = [
-  "IMAGES/1793704644128.jpg",
-  "IMAGES/1793704644158.jpg",
-  "IMAGES/chris-ried-ieic5Tq8YMk-unsplash.jpg",
-  "IMAGES/planet-volumes-LTJGCRNEw7g-unsplash.jpg",
-  "IMAGES/mohammad-rahmani-8qEB0fTe9Vw-unsplash.jpg",
-  "IMAGES/planet-volumes-lLUIyGEhXMw-unsplash.jpg",
-];
-let loaded = false;
-function loadMoreImages() {
-  const gallery = document.querySelector('.gallery');
-  const btn = document.getElementById('loadMoreBtn');
-  if (!loaded) {
-    moreImages.forEach(src => {
-      const div = document.createElement('div');
-      div.className = 'gallery-item visible';
-      div.setAttribute('onclick','openLightbox(this)');
-      div.innerHTML = `<img src="${src}">`;
-      gallery.appendChild(div);
-    });
-    btn.innerText = "🔼 Close images";
-    loaded = true;
+// ===== MORE - جديد خدام =====
+function toggleMore(){
+  var m = document.getElementById('moreMenu');
+  var btn = document.getElementById('moreBtn');
+  if(m.style.display === 'none' || m.style.display === ''){
+    m.style.display = 'block';
+    btn.innerHTML = '⋮ MORE ▲';
+    hideAllBoxes();
   } else {
-    let items = document.querySelectorAll('.gallery-item');
-    for(let i=4; i<items.length; i++) {
-      items[i].remove();
-    }
-    btn.innerText = "📸 More images";
-    loaded = false;
+    m.style.display = 'none';
+    btn.innerHTML = '⋮ MORE ▼';
   }
 }
-// بحث
-document.getElementById('siteSearch')?.addEventListener('input',function(){
-  let val=this.value.toLowerCase();
-  document.querySelectorAll('.nav-item').forEach(a=>{
-    a.style.display=a.innerText.toLowerCase().includes(val)?'':'none';
-    if(val=='') a.style.display='';
-  });
-});
+function showBox(id){
+  hideAllBoxes();
+  document.getElementById(id).style.display = 'block';
+  document.getElementById(id).scrollIntoView({behavior:'smooth', block:'nearest'});
+}
+function hideAllBoxes(){
+  document.getElementById('settingBox').style.display = 'none';
+  document.getElementById('aboutBox').style.display = 'none';
+  document.getElementById('signBox').style.display = 'none';
+}
 </script>
-
 <script src="javascript"></script>
 </body>
 </html>

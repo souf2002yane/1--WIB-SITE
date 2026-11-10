@@ -23,7 +23,6 @@
 <hr><br><br>
 
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap');
   *{margin:0;padding:0;box-sizing:border-box;font-family:'Fredoka',sans-serif}
   body{min-height:100vh;display:block;padding:20px}
   .container{background:white;width:100%;max-width:500px;border-radius:24px;padding:28px;box-shadow:0 20px 60px rgba(0,0,0,0.3);margin:0 auto 20px auto}
@@ -76,6 +75,44 @@
   .quiz-opt{width:100%;padding:13px;margin:6px 0;border:2px solid #e8e2f8;background:#f8f5ff;border-radius:12px;cursor:pointer;font-size:16px;font-weight:600}
   .quiz-opt.correct{background:#00c896;color:white;border-color:#00c896}
   .quiz-opt.wrong{background:#ff5a6a;color:white;border-color:#ff5a6a}
+
+/* FIX - باش الكتابة تبان */
+.quiz-opt{
+  color:#111 !important;
+  background:#f8f5ff !important;
+  -webkit-text-fill-color:#111 !important;
+}
+.quiz-opt:hover, .quiz-opt:active{
+  background:#764ba2 !important;
+  color:white !important;
+  -webkit-text-fill-color:white !important;
+}
+.quiz-opt.correct{
+  background:#00c896 !important;
+  color:white !important;
+  -webkit-text-fill-color:white !important;
+}
+.quiz-opt.wrong{
+  background:#ff5a6a !important;
+  color:white !important;
+  -webkit-text-fill-color:white !important;
+}
+/* حتى الخانات ديال Challenge Party */
+.players input, input[type=number]{
+  color:#111 !important;
+  background:white !important;
+  -webkit-text-fill-color:#111 !important;
+}
+.players input::placeholder, input::placeholder{
+  color:#888 !important;
+  -webkit-text-fill-color:#888 !important;
+}
+.mem-card{
+  color:white !important;
+}
+.mem-card.open{
+  color:#111 !important;
+}
 </style>
 
 <h2 class="games-title">🎮 Choose Your Game</h2>
