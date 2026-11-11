@@ -271,7 +271,7 @@ function editProfile(){
   if(currentProfile.time) document.getElementById('userTime').value=currentProfile.time;
   if(currentProfile.hobby) document.getElementById('userHobby').value=currentProfile.hobby;
   if(currentProfile.lang) { let r=document.querySelector('input[name="lang"][value="'+currentProfile.lang+'"]'); if(r) r.checked=true; }
-  document.getElementById('helloName').textContent = 'Salam '+ (currentProfile.name||'') + ' 👋 كمل معلوماتك';
+  document.getElementById('helloName').textContent = 'Hi '+ (currentProfile.name||'') + ' 👋 complete your information  ';
   showStep(1);
 }
 async function logoutAccount(){
@@ -346,7 +346,7 @@ window.loginGoogle = async () => {
       document.getElementById('allSteps').style.display='block';
       document.getElementById('userName').value = profile.name||'';
       document.getElementById('userEmail').value = profile.email||'';
-      document.getElementById('helloName').textContent = 'Salam '+profile.name+' 👋 كمل معلوماتك باش يبان بروفيلك';
+      document.getElementById('helloName').textContent = 'Hi '+profile.name+' 👋 Complete your profile to show it here';
       showStep(1);
     } else {
       showProfile();
@@ -376,7 +376,8 @@ window.doDelete = async () => {
 onAuthStateChanged(auth, async (user) => {
   const top = document.getElementById('userAreaTop');
   if(user){
-    if(top) top.innerHTML = `<span style="display:flex;align-items:center;gap:6px"><img src="${user.photoURL||''}" style="width:26px;height:26px;border-radius:50%"><b style="font-size:12px">${user.displayName||'User'}</b></span>`;
+    if(top) top.innerHTML = `<span style="display:flex;align-items:center;gap:6px"><img src="${user.photoURL||''}" style="width:26px;
+      height:26px;border-radius:50%"><b style="font-size:12px">${user.displayName||'User'}</b></span>`;
     // جيب البروفيل من Firestore
     const snap = await getDoc(doc(db, "users", user.uid));
     if(snap.exists()){
@@ -393,7 +394,7 @@ onAuthStateChanged(auth, async (user) => {
         document.getElementById('allSteps').style.display='block';
         document.getElementById('userName').value = currentProfile.name||'';
         document.getElementById('userEmail').value = currentProfile.email||'';
-        document.getElementById('helloName').textContent = 'Salam '+(currentProfile.name||'')+' 👋 كمل معلوماتك';
+        document.getElementById('helloName').textContent = 'Hi '+(currentProfile.name||'')+' 👋 complete your information ';
         showStep(1);
         return;
       }
@@ -403,7 +404,8 @@ onAuthStateChanged(auth, async (user) => {
       showLoginBox();
     }
   } else {
-    if(top) top.innerHTML = `<button onclick="loginGoogle()" style="background:#E9C46A;border:none;padding:6px 12px;border-radius:20px;font-weight:bold;cursor:pointer;font-size:12px">🔑 دخول بـ Google</button>`;
+    if(top) top.innerHTML = `<button onclick="loginGoogle()" style="background:#E9C46A;border:none;
+    padding:6px 12px;border-radius:20px;font-weight:bold;cursor:pointer;font-size:12px">🔑  Logged in as Google</button>`;
     showLoginBox();
   }
 });

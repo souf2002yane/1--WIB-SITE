@@ -387,7 +387,7 @@ window.loginGoogle = async () => {
 
 window.logoutGoogle = async () => {
   await signOut(auth);
-  alert("خرجتي، نتلاقاو من بعد 👋");
+  alert("   logged out , See you soon 👋");
 };
 
 onAuthStateChanged(auth, async (user) => {
@@ -397,7 +397,7 @@ onAuthStateChanged(auth, async (user) => {
   const logoutBtn = document.getElementById('accountLogoutBtn');
   if(user){
     userArea.innerHTML = `<div class="user-chip"><img src="${user.photoURL || ''}"><b>${user.displayName || 'User'}</b></div>`;
-    if(accInfo) accInfo.innerHTML = `داخل بـ <b>${user.displayName}</b><br>${user.email}<br>⭐ النقط: ${points}`;
+    if(accInfo) accInfo.innerHTML = ` Logged in as <b>${user.displayName}</b><br>${user.email}<br>⭐ points: ${points}`;
     if(loginBtn) loginBtn.style.display = 'none';
     if(logoutBtn) logoutBtn.style.display = 'inline-block';
     // جيب النقط من Firestore
@@ -410,8 +410,8 @@ onAuthStateChanged(auth, async (user) => {
       }
     }catch(e){}
   } else {
-    userArea.innerHTML = `<button class="login-btn" onclick="loginGoogle()">🔑 دخول بـ Google</button>`;
-    if(accInfo) accInfo.innerHTML = `ما داخلش دابا - سجل دخول باش يبان حسابك هنا`;
+    userArea.innerHTML = `<button class="login-btn" onclick="loginGoogle()">🔑 ENTER BY Google</button>`;
+    if(accInfo) accInfo.innerHTML = `not logged yet-Sign in to view your account here`;
     if(loginBtn) loginBtn.style.display = 'inline-block';
     if(logoutBtn) logoutBtn.style.display = 'none';
   }
