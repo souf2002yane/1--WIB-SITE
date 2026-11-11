@@ -381,10 +381,10 @@ function hideAllBoxes(){
 }
 </script>
 <script src="javascript"></script>
-  <script type="module">
+<script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-import { getFirestore } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import { getFirestore, doc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyApOzh9J8QCiLcHdZ0q3zMgWrmK1ToY9Cg",
@@ -399,7 +399,20 @@ window.auth = getAuth(app);
 window.db = getFirestore(app);
 window.provider = new GoogleAuthProvider();
 window.loginGoogle = async () => {
-  try{ await signInWithPopup(window.auth, window.provider); alert("مرحبا بيك فـ SEH-WORLD!"); }
+  try{
+    const result = await signInWithPopup(window.auth, window.provider);
+    const user = result.user;
+    // تسجيل المستخدم فـ Firestore
+    await setDoc(doc(window.db, "users", user.uid), {
+      name: user.displayName,
+      email: user.email,
+      photo: user.photoURL,
+      uid: user.uid,
+      lastLogin: serverTimestamp(),
+      createdAt: serverTimestamp()
+    }, { merge: true });
+    alert("  WELCOME IN SEH-WORLD! " + user.displayName);
+  }
   catch(e){ alert(e.message); }
 };
 </script>

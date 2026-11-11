@@ -388,5 +388,41 @@ function deleteAccount(){ if(confirm('Are you sure you want to delete your accou
   else { hideAll(); document.getElementById('step1').style.display='block'; }
 })();
 </script>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import { getFirestore, doc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyApOzh9J8QCiLcHdZ0q3zMgWrmK1ToY9Cg",
+  authDomain: "seh-world.firebaseapp.com",
+  projectId: "seh-world",
+  storageBucket: "seh-world.firebasestorage.app",
+  messagingSenderId: "888057068574",
+  appId: "1:888057068574:web:796fdde71679597931020f"
+};
+const app = initializeApp(firebaseConfig);
+window.auth = getAuth(app);
+window.db = getFirestore(app);
+window.provider = new GoogleAuthProvider();
+window.loginGoogle = async () => {
+  try{
+    const result = await signInWithPopup(window.auth, window.provider);
+    const user = result.user;
+    // تسجيل المستخدم فـ Firestore
+    await setDoc(doc(window.db, "users", user.uid), {
+      name: user.displayName,
+      email: user.email,
+      photo: user.photoURL,
+      uid: user.uid,
+      lastLogin: serverTimestamp(),
+      createdAt: serverTimestamp()
+    }, { merge: true });
+    alert("  WELCOME IN SEH-WORLD! " + user.displayName);
+  }
+  catch(e){ alert(e.message); }
+};
+</script>
 </body>
 </html>
