@@ -381,5 +381,27 @@ function hideAllBoxes(){
 }
 </script>
 <script src="javascript"></script>
+  <script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import { getFirestore } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyApOzh9J8QCiLcHdZ0q3zMgWrmK1ToY9Cg",
+  authDomain: "seh-world.firebaseapp.com",
+  projectId: "seh-world",
+  storageBucket: "seh-world.firebasestorage.app",
+  messagingSenderId: "888057068574",
+  appId: "1:888057068574:web:796fdde71679597931020f"
+};
+const app = initializeApp(firebaseConfig);
+window.auth = getAuth(app);
+window.db = getFirestore(app);
+window.provider = new GoogleAuthProvider();
+window.loginGoogle = async () => {
+  try{ await signInWithPopup(window.auth, window.provider); alert("مرحبا بيك فـ SEH-WORLD!"); }
+  catch(e){ alert(e.message); }
+};
+</script>
 </body>
 </html>
