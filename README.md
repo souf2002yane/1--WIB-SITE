@@ -12,7 +12,7 @@
 
 ## 🌐 ▶️ PLAY NOW - LIVE WEBSITE
 
-### 👉 **[https://souf2002yane.github.io/1--WIB-SITE/](https://souf2002yane.github.io/1--WIB-SITE/)**
+### 👉 **[https://souf2002yane.github.io/SEH-WORLD/](https://souf2002yane.github.io/SEH-WORLD/)**
 
 Click the link and start playing! No download, no login, just fun! 🎉
 
