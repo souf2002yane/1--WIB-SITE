@@ -82,11 +82,17 @@
   .players input::placeholder, input::placeholder{color:#888 !important;-webkit-text-fill-color:#888 !important;}
   .mem-card{color:white !important;}
   .mem-card.open{color:#111 !important;}
-  /* ===== جديد: أزرار الأوضاع ===== */
   .mode-btn{padding:10px 16px;border-radius:20px;border:2px solid #111;background:white;font-weight:bold;cursor:pointer;font-size:14px}
   .mode-btn.active{background:#111;color:white}
   .party-count-btn{padding:11px 0;width:30%;border-radius:14px;border:2px solid #111;background:white;font-weight:bold;cursor:pointer;font-size:14px}
   .party-count-btn.active{background:#111;color:white}
+  /* ===== LEADERBOARD STYLE ===== */
+  .lb-wrap{max-width:500px;margin:20px auto;padding:0}
+  .lb-my-card{background:linear-gradient(135deg,#111,#3B2A1A);color:white;border-radius:22px;padding:20px;border:1px solid #E9C46A;text-align:center;margin-bottom:15px}
+  .lb-row{display:flex;align-items:center;gap:12px;background:white;border-radius:16px;padding:12px 14px;margin-bottom:10px;box-shadow:0 4px 12px rgba(0,0,0,.08);border:1px solid #eee}
+  .lb-row.me{background:#FFF8E1;border:2px solid #E9C46A}
+  .lb-avatar{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#E9C46A,#B7791F);color:#111;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:900;flex-shrink:0;overflow:hidden}
+  .lb-avatar img{width:100%;height:100%;object-fit:cover}
 </style>
 
 <h2 class="games-title">🎮 Choose Your Game</h2>
@@ -123,7 +129,7 @@
 
 <button class="back-btn" id="backBtn" onclick="backToMenu()" style="display:none">⬅ Back to Games</button>
 
-<!-- Challenge - مع اختيار عدد اللاعبين -->
+<!-- Challenge -->
 <div id="view-challenge" class="game-view">
 <div class="container">
   <h1>🎮 Challenge Party</h1>
@@ -159,7 +165,7 @@
 </div>
 </div>
 
-<!-- XO - مع اختيار الوضع -->
+<!-- XO -->
 <div id="view-xo" class="game-view">
 <div class="container">
   <h1>❌⭕ Tic Tac Toe</h1>
@@ -187,7 +193,7 @@
 </div>
 </div>
 
-<!-- CHECKERS - مع اختيار الوضع -->
+<!-- CHECKERS -->
 <div id="view-dama" class="game-view">
 <div class="container">
   <h1>♟️ Checkers</h1>
@@ -237,7 +243,25 @@ border:1px solid #382201; background:white; color:black; border-radius:8px; curs
   <div class="container" style="text-align:center"><p>🎲 A new game is coming soon...</p><p style="color:#888;margin-top:10px">Stay with us, we add new games every week</p></div>
 </div>
 
+<!-- ===== LEADERBOARD INSIDE GAME - NEW ===== -->
+<div class="lb-wrap">
+  <h1 style="margin-bottom:5px">🏆 Leaderboard</h1>
+  <p style="text-align:center;color:#888;font-size:14px;margin-bottom:18px">Top Players in SEH</p>
+
+  <div class="lb-my-card">
+    <div style="font-size:32px">👑</div>
+    <h2 id="myNameLB" style="margin:5px 0">Guest</h2>
+    <p id="myRankLB" style="color:#E9C46A;font-weight:800;margin:0">Your Rank: - • ⭐ 0 Points</p>
+    <p id="myLevelLB" style="color:white;font-size:13px;margin-top:5px">LEVEL 1</p>
+  </div>
+
+  <div id="leaderList"></div>
+ <!-- ===== <button class="btn" onclick="location.href='PROFILE.html'">👤 View My Profile</button>===== -->
+</div>
+<!-- ===== END LEADERBOARD ===== -->
+
 <script>
+document.getElementById('todayDate').innerText = "📅 " + new Date().toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
 function openGame(name, el){
   document.querySelectorAll('.game-view').forEach(x=>x.classList.remove('show'));
   document.querySelectorAll('.game-card').forEach(x=>x.classList.remove('active'));
@@ -263,7 +287,44 @@ function backToMenu(){
 }
 function showMoreGames(){ document.getElementById("moreGames").style.display="block"; document.getElementById("moreGamesBtn").style.display="none"; window.scrollTo({top: document.body.scrollHeight, behavior:'smooth'}); }
 
-// ===== PARTY - جديد: اختيار عدد اللاعبين =====
+// ===== POINTS SYSTEM - NEW =====
+function addPoints(n){
+  let p = parseInt(localStorage.getItem('seh_points')||'0') + n;
+  localStorage.setItem('seh_points', p);
+  renderLeaderboard();
+}
+function renderLeaderboard(){
+  let acc = JSON.parse(localStorage.getItem('seh_account')||'{}');
+  let myPoints = parseInt(localStorage.getItem('seh_points')||'0');
+  let myName = acc.name ? acc.name + ' ' + (acc.family||'') : 'Guest';
+  let myPhoto = acc.photo || '';
+  let players = [
+    { name: 'Youssef El Amrani', city: 'Tangier', points: 850, photo: '' },
+    { name: 'Salma Bennani', city: 'Casablanca', points: 620, photo: '' },
+    { name: 'Omar El Idrissi', city: 'Martil', points: 80, photo: '' },
+    { name: 'Aya El Fassi', city: 'Tetouan', points: 310, photo: '' },
+    { name: 'Adam El Khadiri', city: 'Rabat', points: 190, photo: '' },
+    { name: myName, city: acc.address || 'Martil', points: myPoints, photo: myPhoto, me: true }
+  ];
+  players.sort((a,b)=> b.points - a.points);
+  let medals = ['🥇','🥈','🥉'];
+  let html = '';
+  players.forEach((p, i)=>{
+    let medal = medals[i] || ('#' + (i+1));
+    let level = Math.floor(p.points/100)+1;
+    let letter = p.name.charAt(0).toUpperCase();
+    html += `<div class="lb-row ${p.me ? 'me' : ''}"><div style="font-size:22px;font-weight:900;width:38px;text-align:center">${medal}</div><div class="lb-avatar">${p.photo ? '<img src="'+p.photo+'">' : letter}</div><div style="flex:1"><b style="display:block;font-size:15px">${p.name} ${p.me ? ' (You) ⭐' : ''}</b><small style="color:#888;font-size:12px">📍 ${p.city} • ⭐ LEVEL ${level}</small></div><div style="font-weight:900;color:#B7791F;font-size:16px;text-align:right">${p.points}<small style="display:block;color:#888;font-size:11px;font-weight:400">points</small></div></div>`;
+  });
+  document.getElementById('leaderList').innerHTML = html;
+  let myRank = players.findIndex(p=>p.me) + 1;
+  let myLevel = Math.floor(myPoints/100)+1;
+  document.getElementById('myNameLB').textContent = myName;
+  document.getElementById('myRankLB').textContent = 'Your Rank: #' + myRank + ' • ⭐ ' + myPoints + ' Points';
+  document.getElementById('myLevelLB').textContent = '⭐ LEVEL ' + myLevel;
+}
+renderLeaderboard();
+
+// ===== PARTY =====
 let partyPlayerCount = 4;
 function setPartyPlayers(n, btn){
   partyPlayerCount = n;
@@ -277,8 +338,6 @@ function setPartyPlayers(n, btn){
     box.appendChild(inp);
   }
 }
-
-// Challenge Party - نفس المنطق القديم، غير كيقرا عدد اللاعبين اللي اختار المستخدم
 const challenges = ["Tell a joke 😂", "Smile without reason 😊", "Take a chance 🎲", "Running 🏃‍♂️"];
 let players = []; let totalPoints = 0; let secret = 0; let maxRange = 10;
 function startFirstGame(){
@@ -301,13 +360,13 @@ function didChallenge(done){
 }
 function checkGuess(){
   const g = parseInt(guess.value); if(!g){ secondResult.textContent = "Enter a number!"; return; }
-  if(g === secret){ totalPoints += 2; secondResult.textContent = `🎉 You WIN! The number was ${secret}. +2 points!`; }
+  if(g === secret){ totalPoints += 2; secondResult.textContent = `🎉 You WIN! The number was ${secret}. +2 points!`; addPoints(totalPoints); }
   else { secondResult.textContent = `😢 You lose. The number was ${secret}.`; }
   totalBox.innerHTML = `🏆 TOTAL POINTS: ${totalPoints} <br><button class="btn" style="background:white;color:#764ba2;margin-top:12px" onclick="location.reload()">Play Again 🔄</button>`;
   totalBox.classList.add('show');
 }
 
-// ===== XO - جديد: VS Friend / VS Computer =====
+// ===== XO =====
 let board = Array(9).fill(''), current='X', over=false;
 let xoMode = 'friend';
 function setXoMode(m){
@@ -318,10 +377,8 @@ function setXoMode(m){
 }
 function playXO(i){
   if(board[i] || over) return;
-  // في وضع الكمبيوتر، المستخدم ديما X
   if(xoMode=='computer' && current!='X') return;
   doXoMove(i);
-  // إذا كان كمبيوتر و باقي اللعب و الدور ديال O
   if(xoMode=='computer' && !over && current=='O'){
     document.getElementById('xoStatus').textContent='Computer is thinking... 🤖';
     setTimeout(()=>{ xoComputerMove(); }, 600);
@@ -329,7 +386,13 @@ function playXO(i){
 }
 function doXoMove(i){
   board[i]=current; document.getElementById('c'+i).textContent=current; document.getElementById('c'+i).classList.add(current.toLowerCase());
-  if([[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]].some(w=>w.every(j=>board[j]==current))){ document.getElementById('xoStatus').textContent = xoMode=='computer' ? (current=='X' ? '🏆 You win!' : '🤖 Computer wins!') : `🏆 ${current} wins!`; over=true; return; }
+  if([[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]].some(w=>w.every(j=>board[j]==current))){
+    document.getElementById('xoStatus').textContent = xoMode=='computer' ? (current=='X' ? '🏆 You win! +20 Points' : '🤖 Computer wins!') : `🏆 ${current} wins!`;
+    over=true;
+    if(xoMode=='computer' && current=='X') addPoints(20);
+    if(xoMode=='friend') addPoints(10);
+    return;
+  }
   if(!board.includes('')){document.getElementById('xoStatus').textContent='Draw 🤝'; over=true; return;}
   current=current=='X'?'O':'X'; document.getElementById('xoStatus').textContent='Turn: '+ (xoMode=='computer' ? (current=='X' ? 'Your turn (X)' : 'Computer (O)') : current);
 }
@@ -337,13 +400,9 @@ function xoComputerMove(){
   if(over || current!='O') return;
   let lines=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
   let pick=-1;
-  // 1. يربح إلا قدر
   for(let line of lines){ let vals=line.map(i=>board[i]); if(vals.filter(v=>v=='O').length==2 && vals.includes('')){ pick=line[vals.indexOf('')]; break; } }
-  // 2. يمنعك تربح
   if(pick==-1) for(let line of lines){ let vals=line.map(i=>board[i]); if(vals.filter(v=>v=='X').length==2 && vals.includes('')){ pick=line[vals.indexOf('')]; break; } }
-  // 3. الوسط
   if(pick==-1 && board[4]=='') pick=4;
-  // 4. عشوائي
   if(pick==-1){ let empty=board.map((v,i)=>v==''?i:-1).filter(i=>i!=-1); pick=empty[Math.floor(Math.random()*empty.length)]; }
   if(pick!=-1) doXoMove(pick);
 }
@@ -351,10 +410,10 @@ function resetXO(){ board=Array(9).fill(''); current='X'; over=false; for(let i=
 
 // RPS
 let ps=0, cs=0;
-function playRPS(my){ let opts=['Rock','Paper','Scissors']; let comp=opts[Math.floor(Math.random()*3)]; let txt=''; if(my==comp) txt=`Draw! ${my}`; else if((my=='Rock'&&comp=='Scissors')||(my=='Paper'&&comp=='Rock')||(my=='Scissors'&&comp=='Paper')){txt=`You win! ${my} beats ${comp} 🎉`; ps++;} else{txt=`You lose! ${comp} beats ${my} 😢`; cs++;} document.getElementById('rpsResult').innerHTML=`You: ${my} | Computer: ${comp}<br>${txt}`; document.getElementById('pScore').textContent=ps; document.getElementById('cScore').textContent=cs; }
+function playRPS(my){ let opts=['Rock','Paper','Scissors']; let comp=opts[Math.floor(Math.random()*3)]; let txt=''; if(my==comp) txt=`Draw! ${my}`; else if((my=='Rock'&&comp=='Scissors')||(my=='Paper'&&comp=='Rock')||(my=='Scissors'&&comp=='Paper')){txt=`You win! ${my} beats ${comp} 🎉 +10 Points`; ps++; addPoints(10);} else{txt=`You lose! ${comp} beats ${my} 😢`; cs++;} document.getElementById('rpsResult').innerHTML=`You: ${my} | Computer: ${comp}<br>${txt}`; document.getElementById('pScore').textContent=ps; document.getElementById('cScore').textContent=cs; }
 function resetRPS(){ps=0;cs=0;pScore.textContent=0;cScore.textContent=0;rpsResult.textContent='Choose one to play';}
 
-// ===== CHECKERS - جديد: VS Friend / VS Computer =====
+// ===== CHECKERS =====
 let damaBoard=[], damaSelected=null, damaTurn='red';
 let damaMode = 'friend';
 function setDamaMode(m){
@@ -367,7 +426,6 @@ function setDamaMode(m){
 function initDama(){ damaBoard=[]; damaSelected=null; damaTurn='red'; for(let r=0;r<8;r++){ let row=[]; for(let c=0;c<8;c++){ let piece=null; if((r+c)%2==1){ if(r<3) piece={color:'black',king:false}; if(r>4) piece={color:'red',king:false}; } row.push(piece); } damaBoard.push(row); } drawDama(); }
 function drawDama(){ let el=document.getElementById('damaBoard'); if(!el) return; el.innerHTML=''; document.getElementById('damaTurn').innerHTML = damaTurn=='red' ? 'Turn: 🔴 Red' : 'Turn: ⚫ Black'; for(let r=0;r<8;r++) for(let c=0;c<8;c++){ let div=document.createElement('div'); div.className='dama-cell '+((r+c)%2==0?'dama-light':'dama-dark'); if(damaSelected && damaSelected.r==r && damaSelected.c==c) div.classList.add('dama-selected'); let p=damaBoard[r][c]; if(p){ let pd=document.createElement('div'); pd.className='dama-piece '+(p.color=='red'?'dama-red':'dama-black')+(p.king?' dama-king':''); pd.innerText=p.king?'👑':''; div.appendChild(pd); } div.onclick=()=>clickDama(r,c); el.appendChild(div); } }
 function clickDama(r,c){
-  // في وضع الكمبيوتر، ما تخليش المستخدم يلعب بالأسود
   if(damaMode=='computer' && damaTurn=='black') return;
   let p=damaBoard[r][c]; if(p && p.color==damaTurn){ damaSelected={r,c}; drawDama(); return; }
   if(damaSelected){ let sr=damaSelected.r, sc=damaSelected.c; let piece=damaBoard[sr][sc]; if(!piece) return; let dr=r-sr, dc=c-sc; if(Math.abs(dr)==1 && Math.abs(dc)==1 && !p){ if(!piece.king){ if(piece.color=='red' && dr!=-1) return; if(piece.color=='black' && dr!=1) return; } moveDama(sr,sc,r,c); return; } if(Math.abs(dr)==2 && Math.abs(dc)==2 && !p){ let mr=(sr+r)/2, mc=(sc+c)/2; let mid=damaBoard[mr][mc]; if(mid && mid.color!=damaTurn){ damaBoard[mr][mc]=null; moveDama(sr,sc,r,c); return; } } }
@@ -378,15 +436,13 @@ function moveDama(sr,sc,r,c){
   damaSelected=null; damaTurn=damaTurn=='red'?'black':'red'; drawDama();
   let reds=0, blacks=0; for(let r2=0;r2<8;r2++) for(let c2=0;c2<8;c2++){ if(damaBoard[r2][c2]?.color=='red') reds++; if(damaBoard[r2][c2]?.color=='black') blacks++; }
   if(reds==0) setTimeout(()=>alert('🏆 Black wins!'),100);
-  if(blacks==0) setTimeout(()=>alert('🏆 Red wins!'),100);
-  // إذا كان كمبيوتر و جا دور الأسود، يلعب بوحدو
+  if(blacks==0){ setTimeout(()=>alert('🏆 Red wins! +30 Points'),100); addPoints(30); }
   if(damaMode=='computer' && damaTurn=='black' && reds>0 && blacks>0){
     setTimeout(()=>damaComputerMove(), 700);
   }
 }
 function damaComputerMove(){
   if(damaTurn!='black') return;
-  // 1. نقلب على أكلة (Capture) أولا - أذكى
   for(let r=0;r<8;r++) for(let c=0;c<8;c++){
     let p=damaBoard[r][c]; if(p && p.color=='black'){
       let dirs=[[2,2],[2,-2]]; if(p.king) dirs=[[2,2],[2,-2],[-2,2],[-2,-2]];
@@ -398,7 +454,6 @@ function damaComputerMove(){
       }
     }
   }
-  // 2. حركة عادية عشوائية
   let moves=[];
   for(let r=0;r<8;r++) for(let c=0;c<8;c++){
     let p=damaBoard[r][c]; if(p && p.color=='black'){
@@ -434,80 +489,26 @@ function flipMem(div,i,emo){
   if(memFirst.emo==emo){
     memFirst.div.classList.add('matched'); div.classList.add('matched'); memFound++;
     memFirst=null;
-    if(memFound==8) document.getElementById('memMsg').textContent=`🎉 Great! You finished in ${memTries} tries!`;
+    if(memFound==8){ document.getElementById('memMsg').textContent=`🎉 Great! You finished in ${memTries} tries! +30 Points`; addPoints(30); }
   } else {
     memLock=true; let prev=memFirst; memFirst=null;
     setTimeout(()=>{ prev.div.classList.remove('open'); prev.div.textContent='?'; div.classList.remove('open'); div.textContent='?'; memLock=false; },700);
   }
 }
 
-// ===== QUIZ - 5 مجموعات =====
+// ===== QUIZ =====
 const quizSets = [
-  // 1: الأساس ديالك - محفوظ
-  {
-    name:"Morocco 🇲🇦",
-    list:[
-      {q:"What is the capital of Morocco?", opts:["Casablanca","Rabat","Fes","Marrakech"], a:1},
-      {q:"How much is 5 + 7 ?", opts:["10","11","12","13"], a:2},
-      {q:"What is the biggest planet?", opts:["Earth","Mars","Jupiter","Venus"], a:2},
-      {q:"What color is the sky during the day?", opts:["Green","Blue","Red","Yellow"], a:1},
-      {q:"Where is the Eiffel Tower?", opts:["London","Paris","Madrid","Rome"], a:1},
-    ]
-  },
-  // 2: العالم
-  {
-    name:"World 🌍",
-    list:[
-      {q:"What is the capital of France?", opts:["London","Paris","Madrid","Rome"], a:1},
-      {q:"What is the largest ocean?", opts:["Atlantic","Indian","Arctic","Pacific"], a:3},
-      {q:"How many continents are there?", opts:["5","6","7","8"], a:2},
-      {q:"What is the tallest mountain?", opts:["Kilimanjaro","Everest","Mont Blanc","K2"], a:1},
-      {q:"Which planet is closest to the sun?", opts:["Venus","Mars","Mercury","Earth"], a:2},
-    ]
-  },
-  // 3: رياضة
-  {
-    name:"Sport ⚽",
-    list:[
-      {q:"How many players in a football team?", opts:["9","10","11","12"], a:2},
-      {q:"How many minutes in a football match?", opts:["80","90","100","120"], a:1},
-      {q:"Which country won World Cup 2022?", opts:["France","Brazil","Argentina","Morocco"], a:2},
-      {q:"What is the color of Moroccan flag?", opts:["Green & White","Red & Green","Blue & White","Red & White"], a:1},
-      {q:"How many days in a leap year?", opts:["365","366","364","360"], a:1},
-    ]
-  },
-  // 4: جديدة - علوم
-  {
-    name:"Science 🔬",
-    list:[
-      {q:"How much is 9 x 9 ?", opts:["81","72","99","90"], a:0},
-      {q:"What is H2O?", opts:["Salt","Water","Oxygen","Fire"], a:1},
-      {q:"How many legs does a spider have?", opts:["6","8","4","10"], a:1},
-      {q:"What is 100 / 4 ?", opts:["20","25","30","40"], a:1},
-      {q:"Which animal is fastest?", opts:["Lion","Horse","Cheetah","Tiger"], a:2},
-    ]
-  },
-  // 5: جديدة - تكنولوجيا
-  {
-    name:"Tech 💻",
-    list:[
-      {q:"What does WWW mean?", opts:["World Wide Web","World Web Wide","Web World Wide","Wide World Web"], a:0},
-      {q:"Which company made iPhone?", opts:["Samsung","Google","Apple","Nokia"], a:2},
-      {q:"What is the first social app?", opts:["Instagram","Facebook","TikTok","Snapchat"], a:1},
-      {q:"How many hours in a day?", opts:["12","24","48","36"], a:1},
-      {q:"What color do you get mixing Blue + Yellow?", opts:["Purple","Green","Orange","Pink"], a:1},
-    ]
-  }
+  { name:"Morocco 🇲🇦", list:[ {q:"What is the capital of Morocco?", opts:["Casablanca","Rabat","Fes","Marrakech"], a:1}, {q:"How much is 5 + 7 ?", opts:["10","11","12","13"], a:2}, {q:"What is the biggest planet?", opts:["Earth","Mars","Jupiter","Venus"], a:2}, {q:"What color is the sky during the day?", opts:["Green","Blue","Red","Yellow"], a:1}, {q:"Where is the Eiffel Tower?", opts:["London","Paris","Madrid","Rome"], a:1}, ] },
+  { name:"World 🌍", list:[ {q:"What is the capital of France?", opts:["London","Paris","Madrid","Rome"], a:1}, {q:"What is the largest ocean?", opts:["Atlantic","Indian","Arctic","Pacific"], a:3}, {q:"How many continents are there?", opts:["5","6","7","8"], a:2}, {q:"What is the tallest mountain?", opts:["Kilimanjaro","Everest","Mont Blanc","K2"], a:1}, {q:"Which planet is closest to the sun?", opts:["Venus","Mars","Mercury","Earth"], a:2}, ] },
+  { name:"Sport ⚽", list:[ {q:"How many players in a football team?", opts:["9","10","11","12"], a:2}, {q:"How many minutes in a football match?", opts:["80","90","100","120"], a:1}, {q:"Which country won World Cup 2022?", opts:["France","Brazil","Argentina","Morocco"], a:2}, {q:"What is the color of Moroccan flag?", opts:["Green & White","Red & Green","Blue & White","Red & White"], a:1}, {q:"How many days in a leap year?", opts:["365","366","364","360"], a:1}, ] },
+  { name:"Science 🔬", list:[ {q:"How much is 9 x 9 ?", opts:["81","72","99","90"], a:0}, {q:"What is H2O?", opts:["Salt","Water","Oxygen","Fire"], a:1}, {q:"How many legs does a spider have?", opts:["6","8","4","10"], a:1}, {q:"What is 100 / 4 ?", opts:["20","25","30","40"], a:1}, {q:"Which animal is fastest?", opts:["Lion","Horse","Cheetah","Tiger"], a:2}, ] },
+  { name:"Tech 💻", list:[ {q:"What does WWW mean?", opts:["World Wide Web","World Web Wide","Web World Wide","Wide World Web"], a:0}, {q:"Which company made iPhone?", opts:["Samsung","Google","Apple","Nokia"], a:2}, {q:"What is the first social app?", opts:["Instagram","Facebook","TikTok","Snapchat"], a:1}, {q:"How many hours in a day?", opts:["12","24","48","36"], a:1}, {q:"What color do you get mixing Blue + Yellow?", opts:["Purple","Green","Orange","Pink"], a:1}, ] }
 ];
 function shuffleArr(arr){ return arr.sort(()=>Math.random()-0.5); }
 function getRandomQuiz(){
   let set = quizSets[Math.floor(Math.random()*quizSets.length)];
   let copy = JSON.parse(JSON.stringify(set.list));
-  copy.forEach(q=>{
-    let correct = q.opts[q.a];
-    q.opts = shuffleArr(q.opts);
-    q.a = q.opts.indexOf(correct);
-  });
+  copy.forEach(q=>{ let correct = q.opts[q.a]; q.opts = shuffleArr(q.opts); q.a = q.opts.indexOf(correct); });
   return { name:set.name, list:shuffleArr(copy) };
 }
 let quizData = [];
@@ -515,8 +516,7 @@ let quizGroupName = "";
 let quizIdx=0, quizScore=0, quizAnswered=false;
 function initQuiz(){
   let picked = getRandomQuiz();
-  quizData = picked.list;
-  quizGroupName = picked.name;
+  quizData = picked.list; quizGroupName = picked.name;
   quizIdx=0; quizScore=0; showQuiz();
   document.getElementById('quizRestart').style.display='none';
   document.getElementById('quizMsg').textContent='';
@@ -533,7 +533,7 @@ function showQuiz(){
     let b=document.createElement('button'); b.className='quiz-opt'; b.textContent=opt;
     b.onclick=()=>{
       if(quizAnswered) return; quizAnswered=true;
-      if(i==q.a){ b.classList.add('correct'); quizScore++; document.getElementById('quizScore').textContent=quizScore; document.getElementById('quizMsg').textContent='✅ Correct!'; }
+      if(i==q.a){ b.classList.add('correct'); quizScore++; addPoints(10); document.getElementById('quizScore').textContent=quizScore; document.getElementById('quizMsg').textContent='✅ Correct! +10 Points'; }
       else { b.classList.add('wrong'); document.getElementById('quizMsg').textContent='❌ Wrong! Correct answer: '+q.opts[q.a]; }
       setTimeout(()=>{ quizIdx++; document.getElementById('quizMsg').textContent=''; if(quizIdx<quizData.length) showQuiz(); else { document.getElementById('quizQ').textContent=`🏆 Finished! You got ${quizScore} / ${quizData.length} - Group: ${quizGroupName}`; document.getElementById('quizOpts').innerHTML=''; document.getElementById('quizRestart').style.display='block'; } },1200);
     };
