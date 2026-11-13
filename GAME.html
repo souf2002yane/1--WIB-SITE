@@ -1,17 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="style.css">
-<title>soufyane el haddaoui</title>
-<link rel="icon" href="IMAGES/1793704644158.jpg">
-<meta name="auther" content="soufyane">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+<script>if(location.protocol==="http:"&&location.hostname!=="localhost"&&location.hostname!=="127.0.0.1"){location.replace("https://"+location.host+location.pathname+location.search+location.hash);}</script>
+<title>Free Online Games: Tic Tac Toe, Checkers, Memory &amp; Quiz – SEH World</title>
+<meta name="description" content="Play 6 free online games: Challenge Party, Tic Tac Toe, Rock Paper Scissors, Checkers, Memory and Quiz. No download, no login needed.">
+<meta name="author" content="Soufyane El Haddaoui">
+<link rel="canonical" href="https://souf2002yane.github.io/SEH-WORLD/GAME.html">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SEH World">
+<meta property="og:title" content="Free Online Games: Tic Tac Toe, Checkers, Memory &amp; Quiz – SEH World">
+<meta property="og:description" content="Play 6 free online games: Challenge Party, Tic Tac Toe, Rock Paper Scissors, Checkers, Memory and Quiz. No download, no login needed.">
+<meta property="og:image" content="https://souf2002yane.github.io/SEH-WORLD/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="SEH World - Games, Stories and Personal Website">
+<meta property="og:url" content="https://souf2002yane.github.io/SEH-WORLD/GAME.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Free Online Games: Tic Tac Toe, Checkers, Memory &amp; Quiz – SEH World">
+<meta name="twitter:description" content="Play 6 free online games: Challenge Party, Tic Tac Toe, Rock Paper Scissors, Checkers, Memory and Quiz. No download, no login needed.">
+<meta name="twitter:image" content="https://souf2002yane.github.io/SEH-WORLD/og-image.png">
 </head>
 
 <body>
 <div class="top-bar">
 <span id="todayDate">📅 Loading date...</span>
-<a href="https://facebook.com" target="_blank" style="font-size:20px;text-decoration:none">📘</a>
+<a href="https://facebook.com" target="_blank" rel="noopener noreferrer" style="font-size:20px;text-decoration:none">📘</a>
 </div>
 
  <nav class="bottom-row">
@@ -97,32 +115,33 @@
 
 <h2 class="games-title">🎮 Choose Your Game</h2>
 <p class="games-sub">Click on an image to play - 6 Games</p>
+<button type="button" class="main-cta" id="mainPlayBtn" onclick="openGame('challenge',document.querySelector('.game-card'))">🎮 START PLAYING</button>
 
 <div class="games-grid" id="gamesMenu">
   <div class="game-card" onclick="openGame('challenge',this)">
-    <img src="https://psycatgames.com/cdn-cgi/image/f=auto,fit=cover,w=960,h=540,q=60/magazine/party-games/most-likely-to/funny-questions-illustration.jpg">
+    <img src="https://psycatgames.com/cdn-cgi/image/f=auto,fit=cover,w=960,h=540,q=60/magazine/party-games/most-likely-to/funny-questions-illustration.jpg" alt="Challenge Party game illustration with funny group questions" loading="lazy" decoding="async" referrerpolicy="no-referrer">
     <b>Challenge Party</b><span>2-6 Players • Challenges</span>
   </div>
   <div class="game-card" onclick="openGame('xo',this)">
-    <img src="https://staticz.novelgames.com/games/tictactoe/icon1024.webp">
+    <img src="https://staticz.novelgames.com/games/tictactoe/icon1024.webp" alt="Tic Tac Toe game board icon" loading="lazy" decoding="async" referrerpolicy="no-referrer">
     <b>Tic Tac Toe</b><span>VS Friend / VS Computer</span>
   </div>
   <div class="game-card" onclick="openGame('rps',this)">
-    <img src="https://cdn.sp.games/cdn-cgi/image/width=1200,height=675,fit=cover,quality=62,format=auto/rock-paper-scissor/images/game-large.webp">
+    <img src="https://cdn.sp.games/cdn-cgi/image/width=1200,height=675,fit=cover,quality=62,format=auto/rock-paper-scissor/images/game-large.webp" alt="Rock Paper Scissors game cover" loading="lazy" decoding="async" referrerpolicy="no-referrer">
     <b>Rock Paper Scissors</b><span>Vs Computer</span>
   </div>
   <div class="game-card" onclick="openGame('dama',this)">
-    <img src="https://luiscastellanos.org/wp-content/uploads/damas.jpg">
+    <img src="https://luiscastellanos.org/wp-content/uploads/damas.jpg" alt="Checkers board with red and black pieces" loading="lazy" decoding="async" referrerpolicy="no-referrer">
     <b>Checkers</b><span>VS Friend / VS Computer</span>
   </div>
   <div class="game-card" onclick="openGame('memory',this)">
     <span class="new-badge">NEW</span>
-    <img src="https://toyfinitypk.com/cdn/shop/files/0EBFE5EF-C208-44C3-BB68-F7F07B01432B.webp?v=1779018862&width=3840">
+    <img src="https://toyfinitypk.com/cdn/shop/files/0EBFE5EF-C208-44C3-BB68-F7F07B01432B.webp?v=1779018862&width=3840" alt="Memory game cards to match in pairs" loading="lazy" decoding="async" referrerpolicy="no-referrer">
     <b>Memory Game</b><span>Find all matching pairs</span>
   </div>
   <div class="game-card" onclick="openGame('quiz',this)">
     <span class="new-badge">NEW</span>
-    <img src="https://www.weqyoua.net/thumbs/83092.png?r=175826159">
+    <img src="https://www.weqyoua.net/thumbs/83092.png?r=175826159" alt="Quiz game question mark illustration" loading="lazy" decoding="async" referrerpolicy="no-referrer">
     <b>Quiz - Questions</b><span>5 Groups • Are you smart?</span>
   </div>
 </div>
@@ -313,7 +332,7 @@ function renderLeaderboard(){
     let medal = medals[i] || ('#' + (i+1));
     let level = Math.floor(p.points/100)+1;
     let letter = p.name.charAt(0).toUpperCase();
-    html += `<div class="lb-row ${p.me ? 'me' : ''}"><div style="font-size:22px;font-weight:900;width:38px;text-align:center">${medal}</div><div class="lb-avatar">${p.photo ? '<img src="'+p.photo+'">' : letter}</div><div style="flex:1"><b style="display:block;font-size:15px">${p.name} ${p.me ? ' (You) ⭐' : ''}</b><small style="color:#888;font-size:12px">📍 ${p.city} • ⭐ LEVEL ${level}</small></div><div style="font-weight:900;color:#B7791F;font-size:16px;text-align:right">${p.points}<small style="display:block;color:#888;font-size:11px;font-weight:400">points</small></div></div>`;
+    html += `<div class="lb-row ${p.me ? 'me' : ''}"><div style="font-size:22px;font-weight:900;width:38px;text-align:center">${medal}</div><div class="lb-avatar">${p.photo ? '<img src="'+p.photo+'" alt="Player photo">' : letter}</div><div style="flex:1"><b style="display:block;font-size:15px">${p.name} ${p.me ? ' (You) ⭐' : ''}</b><small style="color:#888;font-size:12px">📍 ${p.city} • ⭐ LEVEL ${level}</small></div><div style="font-weight:900;color:#B7791F;font-size:16px;text-align:right">${p.points}<small style="display:block;color:#888;font-size:11px;font-weight:400">points</small></div></div>`;
   });
   document.getElementById('leaderList').innerHTML = html;
   let myRank = players.findIndex(p=>p.me) + 1;
@@ -542,5 +561,11 @@ function showQuiz(){
 }
 </script>
 <script src="javascript"></script>
+<script src="seh-extra.js" defer></script>
+
+<div class="seh-legal-footer">
+  <div><a href="PRIVACY.html">Privacy Policy</a> · <a href="CGU.html">Terms of Use (CGU)</a> · <a href="#" id="sehCookieSettings">Cookie settings</a></div>
+  <p>© 2026 Soufyane El Haddaoui – SEH World · Made in Morocco 🇲🇦</p>
+</div>
 </body>
 </html>

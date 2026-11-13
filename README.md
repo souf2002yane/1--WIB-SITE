@@ -36,7 +36,7 @@ Click the link and start playing! No download, no login, just fun! 🎉
 - 🏠 **MENU** - Clean and easy navigation
 - 👤 **INFO PERSONAL** - Know more about me
 - 🧮 **CALCULATOR** - Fast calculator for your daily math
-- 📞 **CALLS** - Contact me easily
+- 📞 **CONTACT** - Press *CONTACT ME* on the ABOUT page to write to me
 - 🎮 **GAME** - 6 games in one place
 - 📚 **STORIES** - Read cool stories
 
@@ -62,7 +62,7 @@ Click the link and start playing! No download, no login, just fun! 🎉
 
 ## 🚀 HOW TO PLAY?
 
-1. Open the link: **[WIB SITE](https://souf2002yane.github.io/1--WIB-SITE/)**
+1. Open the link: **[SEH World](https://souf2002yane.github.io/SEH-WORLD/)**
 2. Click on **🎮 GAME** in the menu
 3. Choose your favorite game
 4. Enjoy! 😍
@@ -74,7 +74,7 @@ Click the link and start playing! No download, no login, just fun! 🎉
 > - 100% FREE
 > - No Ads
 > - No Download
-> - Works Offline? No, just need internet
+> - Works anywhere: open the link in your browser (an internet connection is needed) and start playing!
 > - New Games Every Week!
 
 ---
@@ -94,7 +94,7 @@ More games and features are coming soon, stay tuned!
 
 Got an idea for a new game? Found a bug? Want to say Hi?
 
-Just go to the **📞 CALLS** page on the website and contact me!
+Open the **ABOUT** page and press **CONTACT ME**, or write to **souf2002yane@gmail.com**!
 
 ---
 
@@ -105,6 +105,23 @@ If you like my website, please:
 1. ⭐ **Star this repository** on GitHub - It means a lot to me!
 2. 🔗 **Share the link** with your friends
 3. 🎮 **Play and have fun!**
+
+---
+
+## 🔒 PRIVACY & LEGAL
+
+- [Privacy Policy](https://souf2002yane.github.io/SEH-WORLD/PRIVACY.html) (Moroccan law 09-08 / CNDP)
+- [Terms of Use - CGU](https://souf2002yane.github.io/SEH-WORLD/CGU.html)
+- Profiles are stored only in the visitor's own browser (localStorage). No backend, no API keys in the code.
+
+---
+
+## ⚙️ SETUP NOTES (for the owner)
+
+1. **HTTPS**: GitHub repo → *Settings → Pages → Enforce HTTPS* (this is the real 301 redirect; the pages also contain a JavaScript fallback).
+2. **Cloudflare Turnstile**: create a widget, then put the *public* site key in `seh-extra.js` (`turnstileSiteKey`). Never put the secret key in the website. Without a backend the check cannot be verified server-side, see the comment at the top of `seh-extra.js`.
+3. **Plausible**: add `souf2002yane.github.io` as a site in your Plausible account. The script only loads for visitors who accept the cookie banner.
+4. **Images**: keep every image under 200 KB (run `python3 tools/compress_images.py IMAGES`).
 
 ---
 

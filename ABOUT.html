@@ -1,215 +1,32 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" style="scroll-behavior:smooth">
 <head>
 <meta charset="UTF-8">
-<title>soufyane el haddaoui</title>
-<link rel="icon" href="IMAGES/1793704644158.jpg">
-<style>
-* {
-    margin: 0;padding: 0;box-sizing: border-box;font-family: Arial, sans-serif;
-    scroll-behavior: smooth;
-}
-
-body {background: grey;color: white; 
-}
-
-/* SIDEBAR */
-.sidebar { position: fixed; left: 0;top: 0;width: 230px;
-    height: 100vh; background: #07140d; border-right: 2px solid #00ff66; padding: 30px 15px;z-index: 1000;transition: 0.4s;
-}
-
-.logo {
-    text-align: center;color: #00ff66;font-size: 42px;
-    font-weight: bold;text-shadow: 0 0 30px #00ff66;margin-bottom: 55px;
-}
-
-.sidebar nav {
-    display: flex;flex-direction: column;gap: 20px;
-}
-
-.sidebar nav a {
-    color: white;
-    text-decoration: none;
-    padding: 15px;
-    border-radius: 10px;
-    transition: 0.3s;
-    font-size: 15px;
-}
-
-.sidebar nav a:hover {
-    background: #00ff66;
-    color: black;
-    box-shadow: 0 0 20px #00ff66;
-    transform: translateX(5px);
-}
-
-/* MENU BUTTON */
-
-.menu-btn {
-    display: none;
-    position: fixed;
-    top: 15px;
-    left: 15px;
-    z-index: 1100;
-    background: #00ff66;
-    color: black;
-    border: none;
-    padding: 15px 15px;
-    border-radius: 8px;
-    font-size: 22px;
-    cursor: pointer;
-}
-
-/* MAIN CONTENT */
-
-main {
-    margin-left: 230px;
-}
-
-/* HERO */
-
-.hero {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 40px 20px;
-
-    background:
-    radial-gradient(circle, #123d22 0%, #030906 70%);
-}
-
-.hero h1 {
-    font-size: clamp(35px, 6vw, 65px);
-    color: #00ff66;
-    text-shadow: 0 0 25px #00ff66;
-    margin-bottom: 25px;
-}
-
-.hero p {
-    color: #ccc;
-    font-size: 20px;
-    line-height: 2;
-}
-
-.btn {
-    display: inline-block;
-    margin-top: 35px;
-    padding: 16px 35px;
-    background: white;
-    color: black;
-    text-decoration: none;
-    border-radius: 30px;
-    font-weight: bold;
-    transition: 0.3s;
-}
-
-.btn:hover {
-    background: white;
-    box-shadow: 0 0 30px #00ff66;
-    transform: scale(1.08);
-}
-
-/* SECTIONS */
-
-section {
-    padding: 90px 35px;
-    text-align: center;
-    min-height: 400px;
-}
-
-h2 {
-    color: black;
-    font-size: 35px;
-    margin-bottom: 40px;
-    text-shadow: 0 0 15px #00ff66;
-}
-
-/* CARDS */
-
-.cards {
-    display: grid;
-    grid-template-columns: repeat(
-        auto-fit,
-        minmax(200px, 1fr)
-    );
-    gap: 25px;
-}
-
-.card {
-    background: #0c1b12;
-    padding: 35px 20px;
-    border: 1px solid #087d36;
-    border-radius: 15px;
-    transition: 0.3s;
-}
-
-.card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 0 25px #00ff6655;
-    border-color: #00ff66;
-}
-
-.card h3 {
-    color: #00ff66;
-    margin-bottom: 20px;
-}
-
-.card p {
-    color: #bbb;
-    line-height: 1.7;
-}
-
-/* FOOTER */
-
-footer {
-    text-align: center;
-    padding: 30px;
-    background: #07140d;
-    color: #00ff66;
-    border-top: 1px solid #00ff66;
-}
-
-/* MOBILE */
-
-@media(max-width: 768px) {
-
-    .sidebar {
-        width: 230px;
-        transform: translateX(-100%);
-    }
-
-    .sidebar.active {
-        transform: translateX(0);
-    }
-
-    .menu-btn {
-        display: block;
-    }
-
-    main {
-        margin-left: 0;
-    }
-
-    .hero {
-        padding: 80px 20px;
-    }
-
-    .hero h1 {
-        font-size: 38px;
-    }
-
-    section {
-        padding: 70px 20px;
-    }
-}
-
-</style>
+<link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+<script>if(location.protocol==="http:"&&location.hostname!=="localhost"&&location.hostname!=="127.0.0.1"){location.replace("https://"+location.host+location.pathname+location.search+location.hash);}</script>
+<title>About Soufyane El Haddaoui – Developer Portfolio | SEH World</title>
+<meta name="description" content="About Soufyane El Haddaoui: developer passionate about HTML, CSS and JavaScript. See skills, projects and how to contact me.">
+<meta name="author" content="Soufyane El Haddaoui">
+<link rel="canonical" href="https://souf2002yane.github.io/SEH-WORLD/ABOUT.html">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SEH World">
+<meta property="og:title" content="About Soufyane El Haddaoui – Developer Portfolio | SEH World">
+<meta property="og:description" content="About Soufyane El Haddaoui: developer passionate about HTML, CSS and JavaScript. See skills, projects and how to contact me.">
+<meta property="og:image" content="https://souf2002yane.github.io/SEH-WORLD/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="SEH World - Games, Stories and Personal Website">
+<meta property="og:url" content="https://souf2002yane.github.io/SEH-WORLD/ABOUT.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="About Soufyane El Haddaoui – Developer Portfolio | SEH World">
+<meta name="twitter:description" content="About Soufyane El Haddaoui: developer passionate about HTML, CSS and JavaScript. See skills, projects and how to contact me.">
+<meta name="twitter:image" content="https://souf2002yane.github.io/SEH-WORLD/og-image.png">
 </head>
 
-<body>
+<body class="about-page">
 
 <!-- MENU BUTTON -->
 
@@ -294,7 +111,7 @@ footer {
     <section id="contact">
         <h2>CONTACT ME</h2>
         <p>Thank you for visiting my website!</p>
-        <a href="mailto:your@email.com" class="btn">
+        <a href="mailto:souf2002yane@gmail.com" class="btn main-cta">
             CONTACT ME
         </a>
     </section>
@@ -314,5 +131,11 @@ function closeMenu() {
     }
 }
 </script>
+<script src="seh-extra.js" defer></script>
+
+<div class="seh-legal-footer">
+  <div><a href="PRIVACY.html">Privacy Policy</a> · <a href="CGU.html">Terms of Use (CGU)</a> · <a href="#" id="sehCookieSettings">Cookie settings</a></div>
+  <p>© 2026 Soufyane El Haddaoui – SEH World · Made in Morocco 🇲🇦</p>
+</div>
 </body>
 </html>

@@ -41,7 +41,8 @@ function updateDate(){
   let now = new Date();
   let options = { weekday: 'long', day: '2-digit', month: 'long', year: 'numeric' };
   let dateStr = now.toLocaleDateString('ar-MA', options);
-  document.getElementById('todayDate').innerText = "📅 اليوم: " + dateStr;
+  const todayEl = document.getElementById('todayDate');
+  if (todayEl) todayEl.innerText = "📅 اليوم: " + dateStr;
 }
 updateDate();
 

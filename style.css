@@ -63,11 +63,7 @@ header{
   --text: black;
   --card: #ffffff;
 }
-body.dark {
-  --bg: gray;
-  --text: black;
-  --card: white;
-}
+/* dark mode: see REAL DARK MODE at the end of this file */
 body {
   background-color: var(--bg) !important;
   color: var(--text) !important;
@@ -96,7 +92,7 @@ h1{
   font-size: 20px; border: none; transition: 0.3s;
 }
 h1:hover{ background: linear-gradient(135deg,rgb(11, 221, 236) 0%, #764ba2 100%);
- ; transform: scale(1.10)  }
+  transform: scale(1.10) }
 
 fieldset{
   background: var(--white); width: 92%; max-width: 700px;
@@ -121,7 +117,7 @@ input:focus, select:focus{
 input::placeholder{ color:#8a8d91; }
 
 button, input[type="submit"]{
-  background: var(--blue); color: rgb(193, 192, 192); border: none; padding: 12px 20px;
+  background: var(--blue); color: #fff; border: none; padding: 12px 20px;
   border-radius: 8px; font-weight: bold; cursor: pointer;
   transition: 0.2s; width: auto;
 }
@@ -157,3 +153,179 @@ dialog::backdrop{
   to{ transform: scale(1); opacity:1; }
 }
 
+
+/* =====================================================================
+   ADDED BY THE UPDATE (nothing above this line was redesigned)
+   ===================================================================== */
+
+/* ---------- basic responsiveness safety ---------- */
+img{max-width:100%}
+body{overflow-x:hidden}
+
+/* ---------- contrast fixes (WCAG AA 4.5:1) ---------- */
+.top-bar{color:#5e5128}
+input::placeholder{color:#6b6e73}
+legend{color:#0550c8}
+.gold-header p{color:#666}
+.world-section p{color:#666}
+.mini-game small{color:#666}
+.hero-gold-text span{background:#8a6d1a}
+[style*="color:#888"]{color:#666 !important}
+[style*="color:#999"]{color:#666 !important}
+
+/* ---------- ONE main gold button per page ---------- */
+.main-cta{
+  display:block !important;
+  width:fit-content;max-width:92%;
+  margin:28px auto !important;
+  padding:18px 46px !important;
+  font-size:20px !important;font-weight:900 !important;
+  text-align:center;text-decoration:none;
+  color:#1a1200 !important;
+  background:linear-gradient(135deg,#FFD84D,#E9B824) !important;
+  border:2px solid #B7791F !important;border-radius:40px !important;
+  box-shadow:0 8px 24px rgba(183,121,31,.45);
+  cursor:pointer;transition:transform .2s, box-shadow .2s;
+}
+.main-cta:hover{transform:translateY(-2px) scale(1.03);box-shadow:0 12px 30px rgba(183,121,31,.6);background:linear-gradient(135deg,#FFE17A,#F0C030) !important}
+.btn-next,.btn-pro.btn-gold{font-size:18px;color:#1a1200}
+
+/* ---------- cookie banner (CNDP) ---------- */
+.seh-cookie{
+  position:fixed;left:0;right:0;bottom:0;z-index:100000;
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px 20px;
+  padding:14px 18px;background:#111;color:#f1f1f1;
+  border-top:3px solid #E9C46A;box-shadow:0 -6px 24px rgba(0,0,0,.35);
+  font-size:14px;line-height:1.5;
+}
+.seh-cookie p{margin:0;max-width:760px}
+.seh-cookie a{color:#FFD84D;font-weight:700}
+.seh-cookie-btns{display:flex;gap:10px}
+.seh-cookie button{padding:11px 26px;border-radius:25px;font-weight:800;font-size:15px;cursor:pointer;border:2px solid #E9C46A}
+.seh-cookie .seh-cookie-accept{background:#E9C46A;color:#1a1200}
+.seh-cookie .seh-cookie-refuse{background:transparent;color:#fff}
+.seh-cookie .seh-cookie-refuse:hover{background:#333;transform:none}
+.seh-cookie .seh-cookie-accept:hover{background:#FFD84D;transform:none}
+
+/* ---------- legal footer on every page ---------- */
+.seh-legal-footer{
+  clear:both;text-align:center;padding:22px 12px 95px;margin-top:20px;
+  background:#111;color:#e0e0e0;font-size:14px;border-top:2px solid #E9C46A;
+}
+.seh-legal-footer a{color:#FFD84D;font-weight:700;text-decoration:none;margin:0 8px;display:inline-block;padding:4px 0}
+.seh-legal-footer a:hover{text-decoration:underline}
+.seh-legal-footer p{margin:10px 0 0;color:#c9c9c9}
+
+/* ---------- Turnstile holder (hidden until a site key is configured) ---------- */
+.seh-turnstile{display:flex;justify-content:center;margin:10px 0}
+.seh-turnstile:empty{display:none}
+
+/* ---------- theme toggle button (bottom-right, above the menu bar) ---------- */
+.seh-theme-btn{top:auto !important;bottom:78px;right:14px !important;box-shadow:0 2px 10px rgba(0,0,0,.25);z-index:9998}
+
+/* ---------- legal / 404 page layout ---------- */
+.legal{max-width:820px;margin:20px auto;padding:22px 24px;background:var(--card);border-radius:14px;box-shadow:0 2px 10px rgba(0,0,0,.08);line-height:1.75;font-size:16px}
+.legal h1{all:unset;display:block;font-size:28px;font-weight:800;margin:6px 0 4px;color:#1c1e21}
+.legal h2{font-size:20px;margin:26px 0 8px;color:#0550c8}
+.legal p,.legal li{margin:8px 0}
+.legal ul{padding-left:22px}
+.legal table{width:100%;max-width:none;margin:12px 0;font-size:14px}
+.legal th{background:#0550c8}
+.legal td{text-align:left;vertical-align:top}
+.legal .updated{color:#555;font-size:14px}
+.legal a{color:#0550c8;font-weight:700}
+
+/* =====================================================================
+   REAL DARK MODE  (body.dark)
+   ===================================================================== */
+body.dark{
+  --bg:#0a0a0a;--text:#e0e0e0;--card:#111;
+  --white:#1a1a1a;--gray:#c0c0c0;--dark:#000;
+}
+body.dark:not(.about-page){background-color:#0a0a0a !important;color:#e0e0e0 !important}
+body.dark h1{color:#e0e0e0;background:#1a1a1a}
+body.dark fieldset{border-color:#333}
+body.dark input,body.dark select{background:#1f1f1f;color:#e0e0e0;border-color:#444}
+body.dark input:focus,body.dark select:focus{background:#262626}
+body.dark input::placeholder{color:#a0a0a0}
+body.dark legend{background:#1d2b44;color:#9cc4ff}
+body.dark .nav-item small{color:#e0e0e0}
+body.dark .nav-item.active{background:#1d2b44;color:#9cc4ff}
+body.dark .nav-item:hover{background:#262626}
+body.dark .top-bar{background:#1a1a1a;color:#e0e0e0}
+body.dark tr:hover{background:#222}
+body.dark td{border-color:#333}
+body.dark .legal h1{color:#e0e0e0;background:none}
+body.dark .legal h2,body.dark .legal a{color:#9cc4ff}
+body.dark .legal .updated{color:#b5b5b5}
+body.dark .legal th{background:#1d2b44}
+/* index.html */
+body.dark .gold-header,body.dark .news-box,body.dark .world-detail,
+body.dark [style*="background:white"],body.dark [style*="background:#f8f9fa"]{background:#1a1a1a !important;color:#e0e0e0}
+body.dark .gold-header h2,body.dark .news-box h3{color:#E9C46A}
+body.dark .gold-header p,body.dark .world-section p,body.dark .mini-game small{color:#b5b5b5}
+body.dark .world-detail h4{color:#e0e0e0}
+body.dark .mini-game{background:#222;border-color:#333;color:#e0e0e0}
+body.dark section{background:#1a1a1a;color:#e0e0e0;border-color:#5a4a2a}
+body.dark [style*="background:#fff8e1"]{background:#2a2412 !important;color:#f0e6c0}
+body.dark .card h4{color:#E9C46A}
+body.dark section [style*="color:#5A4632"],body.dark section [style*="color:#8A6A45"]{color:#d8c9b0 !important}
+body.dark .news-box a{color:#FFD84D !important}
+body.dark #moreBtn{color:#fff}
+/* GAME.html */
+body.dark .container,body.dark .game-card,body.dark .lb-row{background:#1a1a1a;color:#e0e0e0}
+body.dark .xo-cell,body.dark .rps-btn,body.dark .mode-btn,body.dark .party-count-btn{color:#111}
+body.dark .btn-secondary{background:#1a1a1a !important;color:#e0e0e0 !important}
+/* STORIES.html */
+body.dark .story-item,body.dark .coming-box{background:#1a1a1a;color:#e0e0e0}
+body.dark .story-icon{background:#333;color:#e0e0e0}
+body.dark .moral{background:#2a2412;color:#f0e6c0}
+body.dark .coming-footer{color:#E9C46A}
+body.dark #searchBox{background:#1f1f1f;color:#e0e0e0;border-color:#444}
+
+/* =====================================================================
+   ABOUT PAGE - styles moved here from the inline <style> of ABOUT.html.
+   Everything is scoped to body.about-page so no other page is affected and
+   the green neon design stays exactly as you built it.
+   ===================================================================== */
+body.about-page,body.about-page .sidebar,body.about-page .sidebar *,body.about-page main,body.about-page main *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif;scroll-behavior:smooth}
+body.about-page{background:#6a6a6a !important;color:#fff !important;padding:0}
+body.about-page .sidebar{position:fixed;left:0;top:0;width:230px;height:100vh;background:#07140d;border-right:2px solid #00ff66;padding:30px 15px;z-index:1000;transition:.4s}
+body.about-page .logo{text-align:center;color:#00ff66;font-size:42px;font-weight:bold;text-shadow:0 0 30px #00ff66;margin-bottom:55px}
+body.about-page .sidebar nav{display:flex;flex-direction:column;gap:20px;background:transparent !important}
+body.about-page .sidebar nav a{color:#fff;text-decoration:none;padding:15px;border-radius:10px;transition:.3s;font-size:15px}
+body.about-page .sidebar nav a:hover{background:#00ff66;color:#000;box-shadow:0 0 20px #00ff66;transform:translateX(5px)}
+body.about-page .menu-btn{display:none;position:fixed;top:15px;left:15px;z-index:1100;background:#00ff66;color:#000;border:none;padding:15px;border-radius:8px;font-size:22px;cursor:pointer}
+body.about-page .menu-btn:hover{background:#00ff66;transform:none}
+body.about-page main{margin-left:230px}
+body.about-page .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:40px 20px;background:radial-gradient(circle,#123d22 0%,#030906 70%)}
+body.about-page .hero h1{font-size:clamp(35px,6vw,65px);color:#00ff66;text-shadow:0 0 25px #00ff66;margin:0 0 25px;padding:0;width:auto;max-width:none;background:none;border-radius:0;box-shadow:none;transform:none;display:block}
+body.about-page .hero h1:hover{background:none;transform:none}
+body.about-page .hero p{color:#ccc;font-size:20px;line-height:2}
+body.about-page .btn{display:inline-block;margin-top:35px;padding:16px 35px;background:#fff;color:#000;text-decoration:none;border-radius:30px;font-weight:bold;transition:.3s}
+body.about-page .btn:hover{background:#fff;box-shadow:0 0 30px #00ff66;transform:scale(1.08)}
+body.about-page section{padding:90px 35px;text-align:center;min-height:400px}
+body.about-page h2{color:#fff;font-size:35px;margin-bottom:40px;text-shadow:0 0 15px #00ff66}
+body.about-page .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:25px}
+body.about-page .card{background:#0c1b12 !important;padding:35px 20px;border:1px solid #087d36;border-radius:15px;transition:.3s}
+body.about-page .card:hover{transform:translateY(-10px);box-shadow:0 0 25px #00ff6655;border-color:#00ff66}
+body.about-page .card h3{color:#00ff66;margin-bottom:20px}
+body.about-page .card p{color:#bbb;line-height:1.7}
+body.about-page footer{text-align:center;padding:30px;background:#07140d;color:#00ff66;border-top:1px solid #00ff66}
+body.about-page .seh-legal-footer{margin-left:230px;padding-bottom:30px}
+@media(max-width:768px){
+  body.about-page .sidebar{width:230px;transform:translateX(-100%)}
+  body.about-page .sidebar.active{transform:translateX(0)}
+  body.about-page .menu-btn{display:block}
+  body.about-page main,body.about-page .seh-legal-footer{margin-left:0}
+  body.about-page .hero{padding:80px 20px}
+  body.about-page .hero h1{font-size:38px}
+  body.about-page section{padding:70px 20px}
+}
+
+/* ---------- 404 page ---------- */
+body.p404{background:#07140d !important;color:#fff !important;padding:0;min-height:100vh}
+body.p404 .box404{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px 20px 120px;background:radial-gradient(circle,#123d22 0%,#030906 70%)}
+body.p404 .code404{font-size:clamp(80px,22vw,160px);font-weight:900;color:#00ff66;text-shadow:0 0 30px #00ff66;line-height:1}
+body.p404 h2{font-size:28px;margin:10px 0}
+body.p404 p{color:#ccc;font-size:18px;max-width:520px}

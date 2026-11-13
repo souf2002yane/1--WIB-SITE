@@ -1,3 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /404.html
+
 Sitemap: https://souf2002yane.github.io/SEH-WORLD/sitemap.xml

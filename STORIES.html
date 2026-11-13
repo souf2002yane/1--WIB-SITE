@@ -1,15 +1,35 @@
 <!DOCTYPE html>
-<html >
+<html lang="en">
 <head>
 <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="style.css">
-<title>soufyane el haddaoui</title>
-<meta name="auther" content="soufyane">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+<script>if(location.protocol==="http:"&&location.hostname!=="localhost"&&location.hostname!=="127.0.0.1"){location.replace("https://"+location.host+location.pathname+location.search+location.hash);}</script>
+<title>Inspiring Short Stories with Arabic Translation – SEH World</title>
+<meta name="description" content="Read short inspiring stories in English with Arabic translation about perseverance, honesty, patience and big dreams. New stories every week.">
+<meta name="author" content="Soufyane El Haddaoui">
+<link rel="canonical" href="https://souf2002yane.github.io/SEH-WORLD/STORIES.html">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SEH World">
+<meta property="og:title" content="Inspiring Short Stories with Arabic Translation – SEH World">
+<meta property="og:description" content="Read short inspiring stories in English with Arabic translation about perseverance, honesty, patience and big dreams. New stories every week.">
+<meta property="og:image" content="https://souf2002yane.github.io/SEH-WORLD/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="SEH World - Games, Stories and Personal Website">
+<meta property="og:url" content="https://souf2002yane.github.io/SEH-WORLD/STORIES.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Inspiring Short Stories with Arabic Translation – SEH World">
+<meta name="twitter:description" content="Read short inspiring stories in English with Arabic translation about perseverance, honesty, patience and big dreams. New stories every week.">
+<meta name="twitter:image" content="https://souf2002yane.github.io/SEH-WORLD/og-image.png">
 </head>
+<body>
 
 <nav class="bottom-row">
-    <a href="index.html" class="nav-item ">🏠<br><small>NENU</small></a>
+    <a href="index.html" class="nav-item ">🏠<br><small>MENU</small></a>
     <a href="INFO.html" class="nav-item ">👤<br><small>INFO PERSONAL</small></a>
    <a href="GAME.html" class="nav-item ">🎮<br><small>GAME</small></a>
     <a href="STORIES.html" class="nav-item active">📚<br><small>STORIES</small></a>
@@ -51,18 +71,18 @@ body{  font-family:sans-serif; padding:20px; max-width:999px; margin:auto; }
 .share-dl{ background:#111; }
 </style>
 
-<body>
     <br>
     
-<input type="text" id="searchBox" placeholder="🔍 Search stories (e.g. lion, honest, phone...)" 
+<input type="text" id="searchBox" aria-label="Search stories" maxlength="60" placeholder="🔍 Search stories (e.g. lion, honest, phone...)" 
 onkeyup="searchStory()" style="width:100%; padding:12px 18px; 
 border-radius:25px; border:2px solid #ddd; outline:none; 
 font-size:15px; margin-bottom:20px; box-sizing:border-box;">
  <h1>📚 10 Stories - 20 Lines Each</h1>
+<button type="button" class="main-cta" onclick="toggleStory(1);document.getElementById('story1').scrollIntoView({behavior:'smooth',block:'center'})">📖 READ A STORY NOW</button>
 
 <!-- 1 -->
 <div class="story-item">
-<div class="story-title" onclick="toggleStory(1)"><div class="title-left"><img src="IMAGES/story1.jpeg"><b>📘 1. The Boy Who Never Gave Up</b></div> <div class="story-icon" id="icon1">+</div></div>
+<div class="story-title" onclick="toggleStory(1)"><div class="title-left"><img src="IMAGES/story1.jpeg" alt="Illustration for the story: The Boy Who Never Gave Up" loading="lazy" decoding="async"><b>📘 1. The Boy Who Never Gave Up</b></div> <div class="story-icon" id="icon1">+</div></div>
 <div class="story-content" id="story1">
 <div id="text1-en" class="story-text">Once there was a young boy named Adam who dreamed of becoming a programmer.
 He had no computer, only an old phone with a small screen
@@ -117,7 +137,7 @@ Now he has his own company and helps other beginners.
 
 <!-- 2 -->
 <div class="story-item">
-<div class="story-title" onclick="toggleStory(2)"><div class="title-left"><img src="IMAGES/story2.jpeg"><b>🚀 2. Power of a Small Start</b></div> <div class="story-icon" id="icon2">+</div></div>
+<div class="story-title" onclick="toggleStory(2)"><div class="title-left"><img src="IMAGES/story2.jpeg" alt="Illustration for the story: Power of a Small Start" loading="lazy" decoding="async"><b>🚀 2. Power of a Small Start</b></div> <div class="story-icon" id="icon2">+</div></div>
 <div class="story-content" id="story2">
 <div id="text2-en" class="story-text">Many people think they need a lot of money to start.
 They think they need a big office and powerful computers.
@@ -171,7 +191,7 @@ Your small website today can be big tomorrow.
 
 <!-- 3 -->
 <div class="story-item">
-<div class="story-title" onclick="toggleStory(3)"><div class="title-left"><img src="IMAGES/story3.jpeg"><b>⭐ 3. Dream From a Phone</b></div> <div class="story-icon" id="icon3">+</div></div>
+<div class="story-title" onclick="toggleStory(3)"><div class="title-left"><img src="IMAGES/story3.jpeg" alt="Illustration for the story: Dream From a Phone" loading="lazy" decoding="async"><b>⭐ 3. Dream From a Phone</b></div> <div class="story-icon" id="icon3">+</div></div>
 <div class="story-content" id="story3">
 <div id="text3-en" class="story-text">In a small village lived a boy named Youssef.
 He loved technology but his family was very poor.
@@ -225,7 +245,7 @@ He proved you can learn from anywhere with anything.
 
 <!-- 4 -->
 <div class="story-item">
-<div class="story-title" onclick="toggleStory(4)"><div class="title-left"><img src="IMAGES/story4.jpeg"><b>⏳ 4. Patience is Key</b></div> <div class="story-icon" id="icon4">+</div></div>
+<div class="story-title" onclick="toggleStory(4)"><div class="title-left"><img src="IMAGES/story4.jpeg" alt="Illustration for the story: Patience is Key" loading="lazy" decoding="async"><b>⏳ 4. Patience is Key</b></div> <div class="story-icon" id="icon4">+</div></div>
 <div class="story-content" id="story4">
 <div id="text4-en" class="story-text">A programmer had zero visitors for 3 months.
 He wrote articles every day with no result.
@@ -279,7 +299,7 @@ Success needs time, patience, and consistency.
 
 <!-- 5 -->
 <div class="story-item">
-<div class="story-title" onclick="toggleStory(5)"><div class="title-left"><img src="IMAGES/story5.jpeg"><b>🎯 5. Don't Compare Yourself</b></div> <div class="story-icon" id="icon5">+</div></div>
+<div class="story-title" onclick="toggleStory(5)"><div class="title-left"><img src="IMAGES/story5.jpeg" alt="Illustration for the story: Don't Compare Yourself" loading="lazy" decoding="async"><b>🎯 5. Don't Compare Yourself</b></div> <div class="story-icon" id="icon5">+</div></div>
 <div class="story-content" id="story5">
 <div id="text5-en" class="story-text">Two friends started learning programming together.
 One friend was very fast and learned quickly.
@@ -333,7 +353,7 @@ Your time will come if you keep working.
 
 <!-- 6 -->
 <div class="story-item">
-<div class="story-title" onclick="toggleStory(6)"><div class="title-left"><img src="IMAGES/story6.jpeg"><b>💰 6. The Honest Boy</b></div> <div class="story-icon" id="icon6">+</div></div>
+<div class="story-title" onclick="toggleStory(6)"><div class="title-left"><img src="IMAGES/story6.jpeg" alt="Illustration for the story: The Honest Boy" loading="lazy" decoding="async"><b>💰 6. The Honest Boy</b></div> <div class="story-icon" id="icon6">+</div></div>
 <div class="story-content" id="story6">
 <div id="text6-en" class="story-text">A poor boy found a wallet in the street.
 Inside the wallet there was 5000 dirhams.
@@ -387,7 +407,7 @@ One honest act can open big doors.
 
 <!-- 7 -->
 <div class="story-item">
-<div class="story-title" onclick="toggleStory(7)"><div class="title-left"><img src="IMAGES/story7.jpeg"><b>🐻 7. Two Friends and Bear</b></div> <div class="story-icon" id="icon7">+</div></div>
+<div class="story-title" onclick="toggleStory(7)"><div class="title-left"><img src="IMAGES/story7.jpeg" alt="Illustration for the story: Two Friends and Bear" loading="lazy" decoding="async"><b>🐻 7. Two Friends and Bear</b></div> <div class="story-icon" id="icon7">+</div></div>
 <div class="story-content" id="story7">
 <div id="text7-en" class="story-text">Two friends were walking in a forest.
 Suddenly they saw a big bear coming.
@@ -441,7 +461,7 @@ And choose your friends carefully.
 
 <!-- 8 -->
 <div class="story-item">
-<div class="story-title" onclick="toggleStory(8)"><div class="title-left"><img src="IMAGES/story8.jpeg"><b>🦁 8. The Lion and The Mouse</b></div> <div class="story-icon" id="icon8">+</div></div>
+<div class="story-title" onclick="toggleStory(8)"><div class="title-left"><img src="IMAGES/story8.jpeg" alt="Illustration for the story: The Lion and The Mouse" loading="lazy" decoding="async"><b>🦁 8. The Lion and The Mouse</b></div> <div class="story-icon" id="icon8">+</div></div>
 <div class="story-content" id="story8">
 <div id="text8-en" class="story-text">A lion was sleeping in the jungle.
 A small mouse started running on his body.
@@ -495,7 +515,7 @@ Small mouse saved big lion's life.
 
 <!-- 9 -->
 <div class="story-item">
-<div class="story-title" onclick="toggleStory(9)"><div class="title-left"><img src="IMAGES/story9.jpeg"><b>🐜 9. Ant and Grasshopper</b></div> <div class="story-icon" id="icon9">+</div></div>
+<div class="story-title" onclick="toggleStory(9)"><div class="title-left"><img src="IMAGES/story9.jpeg" alt="Illustration for the story: Ant and Grasshopper" loading="lazy" decoding="async"><b>🐜 9. Ant and Grasshopper</b></div> <div class="story-icon" id="icon9">+</div></div>
 <div class="story-content" id="story9">
 <div id="text9-en" class="story-text">In summer an ant was working very hard.
 He was collecting food for winter every day.
@@ -549,7 +569,7 @@ Laziness brings hunger and regret.
 
 <!-- 10 -->
 <div class="story-item">
-<div class="story-title" onclick="toggleStory(10)"><div class="title-left"><img src="IMAGES/story10.jpeg"><b>🌟 10. The Rich Man and The Poor Man</b></div> <div class="story-icon" id="icon10">+</div></div>
+<div class="story-title" onclick="toggleStory(10)"><div class="title-left"><img src="IMAGES/story10.jpeg" alt="Illustration for the story: The Rich Man and The Poor Man" loading="lazy" decoding="async"><b>🌟 10. The Rich Man and The Poor Man</b></div> <div class="story-icon" id="icon10">+</div></div>
 <div class="story-content" id="story10">
 <div id="text10-en" class="story-text">A rich man lived in a big beautiful house.
 A poor man lived in a small hut near his house.
@@ -610,31 +630,31 @@ True happiness is in contentment and sharing.
   </div>
 
   <div class="coming-item">
-    <img src="story11.jpg">
+    <img src="IMAGES/story11.jpeg" alt="Cover of upcoming story: The Boy Who Built His Dream With Zero Money" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='placeholder.svg'">
     <b>11. The Boy Who Built His Dream With Zero Money</b>
     <span>🔒</span>
   </div>
 
   <div class="coming-item">
-    <img src="story12.jpg">
+    <img src="IMAGES/story12.jpeg" alt="Cover of upcoming story: The Secret of The Rich Student" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='placeholder.svg'">
     <b>12. The Secret of The Rich Student</b>
     <span>🔒</span>
   </div>
 
   <div class="coming-item">
-    <img src="story13.jpg">
+    <img src="IMAGES/story13.jpeg" alt="Cover of upcoming story: I Failed 100 Times Before I Succeeded" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='placeholder.svg'">
     <b>13. I Failed 100 Times Before I Succeeded</b>
     <span>🔒</span>
   </div>
 
   <div class="coming-item">
-    <img src="story14.jpg">
+    <img src="IMAGES/story14.jpeg" alt="Cover of upcoming story: The Phone That Changed My Life" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='placeholder.svg'">
     <b>14. The Phone That Changed My Life</b>
     <span>🔒</span>
   </div>
 
   <div class="coming-item">
-    <img src="story15.jpg">
+    <img src="IMAGES/story15.jpeg" alt="Cover of upcoming story: Don't Give Up - Your Time Is Coming" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='placeholder.svg'">
     <b>15. Don't Give Up - Your Time Is Coming</b>
     <span>🔒</span>
   </div>
@@ -706,5 +726,11 @@ function downloadStory(n){
 </script>
 
 <script src="javascript"></script>
+<script src="seh-extra.js" defer></script>
+
+<div class="seh-legal-footer">
+  <div><a href="PRIVACY.html">Privacy Policy</a> · <a href="CGU.html">Terms of Use (CGU)</a> · <a href="#" id="sehCookieSettings">Cookie settings</a></div>
+  <p>© 2026 Soufyane El Haddaoui – SEH World · Made in Morocco 🇲🇦</p>
+</div>
 </body>
 </html>

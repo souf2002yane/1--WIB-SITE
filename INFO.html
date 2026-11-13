@@ -1,15 +1,34 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="style.css">
-<title>SEH - Info Personal</title>
-<link rel="icon" href="IMAGES/1793704644158.jpg">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+<script>if(location.protocol==="http:"&&location.hostname!=="localhost"&&location.hostname!=="127.0.0.1"){location.replace("https://"+location.host+location.pathname+location.search+location.hash);}</script>
+<title>My Profile &amp; Account – SEH World</title>
+<meta name="description" content="Create your SEH World profile: save your name, hobbies and languages on your device, earn points and level up. Your data stays in your browser.">
+<meta name="author" content="Soufyane El Haddaoui">
+<link rel="canonical" href="https://souf2002yane.github.io/SEH-WORLD/INFO.html">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SEH World">
+<meta property="og:title" content="My Profile &amp; Account – SEH World">
+<meta property="og:description" content="Create your SEH World profile: save your name, hobbies and languages on your device, earn points and level up. Your data stays in your browser.">
+<meta property="og:image" content="https://souf2002yane.github.io/SEH-WORLD/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="SEH World - Games, Stories and Personal Website">
+<meta property="og:url" content="https://souf2002yane.github.io/SEH-WORLD/INFO.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="My Profile &amp; Account – SEH World">
+<meta name="twitter:description" content="Create your SEH World profile: save your name, hobbies and languages on your device, earn points and level up. Your data stays in your browser.">
+<meta name="twitter:image" content="https://souf2002yane.github.io/SEH-WORLD/og-image.png">
 </head>
 <body>
 <div class="top-bar">
 <span id="todayDate">📅 Loading date...</span>
-<a href="https://facebook.com" target="_blank" style="font-size:20px;text-decoration:none">📘</a>
+<a href="https://facebook.com" target="_blank" rel="noopener noreferrer" style="font-size:20px;text-decoration:none">📘</a>
 </div>
 
 <nav class="bottom-row">
@@ -83,7 +102,7 @@ input.error{border:2px solid red !important}
   <p id="infoAbout" style="background:rgba(255,255,255,.08);padding:12px;border-radius:12px;font-size:13px;line-height:1.6;margin:12px 0 0">-</p>
   <div id="badgesBox" style="margin-top:12px;display:flex;gap:6px;flex-wrap:wrap"></div>
   <button class="btn-pro btn-white" onclick="editProfile()">✏️ Edit My Info</button>
-  <button class="btn-pro btn-gold" onclick="location.href='GAME.html'">🎮 Go To Games</button>
+  <button class="btn-pro btn-gold main-cta" onclick="location.href='GAME.html'">🎮 Go To Games</button>
  
   <button class="btn-pro btn-dark" onclick="logoutAccount()">🚪 Logout</button>
   <button class="btn-pro btn-red" onclick="deleteAccount()">🗑️ Delete My Account</button>
@@ -99,14 +118,15 @@ input.error{border:2px solid red !important}
   <p style="text-align:center;color:#B7791F;font-weight:bold" id="loginWelcome"></p>
   <fieldset>
     <legend>LOGIN</legend>
-    <label>Email:</label><br><input type="email" id="loginEmail" placeholder="Enter your email"><br>
-    <label>Password:</label><br><input type="password" id="loginPass" placeholder="Enter your password"><br>
+    <label>Email:</label><br><input type="email" id="loginEmail" maxlength="120" autocomplete="email" placeholder="Enter your email"><br>
+    <label>Password:</label><br><input type="password" id="loginPass" autocomplete="current-password" maxlength="64" placeholder="Enter your password"><br>
     <div style="display:flex;justify-content:space-between;align-items:center;margin:6px 0 12px">
       <label style="display:flex;align-items:center;gap:6px;font-weight:normal;margin:0"><input type="checkbox" onclick="document.getElementById('loginPass').type=this.checked?'text':'password'" style="width:18px"> Show password</label>
       <a href="#" onclick="showReset();return false;" style="color:#0866ff;font-size:13px;font-weight:700;text-decoration:none">Forgot password?</a>
     </div>
     <p id="loginError" class="err-msg"></p>
-    <button class="btn-login" onclick="doLogin()">LOGIN ➡️</button>
+    <div class="seh-turnstile"></div>
+    <button class="btn-login main-cta" onclick="doLogin()">LOGIN ➡️</button>
     <p style="text-align:center;font-size:13px;margin-top:12px">No account yet? <a href="#" onclick="showRegister();return false;" style="color:#0866ff;font-weight:800">Create one</a></p>
   </fieldset>
 </div>
@@ -118,12 +138,12 @@ input.error{border:2px solid red !important}
   <p style="text-align:center;color:#B7791F;font-weight:bold">Create your account, only one time</p>
   <fieldset>
     <legend>PERSONAL INFORMATION</legend>
-    <label>Name:</label><br><input type="text" id="userName" placeholder="Your name"><br>
-    <label>Family name:</label><br><input type="text" id="userFamily" placeholder="Family name"><br>
+    <label>Name:</label><br><input type="text" id="userName" maxlength="50" autocomplete="given-name" placeholder="Your name"><br>
+    <label>Family name:</label><br><input type="text" id="userFamily" maxlength="50" autocomplete="family-name" placeholder="Family name"><br>
     <label>Phone number:</label><br><input type="tel" id="userPhone" placeholder="0600000000" maxlength="10"><br>
-    <label>Age:</label><br><input type="number" id="userAge" placeholder="Write your age"><br>
-    <label>Email:</label><br><input type="email" id="userEmail" placeholder="Write email"><br>
-    <label>Password:</label><br><input type="password" id="userPass" placeholder="Write password"><br>
+    <label>Age:</label><br><input type="number" id="userAge" min="5" max="120" inputmode="numeric" placeholder="Write your age"><br>
+    <label>Email:</label><br><input type="email" id="userEmail" maxlength="120" autocomplete="email" placeholder="Write email"><br>
+    <label>Password:</label><br><input type="password" id="userPass" autocomplete="new-password" maxlength="64" placeholder="Write password"><br>
     <label style="display:flex;align-items:center;gap:6px;font-weight:normal"><input type="checkbox" onclick="document.getElementById('userPass').type=this.checked?'text':'password'" style="width:18px"> Show password</label>
 
     <p><b>More information:</b></p>
@@ -133,7 +153,8 @@ input.error{border:2px solid red !important}
     <label>Address:</label><br><input type="text" id="userAddress" placeholder="Your address"><br>
 
     <p id="errorMsg" class="err-msg"></p>
-    <button class="btn-next" onclick="goToStep2()">NEXT ➡️</button>
+    <div class="seh-turnstile"></div>
+    <button class="btn-next main-cta" onclick="goToStep2()">NEXT ➡️</button>
     <p style="text-align:center;font-size:13px;margin-top:10px" id="alreadyLink">Already have an account? <a href="#" onclick="showLoginBox();return false;" style="color:#0866ff;font-weight:800">Login</a></p>
   </fieldset>
 </div>
@@ -153,7 +174,7 @@ input.error{border:2px solid red !important}
     <h1 align="center">The Time</h1>
     <label>Enter the time</label><input type="datetime-local" id="userTime"><br>
   </fieldset>
-  <div style="max-width:650px;margin:0 auto"><button class="btn-next" onclick="goToStep3()">NEXT ➡️</button></div>
+  <div style="max-width:650px;margin:0 auto"><button class="btn-next main-cta" onclick="goToStep3()">NEXT ➡️</button></div>
 </div>
 
 <!-- ===== STEP 3 ===== -->
@@ -180,7 +201,7 @@ input.error{border:2px solid red !important}
     </select>
     <h2>In this website you can search about:</h2>
     <li>Books</li><li>Hobbies</li><li>New language</li><li>A lot of information</li><br>
-    <button class="btn-confirm" onclick="confirmAll()">✅ CONFIRM & SAVE</button>
+    <button class="btn-confirm main-cta" onclick="confirmAll()">✅ CONFIRM & SAVE</button>
   </fieldset>
 </div>
 
@@ -316,7 +337,7 @@ function showProfile(){
   let level=Math.floor(points/100)+1, rest=points%100;
   let days=1; if(acc.createdAt) days=Math.floor((Date.now()-acc.createdAt)/(1000*60*60*24))+1;
   let av=document.getElementById('dashAvatar');
-  if(acc.photo) av.innerHTML='<img src="'+acc.photo+'">'; else av.textContent=acc.name.charAt(0).toUpperCase();
+  if(acc.photo) av.innerHTML='<img src="'+acc.photo+'" alt="Your profile photo">'; else av.textContent=acc.name.charAt(0).toUpperCase();
   document.getElementById('dashName').textContent=acc.name+' '+(acc.family||'');
   document.getElementById('dashCity').textContent=acc.address+' • Morocco 🇲🇦';
   document.getElementById('dashLevel').textContent='⭐ LEVEL '+level;
@@ -389,40 +410,11 @@ function deleteAccount(){ if(confirm('Are you sure you want to delete your accou
 })();
 </script>
 
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-import { getFirestore, doc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+<script src="seh-extra.js" defer></script>
 
-const firebaseConfig = {
-  apiKey: "AIzaSyApOzh9J8QCiLcHdZ0q3zMgWrmK1ToY9Cg",
-  authDomain: "seh-world.firebaseapp.com",
-  projectId: "seh-world",
-  storageBucket: "seh-world.firebasestorage.app",
-  messagingSenderId: "888057068574",
-  appId: "1:888057068574:web:796fdde71679597931020f"
-};
-const app = initializeApp(firebaseConfig);
-window.auth = getAuth(app);
-window.db = getFirestore(app);
-window.provider = new GoogleAuthProvider();
-window.loginGoogle = async () => {
-  try{
-    const result = await signInWithPopup(window.auth, window.provider);
-    const user = result.user;
-    // تسجيل المستخدم فـ Firestore
-    await setDoc(doc(window.db, "users", user.uid), {
-      name: user.displayName,
-      email: user.email,
-      photo: user.photoURL,
-      uid: user.uid,
-      lastLogin: serverTimestamp(),
-      createdAt: serverTimestamp()
-    }, { merge: true });
-    alert("  WELCOME IN SEH-WORLD! " + user.displayName);
-  }
-  catch(e){ alert(e.message); }
-};
-</script>
+<div class="seh-legal-footer">
+  <div><a href="PRIVACY.html">Privacy Policy</a> · <a href="CGU.html">Terms of Use (CGU)</a> · <a href="#" id="sehCookieSettings">Cookie settings</a></div>
+  <p>© 2026 Soufyane El Haddaoui – SEH World · Made in Morocco 🇲🇦</p>
+</div>
 </body>
 </html>
